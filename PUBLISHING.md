@@ -2,6 +2,8 @@
 
 You do **not** need to create or locate a project folder manually. Download `parallax-intelligence-engine-v5.2.zip` to your **Downloads** folder and place `private-release.ps1` alongside it (or run the script from the project ZIP). The script searches Downloads, its own folder, Desktop and current directory; it picks the highest release version and extracts to a temporary directory.
 
+**Workflow-permission fix for `git push` failures:** If GitHub reports `refusing to allow an OAuth App to create or update workflow ... without workflow scope`, run `gh auth refresh -h github.com -s workflow`, approve the GitHub authorization in the browser, then run `gh auth setup-git` and retry the `-Apply` command. **Never use `git push --force` to solve this problem.** After publishing, verify `README.md`, `skills/browser-compute-bridge/SKILL.md`, `skills/creative-discovery/SKILL.md` and `.github/workflows/validate.yml` in the GitHub web view.
+
 Prerequisites: [Git for Windows](https://git-scm.com/download/win), [GitHub CLI](https://cli.github.com/), and `gh auth login` as owner `Blurry-hash`. Windows PowerShell 5.1 is sufficient; `pwsh` is not required.
 
 **Preview (no GitHub modifications):**
