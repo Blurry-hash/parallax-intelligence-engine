@@ -599,6 +599,94 @@
       "trust": "official",
       "status": "unconfirmed",
       "notes": "Model cards, weights and conditions; examine license and checkpoint compatibility."
+    },
+    {
+      "name": "DeepMind FunSearch",
+      "url": "https://github.com/google-deepmind/funsearch",
+      "topic": "creativity",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": "Verified algorithmic evolutionary search repo; published code omits LLM, sandbox and distributed infrastructure."
+    },
+    {
+      "name": "Pyribs quality-diversity",
+      "url": "https://github.com/icaros-usc/pyribs",
+      "topic": "creativity",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": "Verified MAP-Elites/CMA-ME implementation; translating numeric search to natural-language ideation is an adaptation."
+    },
+    {
+      "name": "DeepMind AlphaEvolve results",
+      "url": "https://github.com/google-deepmind/alphaevolve_results",
+      "topic": "creativity",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": "Result and verification notebooks; not a release of all underlying AlphaEvolve systems."
+    },
+    {
+      "name": "LangChain Deep Agents",
+      "url": "https://github.com/langchain-ai/deepagents",
+      "topic": "orchestration",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": "Agent harness design: subagents, context management, permissions, checkpoints; execution requires installation."
+    },
+    {
+      "name": "DSPy GEPA optimization guide",
+      "url": "https://github.com/stanfordnlp/dspy/blob/main/docs/docs/getting-started/gepa-optimization.md",
+      "topic": "prompt-optimization",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": "Practical metric-directed prompt optimization with train/holdout sets, not guaranteed gains."
+    },
+    {
+      "name": "Pyodide WebAssembly Python",
+      "url": "https://github.com/pyodide/pyodide",
+      "topic": "browser-runtime",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": "Official project page inspected 2026-10-22; capability descriptions are not runtime tests."
+    },
+    {
+      "name": "JupyterLite browser notebook",
+      "url": "https://github.com/jupyterlite/jupyterlite",
+      "topic": "browser-runtime",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": "Official project page inspected 2026-10-22; capability descriptions are not runtime tests."
+    },
+    {
+      "name": "FFmpeg.wasm browser video",
+      "url": "https://github.com/ffmpegwasm/ffmpeg.wasm",
+      "topic": "browser-video",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": "Official project page inspected 2026-10-22; capability descriptions are not runtime tests."
+    },
+    {
+      "name": "E2B sandbox infrastructure",
+      "url": "https://github.com/e2b-dev/e2b",
+      "topic": "isolated-cloud",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": "Official project page inspected 2026-10-22; capability descriptions are not runtime tests."
+    },
+    {
+      "name": "Pydantic AI evaluations",
+      "url": "https://github.com/pydantic/pydantic-ai",
+      "topic": "agent-evaluation",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": "Official project page inspected 2026-10-22; capability descriptions are not runtime tests."
+    },
+    {
+      "name": "LangGraph runtime",
+      "url": "https://github.com/langchain-ai/langgraph",
+      "topic": "agent-routing",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": "Official project page inspected 2026-10-22; capability descriptions are not runtime tests."
     }
   ]
 }

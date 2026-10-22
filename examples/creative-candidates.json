@@ -1,0 +1,8 @@
+{
+  "ideas": [
+    "A low-power network sensor that triggers alerts on local Wi-Fi without a cloud account.",
+    "An offline Bluetooth mesh of phones and battery nodes that exchanges short emergency updates.",
+    "A visual wall-mounted dashboard that combines room sensors with a projected ambient display.",
+    "A hybrid solar-powered e-paper beacon with delayed synchronization over existing LAN infrastructure."
+  ]
+}

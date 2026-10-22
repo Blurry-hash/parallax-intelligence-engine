@@ -117,7 +117,7 @@ def render(input_path: Path, output: Path, font: Path | None = None) -> dict:
     output.parent.mkdir(parents=True, exist_ok=True)
     if font is not None and not font.is_file():
         raise FileNotFoundError(f"Specified font not found: {font}")
-    with tempfile.TemporaryDirectory(prefix="aiontrix_video_") as tmp:
+    with tempfile.TemporaryDirectory(prefix="parallax_video_") as tmp:
         cmd = ffmpeg_command(data, Path(tmp), output, font)
         subprocess.run(cmd, check=True, capture_output=True, text=True)
     probe = subprocess.run([

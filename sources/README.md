@@ -14,7 +14,7 @@ Sources are references, not installed code or automatically imported intelligenc
 
 ## Newly examined (2026-10-22)
 
-GPT Researcher, Stanford STORM, Stanford DSPy, UK AISI Inspect, canonical Vale repository, Google style guides and Anthropic Claude Cookbooks were opened on GitHub. The presence and broad described methods are verified, **not** their empirical effect in AIONTRIX. LangChain `open_deep_research` was reviewed but not added as an active recommendation because it was archived in August 2026.
+GPT Researcher, Stanford STORM, Stanford DSPy, UK AISI Inspect, canonical Vale repository, Google style guides and Anthropic Claude Cookbooks were opened on GitHub. The presence and broad described methods are verified, **not** their empirical effect in PARALLAX. LangChain `open_deep_research` was reviewed but not added as an active recommendation because it was archived in August 2026.
 
 ## V4.4 additions (2026-10-22)
 

@@ -8,7 +8,7 @@ import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-spec = importlib.util.spec_from_file_location("aiontrix_validate", ROOT / "tools" / "validate.py")
+spec = importlib.util.spec_from_file_location("parallax_validate", ROOT / "tools" / "validate.py")
 module = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(module)
 
@@ -45,7 +45,7 @@ class PackageTests(unittest.TestCase):
         from copy import deepcopy
         import importlib.util
         script = ROOT / "tools" / "render_video.py"
-        module_spec = importlib.util.spec_from_file_location("aiontrix_video", script)
+        module_spec = importlib.util.spec_from_file_location("parallax_video", script)
         video = importlib.util.module_from_spec(module_spec)
         module_spec.loader.exec_module(video)
         sample = json.loads((ROOT / "examples/video-storyboard.json").read_text(encoding="utf-8"))

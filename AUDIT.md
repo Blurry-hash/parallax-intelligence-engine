@@ -1,45 +1,41 @@
-# AIONTRIX V4.4 — Technical audit
+# PARALLAX v5.0 — validation ledger
 
-Date: 2026-10-22. Scope: local repo structure, source registry metadata, source sampling and benchmark readiness.
+## Scope
 
-## Found and corrected
+Local project rebrand, creative-divergence procedures, executable lexical-overlap diagnostic, human-reviewed originality protocol, benchmark discipline, source catalog update and user-readable README/prompt.
 
-1. **Misclassified source.** Humor comedian `SKILL.md` had `unconfirmed` despite being retrievable. Rechecked the exact GitHub page and marked `verified-page` with a note.
-2. **Thin validation.** The initial tests checked only broad document structure. Added validation of trust/status values, source URL uniqueness, skill/frontmatter alignment, internal links and documented source/skill counts, plus negative tests.
-3. **No agent compatibility module.** Added `agent-interoperability`, drawing on GitHub Awesome Copilot, AGENTS.md and the canonical MCP specification.
-4. **No meaningful prompt benchmarking workflow.** Added `agent-evaluation`, referencing Promptfoo and independent holdout evaluations.
-5. **Speed not instrumented.** Added `observability-latency` and OpenTelemetry references so speed recommendations have identifiable critical-path measurements.
-6. **Weak publish guidance.** Clarified how to publish a committed repo, and which artifacts preserve Git history.
+## Trust labels
 
-## Provenance and limitations
+Source `status=verified-page` indicates URL/page was inspected, NOT that its code or experimental claims were reproduced. Links do not install external model capabilities. Third-party system prompt archives remain untrusted.
 
-- Six newly added source pages, three selected original source pages and two third-party purported Codex prompt file *paths* were checked in a public browser. Authenticity of any purported internal prompts is **not** proven.
-- Full registry live status, upstream code quality and model claims remain outside this offline test suite.
-- No paid model benchmarks, performance improvements, physical hardware tests or external deployments were executed.
-- All tests and artifact generation should be repeated after edits; the local validation result is not a CI result until GitHub Actions runs remotely.
+## Supported/unsupported claims
 
-## V4.3 expansion — 2026-10-22
+- **Supported:** offline validator and unittest suite pass when recorded in test log; FFmpeg supports reproducible motion graphics if installed.
+- **Not proven:** any general model becomes 50,000% more intelligent or faster; generative-video foundation models are automatically available; increased semantic creativity without held-out human evaluation.
+- **GitHub metadata:** local rebrand is not an online repository rename. Public→private changes need GitHub administration access and confirmation.
 
-- Added curated primary/official sources and community projects for deep/wide search, measurable prompt optimization, model evaluations, readable prose and provider-specific caching (seven live pages inspected).
-- Added three operational skills: `deep-wide-research`, `adaptive-efficiency`, `human-communication`.
-- Extended master instructions to stop unnecessary reasoning, treat humor sensitively and separate actual response speed from unsupported claims.
-- Added scenario-oriented quality gates and private-by-default repository policy.
-- No new model weight access, multimodel calls, external benchmark or speed claims are implied.
+## Creative methodology
 
-## V4.4 completion (2026-10-22)
+Google DeepMind FunSearch, USC pyribs, Stanford DSPy and Google DeepMind AlphaEvolve results informed mechanistic-diversity and feedback-driven experimentation. New skill instructions are our own synthesis, not copied claims of model internals.
 
-- Corrected stale README source count and omitted module links responsible for prior failing tests.
-- Added official OpenHands, Microsoft Playwright, Microsoft MarkItDown and OpenAI Evals sources plus Langfuse, checked via public GitHub pages.
-- Added browser-level regression and source-ingestion skills.
-- Completely rewrote README as a high-contrast technical project landing page with mermaid architecture, human-readable module inventory, privacy contract and measurable benchmark policy.
-- Hardened private-only GitHub publishing instructions and included existing private target repo identity.
-- **Honest limit:** No actual model benchmark, live browser test, server deployment or hardware validation performed.
+## Remaining tests
 
-## V4.5 — Code-first and generative video, source hygiene
+Run `python3 tools/validate.py`, `python3 -m unittest discover -s tests -v`, `python3 tools/idea_diversity.py examples/creative-candidates.json` and FFmpeg smoke-render, recording any failures.
 
-- Added video intelligence, code-first production and generative-video modules, including FFmpeg, Remotion, MoviePy v2, Manim, Blender, ComfyUI and LTX-2.
-- Added Python-only storyboard renderer using local FFmpeg with subprocess arguments (no shell). Tested actual MP4 render and probed video metadata.
-- Added positive/negative storyboard tests (invalid dimensions, invalid colors, NaN duration).
-- Rebuilt README for high-tech navigation, truthful capabilities, complete module list, quickstart and privacy.
-- Expanded URL registry host validation for canonical Blender upstream. New external sources were selectively checked, **not** every upstream implementation or license terms.
-- Future opportunity: add image/video asset input, sound design and richer keyframe motion; current demo is animated text graphics rather than diffusion-generated cinematic footage.
+## Actual checks — 2026-10-22
+
+- `python3 tools/validate.py`: **PASS**, 79 registry references / 27 skill modules.
+- `python3 -m unittest discover -s tests -v`: **PASS**, 14 tests.
+- `python3 tools/idea_diversity.py examples/creative-candidates.json`: 4 concepts / 6 comparisons / reported lexical diversity 0.9555; lexical measurement only.
+- `python3 tools/render_video.py examples/video-storyboard.json`: **PASS**, 640×360 H.264 MP4 at 24 fps, 102 frames, 4.25 seconds, verified by ffprobe.
+- Private GitHub repository visibility checked. Connector exposes no repository metadata update action; GitHub rename and other repos' visibility changes remain unperformed.
+
+- Windows helper `scripts/private-release.ps1`: syntax/flags statically reviewed against GitHub CLI documentation; **not run** because no authenticated admin CLI or PowerShell runtime is available here.
+
+
+## v5.2 extension audit (2026-10-22)
+- Added browser fallback skill with explicit interactive/browser-read-only separation, documented Python/WASM/media/cloud options and explicit privacy/authorization checkpoints.
+- Added frontier model routing, measured experimental verification and context-engineering skills; no unsupported claim that model weights or hidden reasoning transfer.
+- Added source registry entries only for inspected official repositories. These references are documentation evidence, not a claim that their runtimes were installed in this project.
+- Replaced fixed project-folder assumption with version-sorted ZIP auto-discovery, ZIP path safety checks, extraction into a temporary directory, clone-first release, non-force push and post-push SHA verification.
+- Static tests cannot certify gh authentication, billing, Windows interaction or successful remote visibility changes. The actual GitHub state must be checked separately.

@@ -1,8 +1,6 @@
 # PARALLAX
 ### Intelligence Engine / Open-Method Systems
 
-> **Deployment status (2026-10-22): Partial.** GitHub currently contains 23 of the 31 v5.2 skill modules. The full, locally tested v5.2 package has not yet been pushed because the GitHub CLI token lacked permission to update `.github/workflows/validate.yml`. Some links below will return 404 until the full release is synced. See [PUBLISHING.md](PUBLISHING.md) for the verified remediation. Do not treat the counts below as already deployed.
-
 **A portable method library for research, engineering, creative discovery and verified tool-driven execution.**
 
 `V5.2` · `PRIVATE` · `SOURCE-AWARE` · `OFFLINE TEST SUITE` · `NO MODEL LOCK-IN`

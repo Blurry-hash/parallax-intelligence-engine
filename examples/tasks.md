@@ -33,8 +33,8 @@ Prompt: “Create a 1080×1920 animated explainer MP4 from this scene manifest. 
 Example:
 
 ```bash
-python3 tools/render_video.py examples/video-storyboard.json --out /tmp/aiontrix-demo.mp4
-ffprobe -v error -show_entries format=duration -show_entries stream=codec_name,width,height,r_frame_rate -of json /tmp/aiontrix-demo.mp4
+python3 tools/render_video.py examples/video-storyboard.json --out /tmp/parallax-demo.mp4
+ffprobe -v error -show_entries format=duration -show_entries stream=codec_name,width,height,r_frame_rate -of json /tmp/parallax-demo.mp4
 ```
 
 The output is procedural motion graphics, **not** a neural cinematic video generation result. Higher-end scenes require their respective rendering engine, model or assets.

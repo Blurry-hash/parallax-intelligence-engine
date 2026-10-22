@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "records": [
+    {
+      "claim": "An interactive Pyodide session can evaluate simple supported Python code.",
+      "type": "documentation-supported capability (not executed by this agent)",
+      "source": "https://github.com/pyodide/pyodide",
+      "environment": "not recorded",
+      "status": "PREPARED",
+      "result": null,
+      "limitations": "Only an actual interactive run and observed output establish execution."
+    }
+  ]
+}

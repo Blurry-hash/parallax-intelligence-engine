@@ -1,4 +1,4 @@
-name: Validate AIONTRIX skills
+name: Validate parallax skills
 on: [push, pull_request]
 permissions:
   contents: read
@@ -23,5 +23,5 @@ jobs:
         run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg fonts-dejavu-core
       - name: Verify actual MP4 rendering and probe output
         run: |
-          python tools/render_video.py examples/video-storyboard.json --font /usr/share/fonts/truetype/dejavu/DejaVuSans.ttf --out /tmp/aiontrix-smoke.mp4
-          ffprobe -v error -show_entries stream=codec_name,width,height,nb_frames -of json /tmp/aiontrix-smoke.mp4
+          python tools/render_video.py examples/video-storyboard.json --font /usr/share/fonts/truetype/dejavu/DejaVuSans.ttf --out /tmp/parallax-smoke.mp4
+          ffprobe -v error -show_entries stream=codec_name,width,height,nb_frames -of json /tmp/parallax-smoke.mp4
