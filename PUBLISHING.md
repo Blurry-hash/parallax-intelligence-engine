@@ -1,36 +1,31 @@
-# Publishing and synchronization (PRIVATE ONLY)
+# PARALLAX v5.2 — Windows/private publishing
 
-Target repository: `Blurry-hash/aiontrix-universal-intelligence`
+You do **not** need to create or locate a project folder manually. Download `parallax-intelligence-engine-v5.2.zip` to your **Downloads** folder and place `private-release.ps1` alongside it (or run the script from the project ZIP). The script searches Downloads, its own folder, Desktop and current directory; it picks the highest release version and extracts to a temporary directory.
 
-**Absolute requirement:** All user GitHub repositories remain **private**. Do not create public repos, change visibility to public, share private code externally or enable public Pages.
+Prerequisites: [Git for Windows](https://git-scm.com/download/win), [GitHub CLI](https://cli.github.com/), and `gh auth login` as owner `Blurry-hash`. Windows PowerShell 5.1 is sufficient; `pwsh` is not required.
 
-## GitHub repository exists
+**Preview (no GitHub modifications):**
 
-The target repository was confirmed as `visibility: private` on 2026-10-22. Inspect the remote before every write. If files are already present, fetch them and reconcile changes; **never force-push** or overwrite other work blindly.
-
-## Publish with git
-
-From the local Git folder (available in the Git bundle):
-
-```bash
-git remote add origin https://github.com/Blurry-hash/aiontrix-universal-intelligence.git
-git fetch origin
-# Review any conflicting remote changes before pushing
-git push -u origin main
+```cmd
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%USERPROFILE%\Downloads\private-release.ps1"
 ```
 
-If using the ZIP (without `.git`), open the extracted folder and use `git init -b main`, commit and push only after checking the remote history. To preserve the prepared local history, clone the `.bundle` file before connecting the remote.
+**Apply after checking preview and the visibility consequences:**
 
-### Git bundle
-
-```bash
-git clone aiontrix-universal-intelligence.bundle aiontrix-universal-intelligence
-cd aiontrix-universal-intelligence
-git remote add origin https://github.com/Blurry-hash/aiontrix-universal-intelligence.git
-git fetch origin
-git push -u origin main
+```cmd
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%USERPROFILE%\Downloads\private-release.ps1" -Apply
 ```
 
-**Authentication:** Sign in using GitHub CLI or your Git client; never paste access tokens into chat or commit them into the repository.
+For a ZIP with a different name/path:
 
-**CI:** `.github/workflows/validate.yml` runs structural and unit tests. CI success does not validate third-party source authenticity or prove improved model performance.
+```cmd
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%USERPROFILE%\Downloads\private-release.ps1" -ZipPath "C:\path\to\parallax-intelligence-engine-v5.2.zip" -Apply
+```
+
+For **privacy and rename only** (no archive required), use `-SkipPush -Apply`. Without `-Apply` the script is a preview only.
+
+What `-Apply` does after successful preflight: (1) make **owner-scoped** public repos private, (2) verify each visibility, (3) rename historical private repo to `parallax-intelligence-engine` if required, (4) clone remote and copy release content, (5) commit and push **without force**, (6) compare actual remote SHA and verify final privacy. ZIP validation occurs *before* any remote mutation.
+
+**Warning:** Making a repo private can erase public stars/watchers, detach public forks and affect GitHub Pages and deployed applications. Previously copied public code cannot be recalled. See [GitHub docs](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/managing-repository-settings/setting-repository-visibility). Do not run `-Apply` without accepting these consequences.
+
+The script was statically tested in Linux, not end-to-end on your Windows installation or private GitHub account. Failures can leave earlier successful operations in place; it does not claim atomic rollback.
