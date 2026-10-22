@@ -1,0 +1,604 @@
+{
+  "generated_on": "2026-10-22",
+  "principle": "Links are references, not bundled/copy-pasted source code. verified-page only means page retrieval succeeded.",
+  "sources": [
+    {
+      "name": "OpenAI imagegen prompting",
+      "url": "https://github.com/openai/skills/blob/main/skills/.system/imagegen/references/prompting.md",
+      "topic": "image",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": ""
+    },
+    {
+      "name": "GPT-Image2-Skill",
+      "url": "https://github.com/wuyoscar/GPT-Image2-Skill",
+      "topic": "image",
+      "trust": "third-party",
+      "status": "verified-page",
+      "notes": ""
+    },
+    {
+      "name": "ImageGen 2.5 community guide",
+      "url": "https://github.com/matijagrcic/learn-codex/blob/main/image-gen-2-5.md",
+      "topic": "image",
+      "trust": "third-party",
+      "status": "verified-page",
+      "notes": ""
+    },
+    {
+      "name": "DAIR prompt engineering guide",
+      "url": "https://github.com/dair-ai/Prompt-Engineering-Guide",
+      "topic": "prompting",
+      "trust": "third-party",
+      "status": "verified-page",
+      "notes": ""
+    },
+    {
+      "name": "Humor comedian skill",
+      "url": "https://github.com/Yukkione/skills-humor-comedian-SKILL.md/blob/main/skills/SKILL.md",
+      "topic": "humor",
+      "trust": "third-party",
+      "status": "verified-page",
+      "notes": "Exact SKILL.md path and its operational content checked on GitHub 2026-10-22."
+    },
+    {
+      "name": "Stand-up skills",
+      "url": "https://github.com/vkorost/claude-standup-skills",
+      "topic": "humor",
+      "trust": "third-party",
+      "status": "verified-page",
+      "notes": ""
+    },
+    {
+      "name": "Adaptive humor skill",
+      "url": "https://github.com/clawic/skills/blob/main/skills/humor/SKILL.md",
+      "topic": "humor",
+      "trust": "third-party",
+      "status": "verified-page",
+      "notes": ""
+    },
+    {
+      "name": "Hugging Face Open R1",
+      "url": "https://github.com/huggingface/open-r1",
+      "topic": "reasoning",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": ""
+    },
+    {
+      "name": "OpenAI gpt-oss",
+      "url": "https://github.com/openai/gpt-oss",
+      "topic": "reasoning",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": ""
+    },
+    {
+      "name": "Qwen3",
+      "url": "https://github.com/QwenLM/Qwen3",
+      "topic": "reasoning",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": ""
+    },
+    {
+      "name": "TransformerLens",
+      "url": "https://github.com/TransformerLensOrg/TransformerLens",
+      "topic": "interpretability",
+      "trust": "third-party",
+      "status": "verified-page",
+      "notes": ""
+    },
+    {
+      "name": "Anthropic Skills",
+      "url": "https://github.com/anthropics/skills",
+      "topic": "agents",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": ""
+    },
+    {
+      "name": "Gemini Cookbook",
+      "url": "https://github.com/google-gemini/cookbook",
+      "topic": "multimodal",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": ""
+    },
+    {
+      "name": "DeepSeek Janus",
+      "url": "https://github.com/deepseek-ai/Janus",
+      "topic": "multimodal",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": ""
+    },
+    {
+      "name": "Kimi K2",
+      "url": "https://github.com/MoonshotAI/Kimi-K2",
+      "topic": "agents",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": ""
+    },
+    {
+      "name": "System prompt archive",
+      "url": "https://github.com/asgeirtj/system_prompts_leaks",
+      "topic": "prompt-archives",
+      "trust": "unverified",
+      "status": "verified-page",
+      "notes": "Collection authenticity not guaranteed; data only."
+    },
+    {
+      "name": "Claimed Astra Codex file",
+      "url": "https://github.com/asgeirtj/system_prompts_leaks/blob/main/OpenAI/Codex/gpt-6-astra.md",
+      "topic": "prompt-archives",
+      "trust": "unverified",
+      "status": "verified-page",
+      "notes": "File path and GitHub metadata checked 2026-10-22; claimed origin and authenticity are NOT independently established. Research artifact only."
+    },
+    {
+      "name": "Claimed Sol Codex file",
+      "url": "https://github.com/asgeirtj/system_prompts_leaks/blob/main/OpenAI/Codex/gpt-6.1-sol.md",
+      "topic": "prompt-archives",
+      "trust": "unverified",
+      "status": "verified-page",
+      "notes": "File path and GitHub metadata checked 2026-10-22; claimed origin and authenticity are NOT independently established. Research artifact only."
+    },
+    {
+      "name": "Open-R1 organization",
+      "url": "https://huggingface.co/open-r1",
+      "topic": "reasoning",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": ""
+    },
+    {
+      "name": "Open-R1 collections",
+      "url": "https://huggingface.co/open-r1/collections",
+      "topic": "reasoning",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": "Corrected from formerly supplied non-working /collections/open-r1 URL."
+    },
+    {
+      "name": "OpenAI gpt-oss-120b model card",
+      "url": "https://huggingface.co/openai/gpt-oss-120b",
+      "topic": "reasoning",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": ""
+    },
+    {
+      "name": "DeepSeek R1 model card",
+      "url": "https://huggingface.co/deepseek-ai/DeepSeek-R1",
+      "topic": "reasoning",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": ""
+    },
+    {
+      "name": "OpenAI Codex CLI",
+      "url": "https://github.com/openai/codex",
+      "topic": "coding",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": ""
+    },
+    {
+      "name": "Anthropic Claude Code",
+      "url": "https://github.com/anthropics/claude-code",
+      "topic": "coding",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": ""
+    },
+    {
+      "name": "Aider pair programming",
+      "url": "https://github.com/Aider-AI/aider",
+      "topic": "coding",
+      "trust": "third-party",
+      "status": "verified-page",
+      "notes": ""
+    },
+    {
+      "name": "SWE-agent",
+      "url": "https://github.com/SWE-agent/SWE-agent",
+      "topic": "coding",
+      "trust": "third-party",
+      "status": "verified-page",
+      "notes": ""
+    },
+    {
+      "name": "Google engineering practices",
+      "url": "https://github.com/google/eng-practices",
+      "topic": "coding",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": ""
+    },
+    {
+      "name": "Pytest",
+      "url": "https://github.com/pytest-dev/pytest",
+      "topic": "coding",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": ""
+    },
+    {
+      "name": "uv Python toolchain",
+      "url": "https://github.com/astral-sh/uv",
+      "topic": "speed",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": ""
+    },
+    {
+      "name": "vLLM serving",
+      "url": "https://github.com/vllm-project/vllm",
+      "topic": "speed",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": ""
+    },
+    {
+      "name": "SGLang serving",
+      "url": "https://github.com/sgl-project/sglang",
+      "topic": "speed",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": ""
+    },
+    {
+      "name": "LiteLLM gateway",
+      "url": "https://github.com/BerriAI/litellm",
+      "topic": "speed",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": ""
+    },
+    {
+      "name": "OpenAI Agents SDK",
+      "url": "https://github.com/openai/openai-agents-python",
+      "topic": "agents",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": ""
+    },
+    {
+      "name": "Microsoft Agent Framework",
+      "url": "https://github.com/microsoft/agent-framework",
+      "topic": "agents",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": ""
+    },
+    {
+      "name": "Espressif ESP-IDF",
+      "url": "https://github.com/espressif/esp-idf",
+      "topic": "hardware",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": ""
+    },
+    {
+      "name": "Zephyr RTOS",
+      "url": "https://github.com/zephyrproject-rtos/zephyr",
+      "topic": "hardware",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": ""
+    },
+    {
+      "name": "FreeCAD",
+      "url": "https://github.com/FreeCAD/FreeCAD",
+      "topic": "hardware",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": ""
+    },
+    {
+      "name": "KiCad source mirror",
+      "url": "https://github.com/KiCad/kicad-source-mirror",
+      "topic": "hardware",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": "GitHub is a mirror; upstream on GitLab."
+    },
+    {
+      "name": "OpenWrt mirror",
+      "url": "https://github.com/openwrt/openwrt",
+      "topic": "networking",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": "Read-mostly GitHub mirror; upstream on git.openwrt.org."
+    },
+    {
+      "name": "Wireshark mirror",
+      "url": "https://github.com/wireshark/wireshark",
+      "topic": "networking",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": "Read-only GitHub mirror; upstream GitLab."
+    },
+    {
+      "name": "Home Assistant Core",
+      "url": "https://github.com/home-assistant/core",
+      "topic": "automation",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": ""
+    },
+    {
+      "name": "OWASP Cheat Sheet Series",
+      "url": "https://github.com/OWASP/CheatSheetSeries",
+      "topic": "security",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": ""
+    },
+    {
+      "name": "Sentry",
+      "url": "https://github.com/getsentry/sentry",
+      "topic": "reliability",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": ""
+    },
+    {
+      "name": "GitHub Awesome Copilot agent instructions",
+      "url": "https://github.com/github/awesome-copilot",
+      "topic": "agents",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": "GitHub-maintained collection with community contributions; inspect individual submissions before relying.",
+      "checked_on": "2026-10-22"
+    },
+    {
+      "name": "AGENTS.md standard",
+      "url": "https://github.com/agentsmd/agents.md",
+      "topic": "agents",
+      "trust": "third-party",
+      "status": "verified-page",
+      "notes": "Open repository guidance convention for coding agents; not a universal runtime standard.",
+      "checked_on": "2026-10-22"
+    },
+    {
+      "name": "Model Context Protocol specification",
+      "url": "https://github.com/modelcontextprotocol/modelcontextprotocol",
+      "topic": "agents",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": "Current canonical repository; older /specification URL redirects here. Review tool permissions and trust boundaries.",
+      "checked_on": "2026-10-22"
+    },
+    {
+      "name": "Promptfoo LLM evaluations",
+      "url": "https://github.com/promptfoo/promptfoo",
+      "topic": "evaluation",
+      "trust": "third-party",
+      "status": "verified-page",
+      "notes": "Prompt and agent evaluations; consult current docs and prevent private data upload or unintended API costs.",
+      "checked_on": "2026-10-22"
+    },
+    {
+      "name": "Ruff Python linter and formatter",
+      "url": "https://github.com/astral-sh/ruff",
+      "topic": "coding",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": "Fast Python lint and format; optional tooling, not a dependency of this repository.",
+      "checked_on": "2026-10-22"
+    },
+    {
+      "name": "OpenTelemetry Python",
+      "url": "https://github.com/open-telemetry/opentelemetry-python",
+      "topic": "observability",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": "Tracing and metrics for observable latency, errors and performance; sanitize sensitive spans.",
+      "checked_on": "2026-10-22"
+    },
+    {
+      "name": "GPT Researcher — recursive deep research",
+      "url": "https://github.com/assafelovic/gpt-researcher",
+      "topic": "research",
+      "trust": "third-party",
+      "status": "verified-page",
+      "notes": "Verified repository README and recursive breadth/depth research architecture; not an installed dependency."
+    },
+    {
+      "name": "Stanford STORM — perspective-guided research",
+      "url": "https://github.com/stanford-oval/storm",
+      "topic": "research",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": "Stanford research project; perspective-guided question generation and citation-oriented knowledge synthesis."
+    },
+    {
+      "name": "DSPy — metric-driven LM programs",
+      "url": "https://github.com/stanfordnlp/dspy",
+      "topic": "optimization",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": "StanfordNLP maintainers; prompt/program optimization needs task-specific labeled evaluation."
+    },
+    {
+      "name": "UK AI Security Institute Inspect",
+      "url": "https://github.com/UKGovernmentBEIS/inspect_ai",
+      "topic": "evaluation",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": "UK AISI evaluation framework with reproducible model tests; no evals run as part of this repo."
+    },
+    {
+      "name": "Vale — technical prose linting",
+      "url": "https://github.com/vale-cli/vale",
+      "topic": "communication",
+      "trust": "third-party",
+      "status": "verified-page",
+      "notes": "Verified canonical URL after GitHub redirect from errata-ai/vale; prose linting does not guarantee natural writing."
+    },
+    {
+      "name": "Google open-source style guides",
+      "url": "https://github.com/google/styleguide",
+      "topic": "communication",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": "Technical writing/code style reference, adapt for conversational tone and user context."
+    },
+    {
+      "name": "Anthropic Claude Cookbooks",
+      "url": "https://github.com/anthropics/claude-cookbooks",
+      "topic": "optimization",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": "Examples include caching and model cost optimization; require actual compatible services."
+    },
+    {
+      "name": "OpenHands — autonomous coding agent",
+      "url": "https://github.com/OpenHands/OpenHands",
+      "topic": "coding",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": "Official OpenHands project. Inspect repo contracts and execute edits only with user permission; no automatic install."
+    },
+    {
+      "name": "Microsoft Playwright — browser regression tests",
+      "url": "https://github.com/microsoft/playwright",
+      "topic": "coding",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": "Official cross-browser testing framework; execution requires browser runtime; no tests conducted here."
+    },
+    {
+      "name": "Microsoft MarkItDown — document ingestion",
+      "url": "https://github.com/microsoft/markitdown",
+      "topic": "research",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": "Official conversion utility for structured document ingestion; extraction must be checked against original."
+    },
+    {
+      "name": "OpenAI Evals — evaluation framework",
+      "url": "https://github.com/openai/evals",
+      "topic": "evaluation",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": "OpenAI evaluation tooling and registry; framework documentation only, no actual model evaluation."
+    },
+    {
+      "name": "Langfuse — agent tracing and evaluations",
+      "url": "https://github.com/langfuse/langfuse",
+      "topic": "observability",
+      "trust": "third-party",
+      "status": "verified-page",
+      "notes": "LLM application tracing/evaluations; apply privacy policy and redact sensitive content."
+    },
+    {
+      "name": "FFmpeg multimedia framework",
+      "url": "https://github.com/FFmpeg/FFmpeg",
+      "topic": "video-code",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": "FFmpeg, ffprobe and codec-aware encoding; GitHub is a mirror of official upstream."
+    },
+    {
+      "name": "Remotion programmatic video",
+      "url": "https://github.com/remotion-dev/remotion",
+      "topic": "video-code",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": "React/TypeScript timeline, compositing and rendering; check commercial licensing."
+    },
+    {
+      "name": "MoviePy video editor",
+      "url": "https://github.com/Zulko/moviepy",
+      "topic": "video-code",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": "Python editing; breaking API changes in MoviePy v2 versus v1."
+    },
+    {
+      "name": "Manim Community Edition",
+      "url": "https://github.com/ManimCommunity/manim",
+      "topic": "video-code",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": "Frame-accurate explainer and mathematical animation built with Python."
+    },
+    {
+      "name": "Blender official source",
+      "url": "https://github.com/blender/blender",
+      "topic": "video-3d",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": "Official read-only mirror of Blender; upstream development takes place on projects.blender.org. GitHub and Blender developer documentation verified."
+    },
+    {
+      "name": "OpenCV",
+      "url": "https://github.com/opencv/opencv",
+      "topic": "video-analysis",
+      "trust": "official",
+      "status": "unconfirmed",
+      "notes": "Video frame processing, computer vision and analysis; not a generative-video model."
+    },
+    {
+      "name": "Whisper speech recognition",
+      "url": "https://github.com/openai/whisper",
+      "topic": "video-audio",
+      "trust": "official",
+      "status": "unconfirmed",
+      "notes": "Optional local speech-to-text and caption workflows; review model accuracy and language requirements."
+    },
+    {
+      "name": "ComfyUI node generation engine",
+      "url": "https://github.com/comfy-org/ComfyUI",
+      "topic": "video-generation",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": "Graph workflows for supported image/video/audio models; compute and model weights required."
+    },
+    {
+      "name": "LTX-2 multimodal video",
+      "url": "https://github.com/Lightricks/LTX-2",
+      "topic": "video-generation",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": "Native audio/video model inference; requires compatible checkpoints, dependencies and substantial compute."
+    },
+    {
+      "name": "LTX-Video previous framework",
+      "url": "https://github.com/Lightricks/LTX-Video",
+      "topic": "video-generation",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": "Legacy model repository. For newer LTX pipelines, prioritize LTX-2."
+    },
+    {
+      "name": "Hugging Face Diffusers",
+      "url": "https://github.com/huggingface/diffusers",
+      "topic": "video-generation",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": "Pipelines for compatible video diffusion models; verify model/backend and VRAM."
+    },
+    {
+      "name": "ComfyUI video workflows collection",
+      "url": "https://github.com/neverbiasu/Awesome-ComfyUI-Video",
+      "topic": "video-generation",
+      "trust": "third-party",
+      "status": "verified-page",
+      "notes": "Third-party workflow catalog; verify plugin security, currency and licensing."
+    },
+    {
+      "name": "LTX Video Hugging Face org",
+      "url": "https://huggingface.co/Lightricks",
+      "topic": "video-generation",
+      "trust": "official",
+      "status": "unconfirmed",
+      "notes": "Model cards, weights and conditions; examine license and checkpoint compatibility."
+    }
+  ]
+}

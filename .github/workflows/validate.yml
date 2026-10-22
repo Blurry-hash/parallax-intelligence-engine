@@ -1,0 +1,27 @@
+name: Validate AIONTRIX skills
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Offline structural validation
+        run: python tools/validate.py
+      - name: Compile scripts
+        run: python -m compileall -q tools tests
+      - name: Unit tests
+        run: python -m unittest discover -s tests -v
+      - name: Install FFmpeg for smoke test
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg fonts-dejavu-core
+      - name: Verify actual MP4 rendering and probe output
+        run: |
+          python tools/render_video.py examples/video-storyboard.json --font /usr/share/fonts/truetype/dejavu/DejaVuSans.ttf --out /tmp/aiontrix-smoke.mp4
+          ffprobe -v error -show_entries stream=codec_name,width,height,nb_frames -of json /tmp/aiontrix-smoke.mp4

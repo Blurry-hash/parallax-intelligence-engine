@@ -1,0 +1,25 @@
+{
+  "width": 640,
+  "height": 360,
+  "fps": 24,
+  "scenes": [
+    {
+      "title": "AIONTRIX",
+      "subtitle": "VIDEO INTELLIGENCE",
+      "seconds": 1.4,
+      "background": "#07111F"
+    },
+    {
+      "title": "CODE -> MOTION",
+      "subtitle": "FFmpeg / Python / Open tools",
+      "seconds": 1.4,
+      "background": "#0C2A3C"
+    },
+    {
+      "title": "REAL MP4 OUTPUT",
+      "subtitle": "Probe. Verify. Deliver.",
+      "seconds": 1.4,
+      "background": "#10152E"
+    }
+  ]
+}
