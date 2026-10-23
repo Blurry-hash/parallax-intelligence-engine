@@ -1,0 +1,30 @@
+{
+  "requested_minutes": 50,
+  "work_items": [
+    {
+      "id": "baseline",
+      "action": "validate",
+      "purpose": "Record baseline structural correctness before comparing any changes."
+    },
+    {
+      "id": "tests",
+      "action": "unit_tests",
+      "purpose": "Run comprehensive offline regressions and collect any real failure."
+    },
+    {
+      "id": "source_review",
+      "action": "source_audit",
+      "purpose": "Audit provenance status and flag unresolved source evidence gaps."
+    },
+    {
+      "id": "capabilities",
+      "action": "capability_audit",
+      "purpose": "Inspect available runtime and permissions before executing new operations."
+    },
+    {
+      "id": "schedule",
+      "action": "critical_path",
+      "purpose": "Review dependency-safe task scheduling for potential bottlenecks."
+    }
+  ]
+}

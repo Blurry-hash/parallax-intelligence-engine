@@ -1,14 +1,74 @@
 # PARALLAX / Intelligence Engine
 
-**Version 10.1** · Modular AI engineering · Code-first media · Measured reasoning
+**Version 10.2** · Modular AI engineering · Code-first media · Measured reasoning
 
 > **Multiple perspectives. One verifiable result.**
 
 PARALLAX is an **open-method toolkit**, not a new language model. It helps an AI assistant choose relevant specialist instructions, respect real tool limits, produce working artifacts, and independently verify the outcome. It cannot unlock hidden model weights, give an agent browser controls it lacks, or guarantee an intelligence/speed multiplier.
 
-**Status:** PARALLAX v10.1. This repository is intentionally **public** at the owner’s request; publication never changes repository visibility. Offline tools and examples require no API keys. CI validates the pushed revision independently.
+**Status:** PARALLAX v10.2. This repository is intentionally **public** at the owner’s request; publication never changes repository visibility. Offline tools and examples require no API keys. CI validates the pushed revision independently.
 
-`84 skills` · `119 linked references` · `offline validation` · `no automatic paid execution` · `privacy-first`
+`111 skills` · `141 linked references` · `offline validation` · `no automatic paid execution` · `privacy-first`
+
+
+## Requested-duration work: 50-minute example
+
+When a user requests *"Improve this for 50 minutes"*, PARALLAX treats it as a **work budget, not permission to fabricate elapsed time**. A persistent, authorized runner can perform successive meaningful work cycles and record real activity. In a non-persistent chat, the assistant must complete what its current turn supports and report the actual duration. There is no guaranteed quality multiplier from passing time. [Read the operational contract](docs/time-budgeted-work-v10.2.md).
+
+```bash
+python tools/work_budget.py examples/work-session-50min.json --output work-session-ledger.json
+```
+
+The example stops when its useful tasks are exhausted; it does **not** fake a 50-minute session.
+
+[`deliberate-work-sessions`](skills/deliberate-work-sessions/SKILL.md) is the new time-budgeted execution skill.
+
+## v10.2 — Code Logic & Performance Engineering
+
+**New:** 26 coding and performance skills plus a separate verified work-session skill; 27 new total. The coding set includes scoped methods covering algorithmic complexity, formal invariants, type-directed code synthesis, AST-safe refactoring, property/differential/mutation testing, execution planning, concurrency, caching, memory, latency, cost, user-interface performance, graphics, audio/video streaming, and reproducible delivery.
+
+The release includes three dependency-free offline tools:
+
+```bash
+python tools/complexity_guard.py tools/complexity_guard.py --max-score 35
+python tools/critical_path.py examples/workflow-dag.json
+python tools/perf_gate.py examples/perf-pairs.json
+python -m unittest discover -s tests -v
+```
+
+- `complexity_guard.py` reports a *syntactic branching heuristic*, not verified time complexity.
+- `critical_path.py` produces a deterministic DAG schedule/critical path for supplied task estimates, not true execution-time savings.
+- `perf_gate.py` only promotes when paired cases retain correctness and tail-latency constraints; its example uses **synthetic** timings.
+- Existing audio, image, video and self-evolution systems remain available. No claims of a measured general intelligence multiplier.
+
+### New v10.2 skills
+
+- [`algorithmic-complexity`](skills/algorithmic-complexity/SKILL.md) — Algorithm selection and complexity bounds
+- [`formal-invariants`](skills/formal-invariants/SKILL.md) — State machines and invariant-driven design
+- [`type-directed-code-synthesis`](skills/type-directed-code-synthesis/SKILL.md) — Type-directed program construction
+- [`ast-safe-transformations`](skills/ast-safe-transformations/SKILL.md) — Syntax-aware source transformations
+- [`property-based-testing-lab`](skills/property-based-testing-lab/SKILL.md) — Property-based test design
+- [`differential-testing`](skills/differential-testing/SKILL.md) — Cross-implementation oracle testing
+- [`mutation-testing-strategy`](skills/mutation-testing-strategy/SKILL.md) — Test-suite mutation resistance
+- [`symbolic-execution-planning`](skills/symbolic-execution-planning/SKILL.md) — Path constraint exploration
+- [`code-synthesis-evaluation`](skills/code-synthesis-evaluation/SKILL.md) — Reliable automated code generation
+- [`api-evolution-compatibility`](skills/api-evolution-compatibility/SKILL.md) — Backward-compatible API changes
+- [`database-query-planning`](skills/database-query-planning/SKILL.md) — Index and SQL execution planning
+- [`dependency-graph-acceleration`](skills/dependency-graph-acceleration/SKILL.md) — Dependency and impact graph engineering
+- [`incremental-build-analysis`](skills/incremental-build-analysis/SKILL.md) — Incremental compilation and cache validity
+- [`parallel-execution-correctness`](skills/parallel-execution-correctness/SKILL.md) — Concurrency and race prevention
+- [`streaming-backpressure`](skills/streaming-backpressure/SKILL.md) — Streaming throughput and cancellation
+- [`cache-invalidation-design`](skills/cache-invalidation-design/SKILL.md) — Cache correctness and coherence
+- [`runtime-memory-analysis`](skills/runtime-memory-analysis/SKILL.md) — Allocation and memory footprint engineering
+- [`latency-budgeting`](skills/latency-budgeting/SKILL.md) — End-to-end latency budgets
+- [`performance-regression-detection`](skills/performance-regression-detection/SKILL.md) — Paired performance guardrails
+- [`cost-aware-architecture`](skills/cost-aware-architecture/SKILL.md) — Compute and token cost engineering
+- [`ui-render-performance`](skills/ui-render-performance/SKILL.md) — UI performance and responsive interaction
+- [`graphics-render-pipeline`](skills/graphics-render-pipeline/SKILL.md) — Efficient image/vector rendering
+- [`audio-realtime-streaming`](skills/audio-realtime-streaming/SKILL.md) — Low latency speech/audio streaming
+- [`video-encoding-efficiency`](skills/video-encoding-efficiency/SKILL.md) — Video delivery and perceptual tradeoffs
+- [`reproducible-environments`](skills/reproducible-environments/SKILL.md) — Hermetic toolchains and build provenance
+- [`safe-code-agent-workflow`](skills/safe-code-agent-workflow/SKILL.md) — Reliable AI code agents and tool boundaries
 
 ## Architecture
 
@@ -50,25 +110,31 @@ PARALLAX uses **progressive disclosure**: do not paste all 84 skills into the mo
 
 ## Audio Intelligence + Self-Evolution v10.1
 
-**Seven additional specialist skills** cover consent-aware natural voice architecture, soundscape production, speech QC, real-provider selection, bounded evolution, evaluation governance and project continuity.
+PARALLAX now has **7 new skill modules**, an offline audio signal processor, a consent-aware voice backend selector and a fail-closed agent-improvement gate. **No neural speech generator or provider subscription is bundled**; humanlike voice quality requires genuine model access or recordings, listening evaluation and documented speaker consent.
 
-| Module | Verified operational capability |
+```text
+VOICE: Script → phonetics/prosody → real authorized model/recording → mix → measured QA → blind listening
+EVOLVE: Failure → separate candidate → unseen holdout → hard safety/performance gates → human review → versioned checkpoint
+```
+
+| Component | Actual function |
 |---|---|
-| [Audio laboratory](tools/audio_lab.py) | Dependency-free 16-bit PCM WAV integrity metrics, peak normalization, fades. **Not** TTS, LUFS or true-peak measurement |
-| [Voice router](tools/voice_route.py) | Choose from *actually connected* compatible models; no backend → NOT_EXECUTED |
-| [Evolution gate](tools/evolve_gate.py) | Matched holdout comparisons with critical-safety, per-task quality, p95 latency and cost checks; **no automatic deployment** |
-| [Audio reference architecture](docs/audio-intelligence-v10.1.md) | Voice prosody, pronunciation, mixing, quality evaluation, consent and model licensing |
-| [Evolution protocol](docs/self-evolution-v10.1.md) | Observe → challenge → compare → human review → versioned improvement |
-| [Project checkpoint](docs/CONTINUITY.md) | Saved repository state, **not automatic ChatGPT Memory or model-weight updates** |
+| [`audio_lab.py`](tools/audio_lab.py) | PCM WAV integrity, peak/RMS/clip/DC checks, safe normalization + fades (not TTS or LUFS) |
+| [`voice_route.py`](tools/voice_route.py) | Match requested audio task to verified installed model capabilities; if absent, report unexecuted |
+| [`evolve_gate.py`](tools/evolve_gate.py) | Validate matched holdout evidence; reject regressions, contamination, critical failures and unmeasured gains |
+| [`docs/audio-intelligence-v10.1.md`](docs/audio-intelligence-v10.1.md) | Natural voice and sound realism production/review protocol |
+| [`docs/self-evolution-v10.1.md`](docs/self-evolution-v10.1.md) | Bounded learning by measured, reversible changes |
+| [`docs/CONTINUITY.md`](docs/CONTINUITY.md) | Versioned project memory, not automatic ChatGPT model memory |
+
+Quick checks:
 
 ```bash
 python tools/voice_route.py examples/voice-task.json examples/voice-backends.json
 python tools/evolve_gate.py examples/evolution-fixture.json
-python tools/audio_lab.py recording.wav
 python -m unittest discover -s tests -v
 ```
 
-Speech naturalness still requires a real TTS engine or consented recordings plus actual listener evaluation; model weights, API subscriptions and neural self-training are **not** bundled. [Maintained Coqui TTS](https://github.com/idiap/coqui-ai-TTS), [F5-TTS](https://github.com/SWivid/F5-TTS), [VibeVoice](https://github.com/microsoft/VibeVoice) and [GEPA](https://github.com/gepa-ai/gepa) are research inputs subject to current licenses and access.
+Read `skills/voice-synthesis-architecture/SKILL.md`, `skills/speech-quality-laboratory/SKILL.md`, and `skills/self-evolution-engine/SKILL.md` only when the task justifies them. **A model's speech realism or improved intelligence must be measured; a GitHub skill file does not itself grant those abilities.**
 
 ## Video Intelligence v10
 
@@ -108,7 +174,7 @@ sources and competing hypotheses when necessary, and minimize repetitive tool
 calls. For coding, inspect before editing, preserve contracts and run relevant
 tests. For creative tasks, generate genuinely distinct mechanisms, compare
 prior art, prototype and falsify weak ideas. For images, preserve identity
-and reference invariants. For audio check actual TTS access, voice rights and waveform quality. Use bounded self-evolution with frozen holdouts, real metrics and reviewed promotion. For videos, plan frame-accurate shots, render a
+and reference invariants. For audio, first check real provider availability, licenses and consent; evaluate WAV integrity and naturalness separately. For self-evolution, require paired holdouts, safety gates and explicit review, never automatic model retraining. For videos, plan frame-accurate shots, render a
 real media file when an actual backend exists, verify it with ffprobe and
 check temporal continuity and audio separately.
 
@@ -168,7 +234,6 @@ python tools/bench_compare.py examples/paired-evaluation.json
 - [`self-evolution-engine`](skills/self-evolution-engine/SKILL.md)
 - [`evolution-governance`](skills/evolution-governance/SKILL.md)
 - [`continuous-learning-memory`](skills/continuous-learning-memory/SKILL.md)
-
 
 
 - [`accessibility-assurance`](skills/accessibility-assurance/SKILL.md)

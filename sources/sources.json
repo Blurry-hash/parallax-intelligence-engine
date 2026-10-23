@@ -886,15 +886,15 @@
       "topic": "audio",
       "trust": "official",
       "status": "verified-page",
-      "notes": "Maintained fork; separately verify weights license and runtime."
+      "notes": "Maintained fork; check individual model-weight licenses and consent."
     },
     {
-      "name": "F5-TTS flow matching",
+      "name": "F5-TTS",
       "url": "https://github.com/SWivid/F5-TTS",
       "topic": "audio",
       "trust": "official",
       "status": "verified-page",
-      "notes": "MIT code but released model weights CC-BY-NC, no default commercial use."
+      "notes": "Code and pretrained weights have different license constraints; published weights noncommercial."
     },
     {
       "name": "Microsoft VibeVoice",
@@ -902,7 +902,7 @@
       "topic": "audio",
       "trust": "official",
       "status": "verified-page",
-      "notes": "Original TTS code removed; check available ASR/realtime only."
+      "notes": "Original TTS code was removed; ASR and permitted realtime variants require availability verification."
     },
     {
       "name": "Stable Audio Tools",
@@ -910,7 +910,7 @@
       "topic": "audio",
       "trust": "official",
       "status": "verified-page",
-      "notes": "Generative audio research; separate weights and licenses."
+      "notes": "Training/inference source. Check separate checkpoint license."
     },
     {
       "name": "AudioCraft",
@@ -918,7 +918,7 @@
       "topic": "audio",
       "trust": "official",
       "status": "verified-page",
-      "notes": "AudioGen/MusicGen research; installed weights not included."
+      "notes": "Text-to-audio/MusicGen code; model weights and compute require separate verification."
     },
     {
       "name": "pyannote.audio",
@@ -926,7 +926,7 @@
       "topic": "audio",
       "trust": "official",
       "status": "verified-page",
-      "notes": "Diarization, not speech synthesis."
+      "notes": "Diarization pipelines; model access and licenses separately."
     },
     {
       "name": "LAION CLAP",
@@ -934,7 +934,7 @@
       "topic": "audio",
       "trust": "official",
       "status": "verified-page",
-      "notes": "Similarity proxy, not a realism metric."
+      "notes": "Text-audio embedding similarity is a proxy, not proof of naturalness."
     },
     {
       "name": "pyloudnorm",
@@ -942,15 +942,15 @@
       "topic": "audio",
       "trust": "third-party",
       "status": "unconfirmed",
-      "notes": "Relevant loudness metering package; repository page not independently verified in this change."
+      "notes": "Relevant BS.1770 meter; GitHub path not independently re-checked in this change."
     },
     {
-      "name": "GEPA optimizing framework",
+      "name": "GEPA",
       "url": "https://github.com/gepa-ai/gepa",
       "topic": "self-evolution",
       "trust": "official",
       "status": "verified-page",
-      "notes": "Research on reflective candidate selection and feedback."
+      "notes": "Feedback-driven optimizer, pareto candidate selection; no unattended autonomous deployment."
     },
     {
       "name": "DeepEval",
@@ -958,7 +958,183 @@
       "topic": "self-evolution",
       "trust": "third-party",
       "status": "verified-page",
-      "notes": "Evaluation framework, avoid holdout leakage."
+      "notes": "Evaluation utilities; guard against evaluation leakage and grading blindspots."
+    },
+    {
+      "name": "hypothesis reference",
+      "url": "https://github.com/HypothesisWorks/hypothesis",
+      "topic": "coding-logic-performance",
+      "trust": "third-party",
+      "status": "unconfirmed",
+      "notes": "Research pointer added for v10.2; page content/claims require live verification before use."
+    },
+    {
+      "name": "oss-fuzz reference",
+      "url": "https://github.com/google/oss-fuzz",
+      "topic": "coding-logic-performance",
+      "trust": "third-party",
+      "status": "unconfirmed",
+      "notes": "Research pointer added for v10.2; page content/claims require live verification before use."
+    },
+    {
+      "name": "mutmut reference",
+      "url": "https://github.com/mutmut/mutmut",
+      "topic": "coding-logic-performance",
+      "trust": "third-party",
+      "status": "unconfirmed",
+      "notes": "Research pointer added for v10.2; page content/claims require live verification before use."
+    },
+    {
+      "name": "angr reference",
+      "url": "https://github.com/angr/angr",
+      "topic": "coding-logic-performance",
+      "trust": "third-party",
+      "status": "unconfirmed",
+      "notes": "Research pointer added for v10.2; page content/claims require live verification before use."
+    },
+    {
+      "name": "LibCST reference",
+      "url": "https://github.com/Instagram/LibCST",
+      "topic": "coding-logic-performance",
+      "trust": "third-party",
+      "status": "unconfirmed",
+      "notes": "Research pointer added for v10.2; page content/claims require live verification before use."
+    },
+    {
+      "name": "pyright reference",
+      "url": "https://github.com/microsoft/pyright",
+      "topic": "coding-logic-performance",
+      "trust": "official",
+      "status": "unconfirmed",
+      "notes": "Research pointer added for v10.2; page content/claims require live verification before use."
+    },
+    {
+      "name": "benchmark reference",
+      "url": "https://github.com/google/benchmark",
+      "topic": "coding-logic-performance",
+      "trust": "official",
+      "status": "unconfirmed",
+      "notes": "Research pointer added for v10.2; page content/claims require live verification before use."
+    },
+    {
+      "name": "bazel reference",
+      "url": "https://github.com/bazelbuild/bazel",
+      "topic": "coding-logic-performance",
+      "trust": "official",
+      "status": "unconfirmed",
+      "notes": "Research pointer added for v10.2; page content/claims require live verification before use."
+    },
+    {
+      "name": "or-tools reference",
+      "url": "https://github.com/google/or-tools",
+      "topic": "coding-logic-performance",
+      "trust": "official",
+      "status": "unconfirmed",
+      "notes": "Research pointer added for v10.2; page content/claims require live verification before use."
+    },
+    {
+      "name": "memray reference",
+      "url": "https://github.com/bloomberg/memray",
+      "topic": "coding-logic-performance",
+      "trust": "third-party",
+      "status": "unconfirmed",
+      "notes": "Research pointer added for v10.2; page content/claims require live verification before use."
+    },
+    {
+      "name": "webrtc reference",
+      "url": "https://github.com/pion/webrtc",
+      "topic": "coding-logic-performance",
+      "trust": "third-party",
+      "status": "unconfirmed",
+      "notes": "Research pointer added for v10.2; page content/claims require live verification before use."
+    },
+    {
+      "name": "reproducible-website reference",
+      "url": "https://github.com/reproducible-builds/reproducible-website",
+      "topic": "coding-logic-performance",
+      "trust": "third-party",
+      "status": "unconfirmed",
+      "notes": "Research pointer added for v10.2; page content/claims require live verification before use."
+    },
+    {
+      "name": "SWE-bench reference",
+      "url": "https://github.com/princeton-nlp/SWE-bench",
+      "topic": "coding-logic-performance",
+      "trust": "third-party",
+      "status": "unconfirmed",
+      "notes": "Research pointer added for v10.2; page content/claims require live verification before use."
+    },
+    {
+      "name": "tlaplus reference",
+      "url": "https://github.com/tlaplus/tlaplus",
+      "topic": "coding-logic-performance",
+      "trust": "third-party",
+      "status": "unconfirmed",
+      "notes": "Research pointer added for v10.2; page content/claims require live verification before use."
+    },
+    {
+      "name": "libvips reference",
+      "url": "https://github.com/libvips/libvips",
+      "topic": "coding-logic-performance",
+      "trust": "third-party",
+      "status": "unconfirmed",
+      "notes": "Research pointer added for v10.2; page content/claims require live verification before use."
+    },
+    {
+      "name": "uvicorn reference",
+      "url": "https://github.com/encode/uvicorn",
+      "topic": "coding-logic-performance",
+      "trust": "third-party",
+      "status": "unconfirmed",
+      "notes": "Research pointer added for v10.2; page content/claims require live verification before use."
+    },
+    {
+      "name": "redis reference",
+      "url": "https://github.com/redis/redis",
+      "topic": "coding-logic-performance",
+      "trust": "official",
+      "status": "unconfirmed",
+      "notes": "Research pointer added for v10.2; page content/claims require live verification before use."
+    },
+    {
+      "name": "trio reference",
+      "url": "https://github.com/python-trio/trio",
+      "topic": "coding-logic-performance",
+      "trust": "third-party",
+      "status": "unconfirmed",
+      "notes": "Research pointer added for v10.2; page content/claims require live verification before use."
+    },
+    {
+      "name": "oasdiff reference",
+      "url": "https://github.com/oasdiff/oasdiff",
+      "topic": "coding-logic-performance",
+      "trust": "third-party",
+      "status": "unconfirmed",
+      "notes": "Research pointer added for v10.2; page content/claims require live verification before use."
+    },
+    {
+      "name": "postgres reference",
+      "url": "https://github.com/postgres/postgres",
+      "topic": "coding-logic-performance",
+      "trust": "third-party",
+      "status": "unconfirmed",
+      "notes": "Research pointer added for v10.2; page content/claims require live verification before use."
+    },
+    {
+      "name": "Python reference",
+      "url": "https://github.com/TheAlgorithms/Python",
+      "topic": "coding-logic-performance",
+      "trust": "third-party",
+      "status": "unconfirmed",
+      "notes": "Research pointer added for v10.2; page content/claims require live verification before use."
+    },
+    {
+      "name": "Temporal Python SDK",
+      "url": "https://github.com/temporalio/sdk-python",
+      "topic": "durable-workflows",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": "Official SDK docs checked for deterministic workflows and durable timers; not bundled or required."
     }
   ]
 }

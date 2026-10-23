@@ -1,0 +1,11 @@
+{
+  "unit":"minutes (synthetic)",
+  "tasks":[
+    {"id":"inspect","duration":2,"depends_on":[]},
+    {"id":"design","duration":4,"depends_on":["inspect"]},
+    {"id":"implement","duration":7,"depends_on":["design"]},
+    {"id":"tests","duration":5,"depends_on":["implement"]},
+    {"id":"security","duration":3,"depends_on":["design"]},
+    {"id":"review","duration":2,"depends_on":["tests","security"]}
+  ]
+}

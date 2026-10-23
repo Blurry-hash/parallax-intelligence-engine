@@ -1,0 +1,59 @@
+#!/usr/bin/env python3
+"""Conservative paired correctness/latency gate, without empirical claims about fixture data."""
+import argparse
+import json
+import math
+from pathlib import Path
+
+
+def percentile(values:list[float], percent:float)->float:
+    ordered=sorted(values)
+    return ordered[min(len(ordered)-1, math.ceil(percent/100*len(ordered))-1)]
+
+
+def compare(data: dict)->dict:
+    rows=data.get('cases')
+    if not isinstance(rows,list) or len(rows)<3:
+        raise ValueError('Need at least three matched tasks; larger samples recommended')
+    allowed=data.get('max_p95_regression_percent',5.0)
+    if type(allowed) not in (float,int) or not math.isfinite(allowed) or allowed<0:
+        raise ValueError('Invalid p95 regression threshold')
+    seen=set(); bl=[]; cl=[]; reg=[]; corrected=0
+    for row in rows:
+        if not isinstance(row,dict) or not isinstance(row.get('id'),str) or not row['id'] or row['id'] in seen:
+            raise ValueError('case IDs must be unique nonempty strings')
+        seen.add(row['id'])
+        b,c=row.get('baseline'),row.get('candidate')
+        if not isinstance(b,dict) or not isinstance(c,dict):
+            raise ValueError('case needs baseline/candidate objects')
+        for item in (b,c):
+            t=item.get('latency_ms')
+            if type(t) not in (float,int) or not math.isfinite(t) or t<=0:
+                raise ValueError('latency_ms must be finite positive')
+            if type(item.get('correct')) is not bool:
+                raise ValueError('correct must be a boolean')
+        bl.append(float(b['latency_ms']));cl.append(float(c['latency_ms']))
+        if b['correct'] and not c['correct']:
+            reg.append(row['id'])
+        if not b['correct'] and c['correct']:corrected+=1
+    bp=percentile(bl,95);cp=percentile(cl,95)
+    limit=bp*(1+allowed/100)
+    accepted=not reg and cp<=limit
+    return {'accepted':accepted, 'reason':('correctness regression' if reg else 'p95 latency regression' if not accepted else 'passes stated gates'),
+            'sample_count':len(rows),'correctness_regressions':reg,'correctness_improvements':corrected,
+            'baseline_p50_ms':percentile(bl,50),'candidate_p50_ms':percentile(cl,50),
+            'baseline_p95_ms':bp,'candidate_p95_ms':cp,
+            'paired_sum_latency_change_percent':round((sum(cl)/sum(bl)-1)*100,2),
+            'note':'Small or synthetic samples are not proof of real-world speed improvements; validate with holdouts.'}
+
+
+def main()->int:
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('file')
+    args=parser.parse_args()
+    try: out=compare(json.loads(Path(args.file).read_text(encoding='utf-8')))
+    except (ValueError,OSError,UnicodeError) as exc: parser.error(str(exc))
+    print(json.dumps(out,indent=2))
+    return 0 if out['accepted'] else 1
+
+if __name__=='__main__':raise SystemExit(main())

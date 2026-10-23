@@ -1,0 +1,11 @@
+{
+  "dataset":"Synthetic fixture only, NOT a product performance benchmark",
+  "max_p95_regression_percent":5,
+  "cases":[
+    {"id":"syntax", "baseline":{"latency_ms":80,"correct":true}, "candidate":{"latency_ms":63,"correct":true}},
+    {"id":"integration", "baseline":{"latency_ms":140,"correct":true}, "candidate":{"latency_ms":121,"correct":true}},
+    {"id":"refactor", "baseline":{"latency_ms":310,"correct":true}, "candidate":{"latency_ms":300,"correct":true}},
+    {"id":"research", "baseline":{"latency_ms":275,"correct":true}, "candidate":{"latency_ms":211,"correct":true}},
+    {"id":"media", "baseline":{"latency_ms":490,"correct":true}, "candidate":{"latency_ms":472,"correct":true}}
+  ]
+}

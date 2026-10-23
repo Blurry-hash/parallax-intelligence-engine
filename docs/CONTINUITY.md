@@ -1,11 +1,26 @@
-# PARALLAX Versioned Project Memory
+# PARALLAX — versioned operating memory
 
-This is persisted **repository documentation**, not direct access to or alteration of ChatGPT's account Memory or model weights. New sessions must load the current repository explicitly.
+This file is a *project checkpoint*, not ChatGPT account memory or model-weight retraining.
 
-## 2026-10-23 — v10.1 audio and evolution
-- Objective: realistic voice/audio engineering and bounded self-evolution, with actual tests and honest capability checks.
-- Added seven specialist skills, tools for WAV QA, conservative voice routing and champion/challenger holdout comparison.
-- Source research: modern Coqui fork, F5-TTS, Microsoft VibeVoice, AudioCraft, Stable Audio Tools, pyannote, CLAP, DSPy/GEPA, DeepEval.
-- Constraints: PARALLAX is public by explicit owner request; other repositories unchanged. No voice impersonation without consent, no paid inference without authorization.
-- Verified vs proposed: offline processing and evaluation gate are implemented; neural voice synthesis and improved model intelligence are NOT demonstrated by the repo alone.
-- Next: optional adapters to actually installed providers, blind naturalness evaluation and field benchmarks.
+## 2026-10-23 — v10.1 Audio Intelligence + Self-Evolution
+- Goal: add substantially deeper audio/voice capability guidance, practical offline signal processing and credible self-optimizing evaluation.
+- Added 7 purpose-specific skills and three executable tools (`audio_lab.py`, `voice_route.py`, `evolve_gate.py`).
+- Sources: refreshed references to actively maintained Coqui fork, F5-TTS, VibeVoice, AudioCraft, pyannote, DSPy/GEPA and evaluation research.
+- Protected constraints: all repository visibility controlled only by user; user previously authorized PARALLAX to remain **public**; no access to unconnected voice providers or persistent model memory; no fake audio synthesis.
+- Validation: record GitHub Actions commit and test results after publication. Do not mark unexecuted checks as passing.
+- Next opportunities: integration adapters behind explicit provider auth, a human blind-listening evaluation harness, and benchmark reporting without data leakage.
+
+## How to use this checkpoint
+Read only the most relevant current section and linked `SKILL.md` files. Verify the repository state before trusting old notes. Do not infer unseen changes in connected ChatGPT memory.
+
+## 2026-10-23 — v10.2 coding logic and performance
+- Added 26 targeted skills for algorithm design, invariants, typed synthesis, AST transforms, robust test oracles, concurrency, cache correctness, critical-path scheduling and multimedia/UI throughput.
+- Added deterministic offline complexity heuristic, DAG critical-path scheduler and paired latency/correctness gate, plus negative-case tests.
+- Source registry expanded with links marked `unconfirmed` pending individual page verification.
+- Preserve existing v10.1 audio, bounded self-evolution and explicit public visibility; no automatic changes to other repositories.
+- No assertion of intelligence/speed improvement without representative baseline comparisons.
+
+## 2026-10-23 — v10.2 timed work extension
+- Added `deliberate-work-sessions` skill, audited allowlisted work runner with checkpoint ledger, and documentation/example for a requested 50-minute work session.
+- Work is measured by real time and completed distinct steps; code refuses unsupported commands and stops at substantive-work exhaustion. A 50-minute request is not proof of 50 minutes of actual work.
+- Durable scheduling requires an actual external runtime and authorization, never simulated ChatGPT background execution.
