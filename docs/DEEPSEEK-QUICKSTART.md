@@ -8,7 +8,7 @@ Start with this small JSON file:
 
 https://raw.githubusercontent.com/Blurry-hash/parallax-intelligence-engine/main/bridge/v1/index.json
 
-Its `read_base` URL and `pages` arrays enumerate **12 short skills pages** and **20 short source pages**. Retrieve every page; if any GET fails, retry that page or report the list as PARTIAL. Count `entries` across all pages; don't confuse lazy-loaded GitHub HTML rows with missing skills.
+The pages are maintained by `python tools/deepseek_catalog.py` and checked in GitHub CI whenever the repository changes. Its `read_base` URL and `pages` arrays enumerate **12 short skills pages** and **20 short source pages**. Retrieve every page; if any GET fails, retry that page or report the list as PARTIAL. Count `entries` across all pages; don't confuse lazy-loaded GitHub HTML rows with missing skills.
 
 **Fallback 1:** use GitHub's JSON tree: https://api.github.com/repos/Blurry-hash/parallax-intelligence-engine/git/trees/main?recursive=1 . Require `truncated:false`, and count paths matching `skills/<name>/SKILL.md`.
 

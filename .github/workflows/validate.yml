@@ -74,6 +74,10 @@ jobs:
               else:assert [(r['name'],r['url']) for r in rows]==[(r['name'],r['url']) for r in ground]
           print('PASS: all 142 skills and 157 sources present in small GET pages')
           PY
+      - name: Check deterministic DeepSeek catalog
+        run: |
+          python tools/deepseek_catalog.py --check
+          python -m unittest tests.test_deepseek_catalog -q
       - name: Compile scripts
         run: python -m compileall -q tools tests
       - name: Unit tests
