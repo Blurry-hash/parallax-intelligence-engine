@@ -1,5 +1,5 @@
 {
-  "generated_on": "2026-10-22",
+  "generated_on": "2026-10-23",
   "principle": "Links are references, not bundled/copy-pasted source code. verified-page only means page retrieval succeeded.",
   "sources": [
     {
@@ -687,6 +687,198 @@
       "trust": "official",
       "status": "verified-page",
       "notes": "Official project page inspected 2026-10-22; capability descriptions are not runtime tests."
+    },
+    {
+      "name": "Agent Skills specification",
+      "url": "https://github.com/agentskills/agentskills",
+      "topic": "specialist-engineering",
+      "trust": "official",
+      "status": "unconfirmed",
+      "notes": "Curated reference: verify exact pages, version, maintenance and license before operational use."
+    },
+    {
+      "name": "OWASP agentic skills Top 10",
+      "url": "https://github.com/OWASP/www-project-agentic-skills-top-10",
+      "topic": "specialist-engineering",
+      "trust": "official",
+      "status": "unconfirmed",
+      "notes": "Curated reference: verify exact pages, version, maintenance and license before operational use."
+    },
+    {
+      "name": "Penpot UI prototyping",
+      "url": "https://github.com/penpot/penpot",
+      "topic": "specialist-engineering",
+      "trust": "official",
+      "status": "unconfirmed",
+      "notes": "Curated reference: verify exact pages, version, maintenance and license before operational use."
+    },
+    {
+      "name": "Storybook isolated UI component tests",
+      "url": "https://github.com/storybookjs/storybook",
+      "topic": "specialist-engineering",
+      "trust": "official",
+      "status": "unconfirmed",
+      "notes": "Curated reference: verify exact pages, version, maintenance and license before operational use."
+    },
+    {
+      "name": "axe-core accessibility testing",
+      "url": "https://github.com/dequelabs/axe-core",
+      "topic": "specialist-engineering",
+      "trust": "third-party",
+      "status": "unconfirmed",
+      "notes": "Curated reference: verify exact pages, version, maintenance and license before operational use."
+    },
+    {
+      "name": "OWASP ASVS standard",
+      "url": "https://github.com/OWASP/ASVS",
+      "topic": "specialist-engineering",
+      "trust": "official",
+      "status": "unconfirmed",
+      "notes": "Curated reference: verify exact pages, version, maintenance and license before operational use."
+    },
+    {
+      "name": "OPA policy engine",
+      "url": "https://github.com/open-policy-agent/opa",
+      "topic": "specialist-engineering",
+      "trust": "official",
+      "status": "unconfirmed",
+      "notes": "Curated reference: verify exact pages, version, maintenance and license before operational use."
+    },
+    {
+      "name": "Temporal durable workflows",
+      "url": "https://github.com/temporalio/temporal",
+      "topic": "specialist-engineering",
+      "trust": "official",
+      "status": "unconfirmed",
+      "notes": "Curated reference: verify exact pages, version, maintenance and license before operational use."
+    },
+    {
+      "name": "DuckDB analytics",
+      "url": "https://github.com/duckdb/duckdb",
+      "topic": "specialist-engineering",
+      "trust": "official",
+      "status": "unconfirmed",
+      "notes": "Curated reference: verify exact pages, version, maintenance and license before operational use."
+    },
+    {
+      "name": "librosa audio analysis",
+      "url": "https://github.com/librosa/librosa",
+      "topic": "specialist-engineering",
+      "trust": "official",
+      "status": "unconfirmed",
+      "notes": "Curated reference: verify exact pages, version, maintenance and license before operational use."
+    },
+    {
+      "name": "Shadcn UI",
+      "url": "https://github.com/shadcn-ui/ui",
+      "topic": "specialist-engineering",
+      "trust": "third-party",
+      "status": "unconfirmed",
+      "notes": "Curated reference: verify exact pages, version, maintenance and license before operational use."
+    },
+    {
+      "name": "Pydantic structured validation",
+      "url": "https://github.com/pydantic/pydantic",
+      "topic": "specialist-engineering",
+      "trust": "official",
+      "status": "unconfirmed",
+      "notes": "Curated reference: verify exact pages, version, maintenance and license before operational use."
+    },
+    {
+      "name": "PyWhy DoWhy",
+      "url": "https://github.com/py-why/dowhy",
+      "topic": "specialist-engineering",
+      "trust": "third-party",
+      "status": "unconfirmed",
+      "notes": "Curated reference: verify exact pages, version, maintenance and license before operational use."
+    },
+    {
+      "name": "SciPy numerical computation",
+      "url": "https://github.com/scipy/scipy",
+      "topic": "specialist-engineering",
+      "trust": "official",
+      "status": "unconfirmed",
+      "notes": "Curated reference: verify exact pages, version, maintenance and license before operational use."
+    },
+    {
+      "name": "Sentence Transformers retrieval",
+      "url": "https://github.com/UKPLab/sentence-transformers",
+      "topic": "specialist-engineering",
+      "trust": "third-party",
+      "status": "unconfirmed",
+      "notes": "Curated reference: verify exact pages, version, maintenance and license before operational use."
+    },
+    {
+      "name": "Tauri desktop mobile toolkit",
+      "url": "https://github.com/tauri-apps/tauri",
+      "topic": "specialist-engineering",
+      "trust": "official",
+      "status": "unconfirmed",
+      "notes": "Curated reference: verify exact pages, version, maintenance and license before operational use."
+    },
+    {
+      "name": "Hugging Face Learn",
+      "url": "https://github.com/huggingface/learn",
+      "topic": "specialist-engineering",
+      "trust": "official",
+      "status": "unconfirmed",
+      "notes": "Curated reference: verify exact pages, version, maintenance and license before operational use."
+    },
+    {
+      "name": "FastAPI typed endpoints",
+      "url": "https://github.com/fastapi/fastapi",
+      "topic": "specialist-engineering",
+      "trust": "official",
+      "status": "unconfirmed",
+      "notes": "Curated reference: verify exact pages, version, maintenance and license before operational use."
+    },
+    {
+      "name": "LTX Desktop",
+      "url": "https://github.com/Lightricks/LTX-Desktop",
+      "topic": "video",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": "Desktop generation requires real local hardware."
+    },
+    {
+      "name": "FFprobe official docs",
+      "url": "https://ffmpeg.org/ffprobe.html",
+      "topic": "video",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": "Reference page; ffprobe must be installed to run."
+    },
+    {
+      "name": "PySceneDetect",
+      "url": "https://github.com/Breakthrough/PySceneDetect",
+      "topic": "video",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": "Scene detection requires installed dependency and real source file."
+    },
+    {
+      "name": "Netflix VMAF",
+      "url": "https://github.com/Netflix/vmaf",
+      "topic": "video",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": "Full-reference metric; cannot measure creativity or identity preservation."
+    },
+    {
+      "name": "OpenTimelineIO",
+      "url": "https://github.com/PixarAnimationStudios/OpenTimelineIO",
+      "topic": "video",
+      "trust": "official",
+      "status": "unconfirmed",
+      "notes": "Useful for interchange if installed; link not independently retrieved this turn."
+    },
+    {
+      "name": "ComfyUI",
+      "url": "https://github.com/comfyanonymous/ComfyUI",
+      "topic": "video",
+      "trust": "third-party",
+      "status": "unconfirmed",
+      "notes": "Verify latest repository location and license before setup."
     }
   ]
 }

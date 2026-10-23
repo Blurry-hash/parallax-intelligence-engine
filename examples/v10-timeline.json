@@ -1,0 +1,11 @@
+{
+  "width":640,
+  "height":360,
+  "fps":24,
+  "locked_state":{"project":"PARALLAX","identity":"abstract interface"},
+  "shots":[
+    {"id":"discover","frames":36,"background":"#111829","title":"PARALLAX","subtitle":"Discover the possibilities","caption":"Discovery begins with a question.","state":{"project":"PARALLAX"}},
+    {"id":"prototype","frames":36,"background":"#1A2C42","title":"BUILD","subtitle":"Ideas become testable artifacts","caption":"Build a working prototype.","state":{"project":"PARALLAX"}},
+    {"id":"verify","frames":36,"background":"#0D2831","title":"VERIFY","subtitle":"Evidence before confidence","caption":"Verify the result.","state":{"project":"PARALLAX"}}
+  ]
+}

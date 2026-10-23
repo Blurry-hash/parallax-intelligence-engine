@@ -29,10 +29,10 @@ class CreativityTests(unittest.TestCase):
     def test_private_release_guardrails(self):
         helper=(ROOT/'scripts/private-release.ps1').read_text()
         self.assertIn('if (-not $Apply)', helper)
-        self.assertIn('--visibility',' '.join(helper.split()))
-        self.assertIn("'private'",helper)
-        self.assertNotIn("'public','--accept",helper)
-        self.assertIn('VERIFIED PRIVATE',helper)
+        self.assertNotIn('--visibility', helper)
+        self.assertNotIn('repo edit', helper)
+        self.assertIn('Repository visibility will NOT be changed.', helper)
+        self.assertIn('Repository visibility unexpectedly changed.', helper)
 
     def test_prompt_and_readme_disclosure(self):
         readme=(ROOT/'README.md').read_text().lower()

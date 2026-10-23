@@ -26,3 +26,7 @@ description: Practical coding, deterministic video rendering and optimization wi
 ## Source access
 
 Refer to official FFmpeg, Remotion, MoviePy, Manim and Blender documentation indexed in `sources/sources.json`; read version-specific examples rather than assuming package API stability.
+
+## V10 runnable interoperability
+
+A declarative `examples/v10-timeline.json` becomes an EDL, SRT and renderer-ready storyboard using `tools/video_timeline.py`; encode with `tools/render_video.py`, then verify file technical metadata with `tools/video_qc.py` against `examples/v10-video-contract.json`. Scene duration is integral frames at the source FPS; codec/sample timing is verified after encoding. Do not use the deterministic renderer for neural character animation claims.

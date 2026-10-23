@@ -1,4 +1,4 @@
-"""Regression checks for the ZIP-driven private release script (static, not Windows runtime)."""
+"""Regression checks for the ZIP-driven visibility-preserving release script (static)."""
 from pathlib import Path
 import unittest
 
@@ -34,8 +34,7 @@ class PrivateReleaseScriptTests(unittest.TestCase):
         self.assertIn('No GitHub changes made', self.script)
 
     def test_preflight_before_remote_writes(self):
-        self.assertLess(self.script.index('Expand-VerifiedRelease -Path'), self.script.index("'--visibility','private'"))
-        self.assertLess(self.script.index('Get-OwnedRepositories'), self.script.index("'--visibility','private'"))
+        self.assertLess(self.script.index('Expand-VerifiedRelease -Path'), self.script.index("if (-not $Apply)"))
         self.assertIn('[string]$ZipPath', self.script)
         self.assertIn('[switch]$SkipPush', self.script)
 
@@ -49,10 +48,11 @@ class PrivateReleaseScriptTests(unittest.TestCase):
         self.assertNotIn("'--force'", self.script)
         self.assertNotIn("'push','--force'", self.script)
 
-    def test_private_verification(self):
-        self.assertIn("'--visibility','private'", self.script)
-        self.assertIn('Privacy verification FAILED', self.script)
-        self.assertIn('Final visibility audit failed', self.script)
+    def test_visibility_unchanged(self):
+        self.assertNotIn("'--visibility','private'", self.script)
+        self.assertNotIn('repo edit', self.script)
+        self.assertIn('Repository visibility will NOT be changed.', self.script)
+        self.assertIn('Repository visibility unexpectedly changed.', self.script)
 
 if __name__ == '__main__':
     unittest.main()

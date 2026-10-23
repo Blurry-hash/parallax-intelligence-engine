@@ -1,31 +1,34 @@
-# PARALLAX v5.2 — Windows/private publishing
+# PARALLAX v10 — Publication and visibility policy
 
-You do **not** need to create or locate a project folder manually. Download `parallax-intelligence-engine-v5.2.zip` to your **Downloads** folder and place `private-release.ps1` alongside it (or run the script from the project ZIP). The script searches Downloads, its own folder, Desktop and current directory; it picks the highest release version and extracts to a temporary directory.
+The owner has explicitly designated `Blurry-hash/parallax-intelligence-engine` as **public for now**. Publishing v10 must never change the visibility of this or any other repository. No admin-level visibility operations are part of the release workflow.
 
-Prerequisites: [Git for Windows](https://git-scm.com/download/win), [GitHub CLI](https://cli.github.com/), and `gh auth login` as owner `Blurry-hash`. Windows PowerShell 5.1 is sufficient; `pwsh` is not required.
+## GitHub connector release
 
-**Preview (no GitHub modifications):**
+1. Verify the target owner/name, current visibility, default branch, and current HEAD SHA.
+2. Audit release files for credentials, sensitive information, license conflicts and executable CI actions.
+3. Validate the release ZIP and `RELEASE_MANIFEST.json` SHA-256 digests.
+4. Create Git blobs and a tree based on the current branch tree, preserving unrelated files.
+5. Create a commit with the current branch HEAD as parent; advance the branch **without force**.
+6. Fetch the updated tree and README and verify the live GitHub Actions result. Report failures rather than claiming success.
+
+## Windows local fallback
+
+The legacy filename `scripts/private-release.ps1` is retained for backward compatibility, **but its implementation no longer changes repo visibility**. It selects the latest PARALLAX ZIP in Downloads, previews by default, and pushes only when `-Apply` is supplied.
 
 ```cmd
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%USERPROFILE%\Downloads\private-release.ps1"
-```
-
-**Apply after checking preview and the visibility consequences:**
-
-```cmd
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%USERPROFILE%\Downloads\private-release.ps1" -Apply
 ```
 
-For a ZIP with a different name/path:
+`gh auth status` must show the intended account. If workflow changes are rejected, use `gh auth refresh -h github.com -s workflow`; this authorizes changes to GitHub Actions definitions without changing the repo visibility. Do not use `--force` on push.
 
-```cmd
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%USERPROFILE%\Downloads\private-release.ps1" -ZipPath "C:\path\to\parallax-intelligence-engine-v5.2.zip" -Apply
+## Verification
+
+```bash
+python tools/validate.py
+python -m unittest discover -s tests -v
+python tools/video_timeline.py --help
+python tools/video_qc.py --help
 ```
 
-For **privacy and rename only** (no archive required), use `-SkipPush -Apply`. Without `-Apply` the script is a preview only.
-
-What `-Apply` does after successful preflight: (1) make **owner-scoped** public repos private, (2) verify each visibility, (3) rename historical private repo to `parallax-intelligence-engine` if required, (4) clone remote and copy release content, (5) commit and push **without force**, (6) compare actual remote SHA and verify final privacy. ZIP validation occurs *before* any remote mutation.
-
-**Warning:** Making a repo private can erase public stars/watchers, detach public forks and affect GitHub Pages and deployed applications. Previously copied public code cannot be recalled. See [GitHub docs](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/managing-repository-settings/setting-repository-visibility). Do not run `-Apply` without accepting these consequences.
-
-The script was statically tested in Linux, not end-to-end on your Windows installation or private GitHub account. Failures can leave earlier successful operations in place; it does not claim atomic rollback.
+A source reference, file inclusion or green test badge does not demonstrate a generic increase in AI intelligence. Benchmark actual task outcomes and costs on held-out workloads.

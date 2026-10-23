@@ -1,9 +1,9 @@
-# PARALLAX v5.2 | Windows PowerShell 5.1+ | ZIP auto-discovery + private-first GitHub publishing.
-# This script makes consequential GitHub changes ONLY with -Apply. All repo visibility changes require explicit user intent.
+# PARALLAX v10.0 | Windows PowerShell 5.1+ | ZIP auto-discovery + preserve repository visibility.
+# This script makes GitHub file changes ONLY with -Apply. It NEVER changes repository visibility.
 # Dry-run: powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\private-release.ps1
 # Apply:   powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\private-release.ps1 -Apply
-# Custom:  ... -ZipPath "C:\path\parallax-intelligence-engine-v5.2.zip" -Apply
-# Privacy/rename only, without ZIP: ... -SkipPush -Apply
+# Custom:  ... -ZipPath "C:\path\parallax-intelligence-engine-v10.0-private.zip" -Apply
+# -SkipPush confirms repo access without pushing; it never edits any repository settings.
 [CmdletBinding()]
 param(
   [switch]$Apply,
@@ -40,9 +40,9 @@ function Invoke-GitCli {
 function Assert-ProjectRoot {
   param([Parameter(Mandatory=$true)][string]$Path)
   $resolved = (Resolve-Path -LiteralPath $Path -ErrorAction Stop).Path
-  foreach ($required in @('README.md','MASTER_PROMPT.md','AGENTS.md','skills','docs/execution-backends.md','skills/browser-compute-bridge/SKILL.md')) {
+  foreach ($required in @('README.md','MASTER_PROMPT.md','AGENTS.md','skills','docs/execution-backends.md','skills/browser-compute-bridge/SKILL.md','skills/video-temporal-consistency/SKILL.md','docs/video-v10.md','tools/video_qc.py')) {
     if (-not (Test-Path -LiteralPath (Join-Path $resolved $required))) {
-      throw "Incomplete or outdated PARALLAX project: missing $required in $resolved. Download the latest v5.2 ZIP. No GitHub changes made."
+      throw "Incomplete or outdated PARALLAX project: missing $required in $resolved. Download the latest v10 ZIP. No GitHub changes made."
     }
   }
   return $resolved
@@ -62,7 +62,7 @@ function Find-ReleaseZip {
     }
   }
   if ($archives.Count -eq 0) {
-    throw 'PARALLAX ZIP not found. Download the v5.2 ZIP to Downloads, or specify -ZipPath. No GitHub changes made.'
+    throw 'PARALLAX ZIP not found. Download the v10 ZIP to Downloads, or specify -ZipPath. No GitHub changes made.'
   }
   # Prefer highest release version, then newest timestamp. Avoid choosing an older renamed ZIP merely because it was copied recently.
   $ranked = @($archives | Sort-Object -Property @{Expression={
@@ -119,31 +119,18 @@ try {
   $repos = @(Get-OwnedRepositories)
   $names = @($repos | ForEach-Object { $_.nameWithOwner })
   if (($names -contains $oldRepo) -and ($names -contains $newRepo)) { throw 'Both old and new repo names exist. Stop to avoid overwriting.' }
-  if (($names -notcontains $oldRepo) -and ($names -notcontains $newRepo)) { throw 'Target repo does not exist. Create it as PRIVATE first.' }
-  $public = @($repos | Where-Object { -not $_.isPrivate })
-  Write-Host "Authenticated: $login | public repositories: $($public.Count)"
-  foreach ($r in $public) { Write-Host "  PUBLIC: $($r.nameWithOwner)" }
-  Write-Host "Target name: $newRepo | PRIVATE required"
+  if (($names -notcontains $oldRepo) -and ($names -notcontains $newRepo)) { throw 'Target repo does not exist. No GitHub changes made.' }
+  $targetRepo = if ($names -contains $newRepo) { $newRepo } else { $oldRepo }
+  $isPrivate = ((Invoke-GhCli -Arguments @('repo','view',$targetRepo,'--json','isPrivate','--jq','.isPrivate')) | Out-String).Trim()
+  Write-Host "Target: $targetRepo | Current visibility: $(if ($isPrivate -eq 'true') { 'PRIVATE' } else { 'PUBLIC' })"
+  Write-Host 'Repository visibility will NOT be changed.'
   if (-not $Apply) {
     Write-Host 'DRY RUN ONLY: No GitHub settings or files changed. Add -Apply after reviewing output.'
     return
   }
-  # Consequences: stars/watchers can be lost, public forks may remain public, Pages may change.
-  Write-Warning 'Changing public repositories to private has irreversible effects on public stars/forks and may affect deployed sites. Existing public copies cannot be recalled.'
-  foreach ($r in $public) {
-    $target = [string]$r.nameWithOwner
-    Invoke-GhCli -Arguments @('repo','edit',$target,'--visibility','private','--accept-visibility-change-consequences') | Out-Null
-    $isPrivate = ((Invoke-GhCli -Arguments @('repo','view',$target,'--json','isPrivate','--jq','.isPrivate')) | Out-String).Trim()
-    if ($isPrivate -ne 'true') { throw "Privacy verification FAILED: $target" }
-    Write-Host "VERIFIED PRIVATE: $target"
+  if ($targetRepo -ne $newRepo) {
+    throw "The target repository is still named $oldRepo. Rename it separately and retry; no remote changes made."
   }
-  $remainingPublic = @(Get-OwnedRepositories | Where-Object { -not $_.isPrivate })
-  if ($remainingPublic.Count -gt 0) { throw "Still public: $(($remainingPublic | ForEach-Object nameWithOwner) -join ', ')" }
-  if ($names -contains $oldRepo) {
-    Invoke-GhCli -Arguments @('repo','rename',$newRepo.Split('/')[1],'-R',$oldRepo,'--yes') | Out-Null
-  }
-  $isPrivate = ((Invoke-GhCli -Arguments @('repo','view',$newRepo,'--json','isPrivate','--jq','.isPrivate')) | Out-String).Trim()
-  if ($isPrivate -ne 'true') { throw "Target is not PRIVATE: $newRepo" }
   if (-not $SkipPush) {
     Invoke-GhCli -Arguments @('auth','setup-git') | Out-Null
     $cloneDir = Join-Path $script:tempRoot 'checkout'
@@ -183,9 +170,9 @@ try {
     if (-not $remoteRefs.StartsWith($localSha)) { throw 'Remote commit SHA verification failed.' }
     Write-Host "VERIFIED PUSH: $localSha ($branch)"
   }
-  $final = @(Get-OwnedRepositories)
-  if (@($final | Where-Object { -not $_.isPrivate }).Count -gt 0) { throw 'Final visibility audit failed.' }
-  Write-Host "SUCCESS: $newRepo is PRIVATE, all listed owned repositories are PRIVATE."
+  $finalIsPrivate = ((Invoke-GhCli -Arguments @('repo','view',$newRepo,'--json','isPrivate','--jq','.isPrivate')) | Out-String).Trim()
+  if ($finalIsPrivate -ne $isPrivate) { throw 'Repository visibility unexpectedly changed. Investigate immediately.' }
+  Write-Host "SUCCESS: $newRepo updated; repository visibility preserved."
 } finally {
   if ($tempRoot -and (Test-Path -LiteralPath $tempRoot)) {
     Remove-Item -LiteralPath $tempRoot -Recurse -Force -ErrorAction SilentlyContinue

@@ -26,3 +26,7 @@ description: Intelligent video creation strategy, multimodal storyboarding, cont
 ## Source access
 
 Prioritize official FFmpeg, Remotion, MoviePy, Manim, Blender, ComfyUI and video model repository documentation from `sources/sources.json`. Check model version and platform-specific availability before issuing implementation steps.
+
+## V10 production extension
+
+For exact video tasks, first use `video-shot-grammar` and `video-temporal-consistency` to define narrative beats and protected invariants, then `video-timeline-engineering` and `tools/video_timeline.py` to compile frame-indexed clips and subtitle cues. Use `video-code-production` and `tools/render_video.py` for deterministic motion graphics; use `video-generation-backends` only after model/backend authorization and checkpoint/hardware checks. On final output, apply `video-qc-telemetry` and `tools/video_qc.py`. Avoid asserting that ffprobe detects human identity, storytelling quality or lip-sync: these require actual visual/audio assessment. Track media rights with `video-media-provenance` and cost with `video-render-budget`.

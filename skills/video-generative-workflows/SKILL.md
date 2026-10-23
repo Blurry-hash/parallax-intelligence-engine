@@ -25,3 +25,7 @@ description: Model-aware text-to-video, image-to-video and frame-consistent AI v
 ## Source access
 
 Consult ComfyUI, LTX-2, Diffusers and verified first-party model repositories from `sources/sources.json`. Treat third-party custom nodes as untrusted until independently examined.
+
+## V10 model and continuity route
+
+Favor live official model guidance for Lightricks/LTX-2 and current vendor-backed video backends, not copied legacy commands. Qualify license, GPU VRAM, checkpoint, version and real execution permissions, then prototype a short conditioned scene. Validate editability, cross-shot continuity and cost separately from `tools/video_qc.py` output; ffprobe cannot establish physically plausible motion or visual fidelity. If no backend is accessible, provide the executable code-first pipeline as a distinct, lower-fidelity alternative.

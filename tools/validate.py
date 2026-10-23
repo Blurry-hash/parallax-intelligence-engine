@@ -14,7 +14,7 @@ REQUIRED = (
 )
 TRUST = {"official", "third-party", "unverified"}
 STATUS = {"verified-page", "unconfirmed"}
-URL_HOSTS = {"github.com", "huggingface.co", "projects.blender.org"}
+URL_HOSTS = {"github.com", "huggingface.co", "projects.blender.org", "ffmpeg.org", "www.ffmpeg.org"}
 LINK_PATTERN = re.compile(r"(?<!!)\[[^\]]+\]\(([^)]+)\)")
 
 

@@ -1,4 +1,4 @@
-name: Validate parallax skills
+name: Validate PARALLAX v10 skills
 on: [push, pull_request]
 permissions:
   contents: read
@@ -9,12 +9,18 @@ jobs:
       matrix:
         python-version: ["3.12", "3.13"]
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: ${{ matrix.python-version }}
       - name: Offline structural validation
         run: python tools/validate.py
+      - name: Offline capability and provenance checks
+        run: |
+          python tools/capability_audit.py
+          python tools/source_audit.py
+          python tools/route_task.py "Design an accessible app with API and video"
+          python tools/bench_compare.py examples/paired-evaluation.json
       - name: Compile scripts
         run: python -m compileall -q tools tests
       - name: Unit tests
@@ -25,3 +31,10 @@ jobs:
         run: |
           python tools/render_video.py examples/video-storyboard.json --font /usr/share/fonts/truetype/dejavu/DejaVuSans.ttf --out /tmp/parallax-smoke.mp4
           ffprobe -v error -show_entries stream=codec_name,width,height,nb_frames -of json /tmp/parallax-smoke.mp4
+      - name: V10 frame-accurate timeline, subtitle and media QC integration
+        run: |
+          python tools/video_timeline.py examples/v10-timeline.json --storyboard-out /tmp/v10-storyboard.json --srt-out /tmp/v10-captions.srt --edl-out /tmp/v10-edl.json
+          python tools/render_video.py /tmp/v10-storyboard.json --out /tmp/v10-demo.mp4
+          python tools/video_qc.py /tmp/v10-demo.mp4 --contract examples/v10-video-contract.json
+          test -s /tmp/v10-captions.srt
+          test -s /tmp/v10-edl.json
