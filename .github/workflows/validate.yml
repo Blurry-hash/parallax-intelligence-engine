@@ -1,4 +1,4 @@
-name: Validate PARALLAX v10.2 skills
+name: Validate PARALLAX v10.3 skills
 on: [push, pull_request]
 permissions:
   contents: read
@@ -33,6 +33,11 @@ jobs:
       - name: Check time-budgeted work ledger
         run: |
           python tools/work_budget.py examples/work-session-50min.json --output /tmp/parallax-work-ledger.json
+      - name: Planning and four independent worker audits
+        run: |
+          python tools/plan_engine.py examples/planning-v10.3.json
+          python tools/agent_audit.py examples/planning-v10.3.json
+          python -m unittest tests.test_planning_v10_3 -v
       - name: Compile scripts
         run: python -m compileall -q tools tests
       - name: Unit tests

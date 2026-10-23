@@ -1,0 +1,81 @@
+{
+  "version": "1",
+  "goal": "Implement and verify better planning in PARALLAX while preserving the existing tools and public repository boundary.",
+  "requested_minutes": 150,
+  "max_workers": 4,
+  "tasks": [
+    {
+      "id": "baseline",
+      "title": "Inspect existing tests and dependencies",
+      "kind": "verification",
+      "depends_on": [],
+      "estimated_minutes": 10,
+      "impact": 5,
+      "risk": "low",
+      "approval_required": false,
+      "acceptance": [
+        "Confirm initial repository SHA and run baseline tests"
+      ]
+    },
+    {
+      "id": "planning",
+      "title": "Design safe task graph and review procedure",
+      "kind": "design",
+      "depends_on": [
+        "baseline"
+      ],
+      "estimated_minutes": 12,
+      "impact": 5,
+      "risk": "low",
+      "approval_required": false,
+      "acceptance": [
+        "Reject cycles, unknown dependencies and invalid time estimates"
+      ]
+    },
+    {
+      "id": "implement",
+      "title": "Implement side effect free offline planner",
+      "kind": "implementation",
+      "depends_on": [
+        "planning"
+      ],
+      "estimated_minutes": 20,
+      "impact": 5,
+      "risk": "low",
+      "approval_required": false,
+      "acceptance": [
+        "Compile deterministic waves and reject invalid approvals"
+      ]
+    },
+    {
+      "id": "review",
+      "title": "Run four independent worker audits",
+      "kind": "review",
+      "depends_on": [
+        "implement"
+      ],
+      "estimated_minutes": 15,
+      "impact": 5,
+      "risk": "low",
+      "approval_required": false,
+      "acceptance": [
+        "Produce separate findings from four read only workers"
+      ]
+    },
+    {
+      "id": "publish",
+      "title": "Publish only with authorized approval",
+      "kind": "delivery",
+      "depends_on": [
+        "review"
+      ],
+      "estimated_minutes": 10,
+      "impact": 4,
+      "risk": "high",
+      "approval_required": true,
+      "acceptance": [
+        "Verify GitHub head commit and green CI run for final revision"
+      ]
+    }
+  ]
+}
