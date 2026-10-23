@@ -1,80 +1,96 @@
 {
   "version": "1",
-  "goal": "Implement and verify better planning in PARALLAX while preserving the existing tools and public repository boundary.",
+  "goal": "Improve the reliability and planning of the PARALLAX skill engine through independently checked, low-risk changes.",
   "requested_minutes": 150,
   "max_workers": 4,
   "tasks": [
     {
-      "id": "baseline",
-      "title": "Inspect existing tests and dependencies",
+      "id": "inspect_baseline",
+      "title": "Inspect source tree and run baseline tests",
       "kind": "verification",
       "depends_on": [],
-      "estimated_minutes": 10,
+      "estimated_minutes": 15,
       "impact": 5,
       "risk": "low",
       "approval_required": false,
       "acceptance": [
-        "Confirm initial repository SHA and run baseline tests"
+        "Record source revision and baseline test results in a timestamped log"
       ]
     },
     {
-      "id": "planning",
-      "title": "Design safe task graph and review procedure",
+      "id": "design_plan",
+      "title": "Specify task DAG and protected invariants",
       "kind": "design",
       "depends_on": [
-        "baseline"
-      ],
-      "estimated_minutes": 12,
-      "impact": 5,
-      "risk": "low",
-      "approval_required": false,
-      "acceptance": [
-        "Reject cycles, unknown dependencies and invalid time estimates"
-      ]
-    },
-    {
-      "id": "implement",
-      "title": "Implement side effect free offline planner",
-      "kind": "implementation",
-      "depends_on": [
-        "planning"
+        "inspect_baseline"
       ],
       "estimated_minutes": 20,
       "impact": 5,
       "risk": "low",
       "approval_required": false,
       "acceptance": [
-        "Compile deterministic waves and reject invalid approvals"
+        "Validate all dependencies and acceptance criteria before running tasks"
       ]
     },
     {
-      "id": "review",
-      "title": "Run four independent worker audits",
-      "kind": "review",
+      "id": "build_engine",
+      "title": "Implement permission-bounded planning engine",
+      "kind": "implementation",
       "depends_on": [
-        "implement"
+        "design_plan"
       ],
-      "estimated_minutes": 15,
+      "estimated_minutes": 30,
+      "impact": 5,
+      "risk": "medium",
+      "approval_required": false,
+      "acceptance": [
+        "Reject cycles, unknown dependencies, nonfinite durations and unauthorized deliveries"
+      ]
+    },
+    {
+      "id": "test_negative",
+      "title": "Create negative regression tests and fixtures",
+      "kind": "verification",
+      "depends_on": [
+        "design_plan"
+      ],
+      "estimated_minutes": 20,
       "impact": 5,
       "risk": "low",
       "approval_required": false,
       "acceptance": [
-        "Produce separate findings from four read only workers"
+        "Run edge-case tests that detect invalid schedules and false evidence"
       ]
     },
     {
-      "id": "publish",
-      "title": "Publish only with authorized approval",
+      "id": "independent_review",
+      "title": "Run four independent specialist code audits",
+      "kind": "review",
+      "depends_on": [
+        "build_engine",
+        "test_negative"
+      ],
+      "estimated_minutes": 25,
+      "impact": 5,
+      "risk": "low",
+      "approval_required": false,
+      "acceptance": [
+        "Review four separately attributed auditor results and resolve blocking findings"
+      ]
+    },
+    {
+      "id": "publish_release",
+      "title": "Publish approved changes to the correct GitHub repo",
       "kind": "delivery",
       "depends_on": [
-        "review"
+        "independent_review"
       ],
-      "estimated_minutes": 10,
+      "estimated_minutes": 12,
       "impact": 4,
       "risk": "high",
       "approval_required": true,
       "acceptance": [
-        "Verify GitHub head commit and green CI run for final revision"
+        "Verify commit SHA, repository visibility and green GitHub Actions before claiming release"
       ]
     }
   ]
