@@ -3,7 +3,7 @@
 
   **Better methods. Sharper work. Evidence you can inspect.**
 
-  `v11.0` · `142 specialist skills` · `157 linked references` · `Python 3.12+`
+  `v11.1` · `142 specialist skills` · `157 linked references` · `Python 3.12+`
 </div>
 
 ---

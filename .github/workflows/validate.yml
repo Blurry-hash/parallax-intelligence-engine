@@ -55,6 +55,25 @@ jobs:
           python tools/workflow_risk_audit.py examples/automation-audit-v11.json
           python tools/capability_catalog.py "image reference" --limit 2
           python -m unittest tests.test_v11 -v
+      - name: Check GET-only catalog against repository contents
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('bridge/v1')
+          ix=json.loads((p/'index.json').read_text())
+          assert ix['counts']=={'skills':142,'sources':157}
+          for kind, ground in [('skills', sorted(x.parent.name for x in Path('skills').glob('*/SKILL.md'))),('sources', json.loads(Path('sources/sources.json').read_text())['sources'])]:
+              rows=[];offset=0
+              for n in ix['pages'][kind]:
+                  j=json.loads((p/n).read_text())
+                  assert j['kind']==kind and j['offset']==offset and j['count']==len(j['entries'])
+                  rows+=j['entries'];offset+=len(j['entries'])
+              assert len(rows)==ix['counts'][kind]
+              if kind=='skills':assert rows==ground and len(set(rows))==len(rows)
+              else:assert [(r['name'],r['url']) for r in rows]==[(r['name'],r['url']) for r in ground]
+          print('PASS: all 142 skills and 157 sources present in small GET pages')
+          PY
       - name: Compile scripts
         run: python -m compileall -q tools tests
       - name: Unit tests

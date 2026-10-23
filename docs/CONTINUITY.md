@@ -57,3 +57,9 @@ Read only the most relevant current section and linked `SKILL.md` files. Verify 
 - Traced five useful skill methods to indexed TikTok posts and canonical GitHub repositories; only captions/indexes verified, not full video footage; no vendor code bundled.
 - Defaults to natural responses without internal bracketed status tags. Never claim automatic ChatGPT Memory updates.
 - The current GitHub commit and CI outcome remain the source of truth after actual publication.
+
+## 2026-10-23 — v11.1 DeepSeek web-only compatibility
+- Baseline verified public `main` `80c44a0a1d27590b730d960e973645a0fc2253f9`; exact complete GitHub tree returned 142 SKILL.md files, 157 sources and `truncated:false`. The reported 118 was UI truncation.
+- Added paginated short JSON catalog and an explicitly user-triggered GitHub Actions test bench. GET-only clients can read verified results but cannot autonomously run code or write files.
+- math.js arithmetic remains an unreliable limited fetch probe, not general Python execution. Public repo has no top-level LICENSE; owner approval required for license choice.
+- New published SHA and CI status must be checked separately before making success claims.

@@ -1,5 +1,8 @@
 # DeepSeek Free — execution capability ladder
 
+**For the working inventory and real remote test path, start with [DeepSeek Quickstart](DEEPSEEK-QUICKSTART.md).** Static GitHub pages and manually triggered Actions replace assumptions about browser-side execution.
+
+
 **Do not confuse search/fetch with executable browsing.** DeepSeek documents free chat web search; no source establishes a general built-in Python sandbox in the standard free chat. Always re-check its current interface.
 
 | Option | Can it run tests? | Prerequisite | Minimal proof |

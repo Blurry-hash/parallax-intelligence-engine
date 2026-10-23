@@ -1,0 +1,51 @@
+name: DeepSeek Remote Test Bench
+on:
+  workflow_dispatch:
+    inputs:
+      suite:
+        description: Select a predefined safe test suite
+        required: true
+        default: inventory
+        type: choice
+        options:
+          - inventory
+          - full
+          - image
+          - source-check
+permissions:
+  contents: read
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.13'
+      - name: Execute one allowlisted test suite
+        env:
+          SUITE: ${{ inputs.suite }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          case "$SUITE" in
+            inventory)
+              python tools/validate.py
+              ;;
+            full)
+              python tools/validate.py
+              python -m unittest discover -s tests -q
+              ;;
+            image)
+              python tools/image_contract.py examples/image-intent-v11.json
+              python -m unittest tests.test_v11 -q
+              ;;
+            source-check)
+              python tools/source_audit.py
+              ;;
+            *) echo 'Refusing unapproved suite' >&2; exit 2 ;;
+          esac
+          printf '### DeepSeek test result\n\n- Suite: %s\n- SHA: %s\n- Test status: passed\n' "$SUITE" "$GITHUB_SHA" >> "$GITHUB_STEP_SUMMARY"
