@@ -24,3 +24,10 @@ Read only the most relevant current section and linked `SKILL.md` files. Verify 
 - Added `deliberate-work-sessions` skill, audited allowlisted work runner with checkpoint ledger, and documentation/example for a requested 50-minute work session.
 - Work is measured by real time and completed distinct steps; code refuses unsupported commands and stops at substantive-work exhaustion. A 50-minute request is not proof of 50 minutes of actual work.
 - Durable scheduling requires an actual external runtime and authorization, never simulated ChatGPT background execution.
+
+## 2026-10-23 — v10.3 planning and accountable subagents
+- New task-DAG planning, explicit risk/approval gates, evidence-ledger checks and four truly independent parallel read-only Python worker functions.
+- These tool workers are not separate LLMs, and planning duration estimates are not measured execution time.
+- Baseline local project: 122/122 unit tests passed. GitHub CI is a separate remote check that must not be claimed without a successful run.
+- Keep the explicit public visibility of PARALLAX. Never touch other repositories without specific authorization.
+- Research: OpenAI Agents SDK, Microsoft Agent Framework and LangGraph; these are references, not installed dependencies.

@@ -38,3 +38,9 @@ Added actual offline WAV integrity/normalization, backend qualification, and mat
 - Requested 50-minute plan finishes as soon as the finite meaningful checks complete and reports measured execution seconds.
 - Tests cover unsupported commands, duplicate IDs, negative durations, time budgets, failures and checkpoint persistence.
 - Durable multi-minute autonomous AI requires a host process with authorized tools, time, and independently useful work. No background capabilities are implied.
+
+## v10.3 — independent planning / review audit
+- The new planner is side-effect-free; any high-risk/delivery task needs approval.
+- Four separately attributed read-only Python workers run concurrently without separate language-model calls, secrets, network writes or background execution.
+- The evidence checker rejects mismatched plan hashes, missing evidence, unapproved delivery and unmet dependency gates.
+- Local baseline tests ran and passed (122/122 in the package). Record GitHub CI independently after remote publication; do not equate synthetic tests with measured intelligence gains.
