@@ -57,5 +57,11 @@ For substantial code work consider `skills/formal-invariants/SKILL.md`, `skills/
 ### Time-budgeted work (v10.2)
 When a user asks to work for N minutes, read `skills/deliberate-work-sessions/SKILL.md` and `docs/time-budgeted-work-v10.2.md`. Perform genuine work through authorized tools if runtime and budget permit; checkpoint outputs and report measured elapsed time. Never pretend to keep running after replying. An offline sample is `python tools/work_budget.py examples/work-session-50min.json`.
 
-### v10.3 — planning and review
-For multi-step work start with [docs/PLANNING.md](docs/PLANNING.md) and `skills/planning-orchestration/SKILL.md`. Use `tools/plan_engine.py` for dependency and approval checks; independent bounded read-only audits are described in `skills/subagent-review-protocol/SKILL.md`. `skills/acceptance-evidence-ledger/SKILL.md` requires evidence before marking complete. The four offline Python workers are real parallel tools, **not separate LLMs**. No padding time or pretending to run after the session ends.
+### v10.3 planning and subagent dispatch
+For multi-step work inspect `docs/PLANNING.md` and select `skills/planning-orchestration/SKILL.md`; use `tools/plan_engine.py` for validated dependency/wave advice. For independent verification use `skills/subagent-review-protocol/SKILL.md` and the **actual** read-only parallel worker implementation `tools/agent_audit.py` (not simulated LLMs). Use `skills/acceptance-evidence-ledger/SKILL.md` with `tools/goal_trace.py` to reject unverified completion. Parallel workers are optional; use them only if independent checks add value. Never treat requested elapsed time as executed work.
+
+### v10.4 evidence-driven operating route
+For complex tasks, first use `tools/skill_dispatch.py` as a *candidate* selector; read chosen skills in full. Use `tools/resource_scheduler.py` for worker-limited estimated scheduling and `tools/artifact_proof.py` for integrity manifests. `tools/quality_gate.py` enforces scenario-level regression checks; `tools/mission_review.py` fails closed if evidence is missing. All are offline tools and do not grant model access or remote execution. For details see `docs/OPERATIONS-v10.4.md`.
+
+### v10.5 current revision and web-only fallback
+When a task relies on live PARALLAX instructions, read `skills/repo-refresh-protocol/SKILL.md` and `docs/REPOSITORY-REFRESH.md`. Recheck after releases or before modifications; do not schedule unrequested monitoring. For DeepSeek Free use `docs/DEEPSEEK-WEB-ONLY.md` and probe actual execution ability rather than treating page fetch as code execution. Design work routes through `docs/DESIGN-DIRECTION.md` and source-aware visual QA. Use `docs/UNIVERSAL-ACTIVATION.md` in other AI hosts; no silent account-memory change.

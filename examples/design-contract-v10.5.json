@@ -1,0 +1,23 @@
+{
+  "colors": {
+    "background": "#0b1020",
+    "text": "#f2f7ff",
+    "accent": "#86aaff",
+    "muted": "#bdc9e0"
+  },
+  "contrast_pairs": [
+    {
+      "foreground": "text",
+      "background": "background"
+    },
+    {
+      "foreground": "muted",
+      "background": "background"
+    },
+    {
+      "foreground": "accent",
+      "background": "background",
+      "large_text": true
+    }
+  ]
+}

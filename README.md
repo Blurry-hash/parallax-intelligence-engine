@@ -1,75 +1,50 @@
-# PARALLAX
+<div align="center">
+  <img src="assets/parallax-signal.svg" alt="PARALLAX — Intelligence Engine" width="100%" />
 
-*Methods, tools and independent checks for better AI-assisted work.*
+  **Better methods. Sharper work. Evidence you can inspect.**
 
-**v10.3** · **114 skills** · **141 linked references** · **Python 3.12+**
+  `v10.5` · `130 specialist skills` · `148 linked references` · `Python 3.12+`
+</div>
 
-> Multiple perspectives. One verifiable result.
+---
 
-PARALLAX is not another language model. It is a practical method library for serious research, engineering, design, creativity and originality. Inspect the goal, choose relevant skills, work efficiently, check the evidence and stop when the result holds up. The emphasis is on decisions and artifacts—not performance theatre.
+PARALLAX is a modular field guide for working with AI across engineering, research, creativity, design, images, video, audio and complex planning. It routes tasks to the right instructions, provides offline verification tools and keeps honest boundaries around what a model can *actually* do.
 
-## Find your route
+### Find your route
 
-| Goal | Relevant modules |
-|---|---|
-| Plan complex work | [Planning](docs/PLANNING.md) · [Orchestration](skills/planning-orchestration/SKILL.md) |
-| Code and verify | [Engineering](skills/coding-engineering/SKILL.md) · [Contract tests](skills/software-contract-testing/SKILL.md) |
-| Independent review | [Subagents](skills/subagent-review-protocol/SKILL.md) · [Evidence](skills/acceptance-evidence-ledger/SKILL.md) |
-| Image, video, audio | [Image](skills/image-generation/SKILL.md) · [Video](skills/video-intelligence/SKILL.md) · [Audio](skills/audio-speech-engineering/SKILL.md) |
-| Faster research | [Efficiency](skills/adaptive-efficiency/SKILL.md) · [Research](skills/deep-wide-research/SKILL.md) |
+| Work | Start here |
+|:--|:--|
+| **Design & UI** | [Design direction](docs/DESIGN-DIRECTION.md) · [Taste](skills/design-taste-direction/SKILL.md) · [Image to code](skills/image-to-code-fidelity/SKILL.md) |
+| **Code & systems** | [Engineering](skills/coding-engineering/SKILL.md) · [Planning](skills/planning-orchestration/SKILL.md) · [Tests](skills/software-contract-testing/SKILL.md) |
+| **Research & ideas** | [Deep research](skills/deep-wide-research/SKILL.md) · [Creative discovery](skills/creative-discovery/SKILL.md) |
+| **Image / video / sound** | [Image](skills/image-generation/SKILL.md) · [Video](skills/video-intelligence/SKILL.md) · [Audio](skills/audio-speech-engineering/SKILL.md) |
+| **DeepSeek Free** | [Web-only execution ladder](docs/DEEPSEEK-WEB-ONLY.md) |
+| **Freshness & continuity** | [When to refresh](docs/REPOSITORY-REFRESH.md) · [Project log](docs/CONTINUITY.md) |
 
-## Try it
+### Use it in another AI
+
+[**Universal activation prompt →**](docs/UNIVERSAL-ACTIVATION.md) — works as a starting instruction for ChatGPT, DeepSeek, Claude, Gemini and other assistants. It asks the model to inspect the live repository, use relevant skills and *request* persistent memory only if supported.
+
+### Run the checks
 
 ```bash
 python tools/validate.py
 python -m unittest discover -s tests -q
-python tools/plan_engine.py examples/planning-v10.3.json
-python tools/agent_audit.py examples/planning-v10.3.json
+python tools/design_contract.py examples/design-contract-v10.5.json
+python tools/deepseek_get_probe.py '7*6'  # URL only, no false execution claims
+python tools/freshness_gate.py --force  # read-only GitHub revision check
 ```
 
-The audit runs four real, independent read-only Python workers. These are deterministic checks, **not** external AI models. No paid service is installed or triggered.
+### Operating principles
 
-## Give it to an AI
+**Small context, real evidence.** Originality, creativity and holdout comparisons matter more than inflated scores. Open only the skills you need. Verify artifacts and critical assumptions before declaring success. A linked project is not an installed tool; a GET math evaluator is not a Python sandbox; repository continuity is not your account memory.
 
-> Read the latest [AGENTS.md](AGENTS.md) and [MASTER_PROMPT.md](MASTER_PROMPT.md) and use the relevant PARALLAX SKILL.md modules. Establish actual tools and permissions, prefer first-principles reasoning and independent evidence, validate code, and report real outcomes. Use planning for complex work; do not load every skill needlessly. Do not invent research, external model calls, holdout results, memory changes or elapsed time.
+**Public repository by owner choice.** Do not change visibility or write to other projects. External code, model providers and browser services need real access and permission.
 
-[Source registry](sources/sources.json) · [Project continuity](docs/CONTINUITY.md) · [Validation](AUDIT.md) · [Release instructions](PUBLISHING.md)
+<sub>[Agent entrypoint](AGENTS.md) · [Master Prompt](MASTER_PROMPT.md) · [Release notes](docs/CONTINUITY.md) · [Verification](AUDIT.md) · [Browse all skills](skills/)</sub>
 
-**Boundaries:** PARALLAX is public by the owner's choice; no other repository's visibility is changed. Method descriptions do not grant new tools or background execution. A source URL is not measured proof of improvement.
+<details><summary>All specialist skills</summary>
 
-<details>
-<summary>All 114 specialist skills</summary>
-
-`acceptance-evidence-ledger` · `accessibility-assurance` · `action-audit-trail` · `adaptive-efficiency`
-`agent-evaluation` · `agent-interoperability` · `algorithmic-complexity` · `api-contract-engineering`
-`api-evolution-compatibility` · `artifact-delivery-gates` · `ast-safe-transformations` · `audio-provider-routing`
-`audio-realtime-streaming` · `audio-speech-engineering` · `browser-compute-bridge` · `browser-regression`
-`cache-invalidation-design` · `capability-contract` · `causal-inference` · `checkpoint-resume-reliability`
-`code-synthesis-evaluation` · `coding-engineering` · `concept-laboratory` · `context-engineering`
-`continuous-learning-memory` · `core-orchestration` · `cost-aware-architecture` · `creative-discovery`
-`creative-quality-diversity` · `cross-platform-apps` · `data-quality-pipelines` · `database-query-planning`
-`database-reliability` · `decision-systems` · `deep-reasoning` · `deep-wide-research`
-`deliberate-work-sessions` · `dependency-graph-acceleration` · `design-system-engineering` · `differential-testing`
-`document-ingestion` · `durable-automation` · `evolution-governance` · `experimental-verification`
-`expressive-audio-production` · `fault-tolerant-distributed-systems` · `formal-assumption-register` · `formal-invariants`
-`frontier-model-routing` · `graphics-render-pipeline` · `hardware-physical` · `human-communication`
-`humor-writing` · `image-generation` · `incremental-build-analysis` · `interface-design`
-`interface-state-testing` · `knowledge-distillation` · `latency-budgeting` · `learning-curriculum`
-`model-routing-benchmarks` · `multimodal-evidence-alignment` · `multimodal-fusion` · `mutation-testing-strategy`
-`networking-digital` · `observability-latency` · `originality-evaluation` · `parallel-execution-correctness`
-`performance-regression-detection` · `performance-speed` · `performance-validation` · `planning-orchestration`
-`policy-authorization` · `privacy-by-design` · `property-based-testing-lab` · `reproducible-environments`
-`research-source-independence` · `retrieval-quality` · `root-cause-debugging` · `runtime-memory-analysis`
-`safe-code-agent-workflow` · `scientific-computation` · `scientific-research` · `security-reliability`
-`self-evolution-engine` · `skill-supply-chain` · `software-contract-testing` · `source-discovery`
-`speech-quality-laboratory` · `streaming-backpressure` · `structured-output-reliability` · `subagent-review-protocol`
-`symbolic-execution-planning` · `threat-modeling` · `type-directed-code-synthesis` · `ui-render-performance`
-`video-audio-sync-lab` · `video-captions-accessibility` · `video-code-production` · `video-color-science`
-`video-encoding-efficiency` · `video-generation-backends` · `video-generative-workflows` · `video-intelligence`
-`video-media-provenance` · `video-qc-telemetry` · `video-render-budget` · `video-shot-grammar`
-`video-storytelling-critique` · `video-temporal-consistency` · `video-timeline-engineering` · `visual-production-pipeline`
-`visual-regression` · `voice-synthesis-architecture`
+`acceptance-evidence-ledger` · `accessibility-assurance` · `action-audit-trail` · `adaptive-efficiency` · `agent-evaluation` · `agent-interoperability` · `agent-review-boundaries` · `algorithmic-complexity` · `api-contract-engineering` · `api-evolution-compatibility` · `artifact-delivery-gates` · `artifact-proof-chain` · `ast-safe-transformations` · `audio-provider-routing` · `audio-realtime-streaming` · `audio-speech-engineering` · `browser-compute-bridge` · `browser-regression` · `browser-wasm-sandbox` · `cache-invalidation-design` · `capability-contract` · `causal-inference` · `checkpoint-resume-reliability` · `code-synthesis-evaluation` · `coding-engineering` · `concept-laboratory` · `context-engineering` · `continuous-learning-memory` · `core-orchestration` · `cost-aware-architecture` · `creative-discovery` · `creative-quality-diversity` · `cross-model-activation` · `cross-platform-apps` · `data-quality-pipelines` · `database-query-planning` · `database-reliability` · `decision-systems` · `deep-reasoning` · `deep-wide-research` · `deepseek-web-only-lab` · `deliberate-work-sessions` · `dependency-graph-acceleration` · `design-system-engineering` · `design-system-provenance` · `design-taste-direction` · `differential-testing` · `document-ingestion` · `durable-automation` · `evolution-governance` · `experimental-verification` · `expressive-audio-production` · `fault-tolerant-distributed-systems` · `formal-assumption-register` · `formal-invariants` · `frontier-model-routing` · `graphics-render-pipeline` · `hardware-physical` · `human-communication` · `humor-writing` · `image-generation` · `image-to-code-fidelity` · `incremental-build-analysis` · `interface-design` · `interface-state-testing` · `knowledge-distillation` · `latency-budgeting` · `learning-curriculum` · `mission-release-review` · `model-routing-benchmarks` · `multimodal-evidence-alignment` · `multimodal-fusion` · `mutation-testing-strategy` · `networking-digital` · `observability-latency` · `originality-evaluation` · `paired-regression-gates` · `parallel-execution-correctness` · `performance-regression-detection` · `performance-speed` · `performance-validation` · `planning-orchestration` · `policy-authorization` · `privacy-by-design` · `property-based-testing-lab` · `public-repo-hygiene` · `remote-test-relay-design` · `repo-refresh-protocol` · `reproducible-environments` · `research-source-independence` · `resource-aware-scheduling` · `retrieval-quality` · `root-cause-debugging` · `runtime-memory-analysis` · `safe-code-agent-workflow` · `scientific-computation` · `scientific-research` · `security-reliability` · `self-evolution-engine` · `skill-context-compiler` · `skill-supply-chain` · `software-contract-testing` · `source-discovery` · `speech-quality-laboratory` · `streaming-backpressure` · `structured-output-reliability` · `subagent-review-protocol` · `symbolic-execution-planning` · `threat-modeling` · `type-directed-code-synthesis` · `ui-render-performance` · `video-audio-sync-lab` · `video-captions-accessibility` · `video-code-production` · `video-color-science` · `video-encoding-efficiency` · `video-generation-backends` · `video-generative-workflows` · `video-intelligence` · `video-media-provenance` · `video-qc-telemetry` · `video-render-budget` · `video-shot-grammar` · `video-storytelling-critique` · `video-temporal-consistency` · `video-timeline-engineering` · `visual-production-pipeline` · `visual-regression` · `voice-synthesis-architecture` · `web-interface-guideline-audit`
 
 </details>
-
-*Clear mechanisms. Real artifacts. No performance theatre.*

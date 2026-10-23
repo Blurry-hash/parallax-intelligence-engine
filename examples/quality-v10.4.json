@@ -1,0 +1,9 @@
+{
+  "provenance": "fixture",
+  "minimum_improvement": 0.02,
+  "cases": [
+    {"name":"code-contracts","split":"development","baseline":0.71,"candidate":0.79,"critical":true},
+    {"name":"audio-consent","split":"holdout","baseline":0.90,"candidate":0.92,"critical":true},
+    {"name":"video-metadata","split":"holdout","baseline":0.80,"candidate":0.85,"critical":false}
+  ]
+}

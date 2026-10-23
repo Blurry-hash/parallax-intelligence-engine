@@ -25,9 +25,25 @@ Read only the most relevant current section and linked `SKILL.md` files. Verify 
 - Work is measured by real time and completed distinct steps; code refuses unsupported commands and stops at substantive-work exhaustion. A 50-minute request is not proof of 50 minutes of actual work.
 - Durable scheduling requires an actual external runtime and authorization, never simulated ChatGPT background execution.
 
-## 2026-10-23 — v10.3 planning and accountable subagents
-- New task-DAG planning, explicit risk/approval gates, evidence-ledger checks and four truly independent parallel read-only Python worker functions.
-- These tool workers are not separate LLMs, and planning duration estimates are not measured execution time.
-- Baseline local project: 122/122 unit tests passed. GitHub CI is a separate remote check that must not be claimed without a successful run.
-- Keep the explicit public visibility of PARALLAX. Never touch other repositories without specific authorization.
-- Research: OpenAI Agents SDK, Microsoft Agent Framework and LangGraph; these are references, not installed dependencies.
+## 2026-10-23 — v10.3 plan-first orchestration
+- Started from published v10.2 (111 skills, 141 registered sources) and its verified local baseline.
+- Added three targeted skills: planning DAG/orchestration, bounded independent subagent review and acceptance/evidence ledger.
+- Added side-effect-free planning compiler, four independent concurrent read-only audit workers, acceptance ledger verifier and regression tests.
+- Sources: OpenAI Agents SDK, Microsoft Agent Framework, LangGraph; references are not installed providers.
+- Public repository visibility remains user-authorized. No change to other repositories.
+- Locally verified on 2026-10-23: 122/122 unit tests and offline structural validation (141 sources, 114 skills) passed. Remote CI status and publication commit remain independent checks. No measured general model intelligence or speed improvement.
+
+## 2026-10-23 — v10.4 evidence and orchestration
+- Added six focused skills: resource-aware scheduling, content integrity, paired regression gates, selective context routing, fail-closed mission review, and honest agent boundaries.
+- Added executable tools `resource_scheduler.py`, `artifact_proof.py`, `quality_gate.py`, `skill_dispatch.py`, and `mission_review.py` plus negative-case tests.
+- Changed README to a concise, human-edited aesthetic description.
+- The scheduler is an advisory list heuristic, not exact optimization or real wall-clock work. The quality fixture is synthetic; no claimed overall intelligence/speed multiplier.
+- Preserve public repo visibility; no other repository changed. Verify the remote SHA and CI before declaring publication.
+
+## 2026-10-23 — v10.5 freshness, DeepSeek Free and design quality
+- Built from v10.4 local verified archive while GitHub main was v10.3 at session start.
+- Added 10 focused skills: GitHub revision freshness, DeepSeek browser-only execution ladder, WASM manual testing, safe owned relay guidance, design direction, UI audit, image-to-code, provenance, universal model activation and public-repo hygiene.
+- Added executable local code for read-only refresh, strict arithmetic GET URL probe, design contrast contracts, plus regression tests.
+- Refreshed README visual identity and universal activation prompt. Third-party skills are references, never installed automatically.
+- Changes made to code/methods do not grant host execution capabilities or update ChatGPT account Memory. The repo remains publicly visible by owner choice.
+- Baseline: v10.4 156/156 offline tests; record final v10.5 results and remote Actions after actual execution.

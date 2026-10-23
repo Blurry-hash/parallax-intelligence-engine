@@ -39,8 +39,20 @@ Added actual offline WAV integrity/normalization, backend qualification, and mat
 - Tests cover unsupported commands, duplicate IDs, negative durations, time budgets, failures and checkpoint persistence.
 - Durable multi-minute autonomous AI requires a host process with authorized tools, time, and independently useful work. No background capabilities are implied.
 
-## v10.3 — independent planning / review audit
-- The new planner is side-effect-free; any high-risk/delivery task needs approval.
-- Four separately attributed read-only Python workers run concurrently without separate language-model calls, secrets, network writes or background execution.
-- The evidence checker rejects mismatched plan hashes, missing evidence, unapproved delivery and unmet dependency gates.
-- Local baseline tests ran and passed (122/122 in the package). Record GitHub CI independently after remote publication; do not equate synthetic tests with measured intelligence gains.
+## v10.3 — planning & real deterministic worker audits
+- Scope: validated task DAG, critical path/parallel waves, explicit approval gates, evidence ledger and four read-only concurrently executed specialist checks.
+- Security: no network, provider keys, arbitrary shell or repository writes in tools; remote publication remains a separate authorized action.
+- Distinction: four **deterministic tool workers** are genuine concurrent Python workers, not four LLM calls or neural self-improvement.
+- Verification: local structural validation PASS (141 sources, 114 skills); 122/122 unit tests PASS. Four independent read-only workers PASS with a measured wall interval. GitHub Actions and remote publication must be checked separately after commit.
+
+## v10.4 operating gates (local verification)
+- Real offline tests: `python -m unittest discover -s tests -v`; record final result in the response, rather than promising success here.
+- Authenticity limitation: file hashes guarantee content equality with an embedded manifest, not signed origin.
+- Evaluation limitation: toy fixtures do not substantiate performance gains.
+- Scheduling limitation: list heuristic may be suboptimal; estimated minutes are not observed durations.
+- Agents limitation: `agent_audit.py` runs deterministic Python workers, no separate model providers.
+
+## v10.5 pending release audit
+A) Fresh checkout: source/skill structural validation, Python suite, safety negative cases, README links and secrets check.
+B) Independent extraction: extract deterministic ZIP to new directory, rerun entire suite and check manifest.
+C) GitHub: inspect exact pushed commit SHA and Actions job conclusions. Do not mark remote CI passed until reported. GET math evaluator access is documented by vendor but is NOT equivalent to a general-purpose sandbox.

@@ -1135,6 +1135,62 @@
       "trust": "official",
       "status": "verified-page",
       "notes": "Official SDK docs checked for deterministic workflows and durable timers; not bundled or required."
+    },
+    {
+      "name": "Taste Skill — source",
+      "url": "https://github.com/Leonxlnx/taste-skill",
+      "topic": "design",
+      "trust": "third-party",
+      "status": "verified-page",
+      "notes": "Public source page inspected 2026-10-23; this does not establish execution access, safety or integration."
+    },
+    {
+      "name": "Vercel Web Interface Guidelines",
+      "url": "https://github.com/vercel-labs/agent-skills/tree/main/skills/web-design-guidelines",
+      "topic": "design",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": "Public source page inspected 2026-10-23; this does not establish execution access, safety or integration."
+    },
+    {
+      "name": "ImageGen Skills: image-to-code",
+      "url": "https://github.com/Leonxlnx/imagegen-skills",
+      "topic": "design",
+      "trust": "third-party",
+      "status": "verified-page",
+      "notes": "Public source page inspected 2026-10-23; this does not establish execution access, safety or integration."
+    },
+    {
+      "name": "Awesome DESIGN.md",
+      "url": "https://github.com/VoltAgent/awesome-design-md",
+      "topic": "design",
+      "trust": "third-party",
+      "status": "verified-page",
+      "notes": "Public source page inspected 2026-10-23; this does not establish execution access, safety or integration."
+    },
+    {
+      "name": "Awesome Design Systems",
+      "url": "https://github.com/alexpate/awesome-design-systems",
+      "topic": "design",
+      "trust": "third-party",
+      "status": "verified-page",
+      "notes": "Public source page inspected 2026-10-23; this does not establish execution access, safety or integration."
+    },
+    {
+      "name": "Math.js",
+      "url": "https://github.com/josdejong/mathjs",
+      "topic": "web-expression",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": "Public source page inspected 2026-10-23; this does not establish execution access, safety or integration."
+    },
+    {
+      "name": "DeepSeek Harness web docs",
+      "url": "https://github.com/deepseek-ai/deepseek-harness",
+      "topic": "deepseek",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": "Public source page inspected 2026-10-23; this does not establish execution access, safety or integration."
     }
   ]
 }

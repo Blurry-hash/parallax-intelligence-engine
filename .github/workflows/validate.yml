@@ -1,4 +1,4 @@
-name: Validate PARALLAX v10.3 skills
+name: Validate PARALLAX v10.5 skills
 on: [push, pull_request]
 permissions:
   contents: read
@@ -33,11 +33,22 @@ jobs:
       - name: Check time-budgeted work ledger
         run: |
           python tools/work_budget.py examples/work-session-50min.json --output /tmp/parallax-work-ledger.json
-      - name: Planning and four independent worker audits
+      - name: Planning and independent worker smoke checks
         run: |
-          python tools/plan_engine.py examples/planning-v10.3.json
-          python tools/agent_audit.py examples/planning-v10.3.json
+          python tools/plan_engine.py examples/planning-v10.3.json --output /tmp/parallax-plan.json
+          python tools/agent_audit.py examples/planning-v10.3.json --out /tmp/parallax-audits.json
           python -m unittest tests.test_planning_v10_3 -v
+      - name: V10.4 planning and evidence smoke checks
+        run: |
+          python tools/resource_scheduler.py examples/planning-v10.3.json
+          python tools/skill_dispatch.py "Create a beautiful accessible app" --max-skills 2
+          python tools/quality_gate.py examples/quality-v10.4.json
+          python -m unittest tests.test_v10_4 -v
+      - name: V10.5 source freshness and DeepSeek fallback smoke checks
+        run: |
+          python tools/deepseek_get_probe.py '7*6'
+          python tools/design_contract.py examples/design-contract-v10.5.json
+          python -m unittest tests.test_v10_5 -v
       - name: Compile scripts
         run: python -m compileall -q tools tests
       - name: Unit tests
