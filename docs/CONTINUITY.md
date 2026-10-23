@@ -63,3 +63,10 @@ Read only the most relevant current section and linked `SKILL.md` files. Verify 
 - Added paginated short JSON catalog and an explicitly user-triggered GitHub Actions test bench. GET-only clients can read verified results but cannot autonomously run code or write files.
 - math.js arithmetic remains an unreliable limited fetch probe, not general Python execution. Public repo has no top-level LICENSE; owner approval required for license choice.
 - New published SHA and CI status must be checked separately before making success claims.
+
+## 2026-10-23 — v11.2 DeepSeek GET-only CI results
+- Starting live public main: `0cca2c9bb3be2d951194dfcb8e2efade09cb2585`. Confirmed 142 skills; no missing 24 directories. Existing GitHub validation on push provides read-only run evidence.
+- Added daily best-effort full Python benchmark through GitHub Actions at 03:17 UTC. No write permission or secrets used; first scheduled run cannot be asserted before it happens.
+- Catalog now advertises public GET status endpoints plus source labels: 111 `verified-page`, 46 `unconfirmed`. Page fetch is not source correctness verification.
+- Compare each candidate run to exact latest `main` SHA, `status=completed` and `conclusion=success`; stale or missing runs remain unknown.
+- No top-level LICENSE exists; leave licensing to owner. CI results and commit signing are distinct. No autonomous chat-code execution or persistent memory is implied.

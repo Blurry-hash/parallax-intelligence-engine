@@ -1,5 +1,8 @@
 name: DeepSeek Remote Test Bench
 on:
+  # Best-effort nightly verification, default branch, UTC. No write permission.
+  schedule:
+    - cron: '17 3 * * *'
   workflow_dispatch:
     inputs:
       suite:
@@ -27,7 +30,7 @@ jobs:
           python-version: '3.13'
       - name: Execute one allowlisted test suite
         env:
-          SUITE: ${{ inputs.suite }}
+          SUITE: ${{ github.event_name == 'workflow_dispatch' && inputs.suite || 'full' }}
         shell: bash
         run: |
           set -euo pipefail

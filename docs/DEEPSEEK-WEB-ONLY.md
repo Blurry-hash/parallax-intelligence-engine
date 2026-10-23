@@ -11,6 +11,10 @@
 | **2. Browser-side JupyterLite / Pyodide** | Real Python inside user's browser | An interactive browser, user action, or an actual connected browser agent | Execute `print(sum([2,3,5]))`, see `10`, then assert `2+2 == 4` |
 | **3. User-owned remote test relay** | Full approved tests inside an isolated runtime | Deploy owned service; user controls code submission, authorization and execution | Submit approved fixture over authenticated POST; use read-only GET `/jobs/<opaque-id>` to fetch exit code and logs |
 
+## GET-only repository testing — preferred
+
+Read [DeepSeek Quickstart](DEEPSEEK-QUICKSTART.md). The existing validator runs on every push; the dedicated bench also schedules daily Python tests. DeepSeek may read public GitHub REST run metadata and verify the exact tested commit SHA without credentials. It cannot itself start the job, execute arbitrary chat code, or interact with a JavaScript browser. Prefer this method to intermittent math.js GET calculators.
+
 ## DeepSeek-specific probe sequence
 
 1. Verify actual DeepSeek access: search-only, URL fetch, rendered JS, interactive browser, file input, POST requests. Do not assume browser controls.

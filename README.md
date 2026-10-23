@@ -3,7 +3,7 @@
 
   **Better methods. Sharper work. Evidence you can inspect.**
 
-  `v11.1` · `142 specialist skills` · `157 linked references` · `Python 3.12+`
+  `v11.2` · `142 specialist skills` · `157 linked references` · `Python 3.12+`
 </div>
 
 ---
@@ -28,6 +28,12 @@ PARALLAX is a focused collection of methods, tools and independent checks for wo
 Image Intelligence now treats references, protected identity and compositing as distinct steps. **Most tasks do not need a render.** Five methods traced through indexed TikTok posts are documented with their original GitHub sources; no third-party code is silently installed. Every pre-existing skill has three targeted safeguards. [Browse 150 scoped capability contracts](docs/CAPABILITY-ATLAS-150.md) — these are methods and acceptance criteria, not 150 running model integrations.
 
 **Natural by default.** Keep verification inside the process; don't litter user-facing responses with `[ESTABLISHED]`, `[APPROVED]` or similar labels unless requested.
+
+### DeepSeek Free — verification without a shell
+
+[**GET-only test status →**](docs/DEEPSEEK-QUICKSTART.md) · [Small skills catalog](bridge/v1/index.json)
+
+Tests run automatically on repo pushes, with an extra best-effort daily GitHub Actions suite. DeepSeek can read public results and verify the tested commit without tokens, but cannot submit new code or start a job through GET alone.
 
 ### Use it in another AI
 

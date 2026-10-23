@@ -14,15 +14,24 @@ The pages are maintained by `python tools/deepseek_catalog.py` and checked in Gi
 
 **Fallback 2:** use a specific GitHub file page, for example https://github.com/Blurry-hash/parallax-intelligence-engine/blob/main/bridge/v1/skills-12.json . Raw file URLs are preferred when supported. These catalogs contain paths, not the full 142 instruction files.
 
-## Step 2 — actual Python execution through GitHub Actions
+## Step 2 — actual CI proof with **GET only**
 
-An AI limited to GET requests **cannot initiate arbitrary code execution**. The working workaround is a user-started, restricted GitHub runner:
+GitHub runs the ordinary validation suite after each push. A second, restricted DeepSeek test bench now runs the full Python suite **daily at 03:17 UTC** (best effort); no manual action is required for a scheduled run. These tests execute in GitHub Actions, **not inside DeepSeek**.
 
-1. Open [DeepSeek Remote Test Bench](https://github.com/Blurry-hash/parallax-intelligence-engine/actions/workflows/deepseek-test-bench.yml).
-2. Click **Run workflow** on main, and choose `inventory`, `full`, `image` or `source-check`.
-3. Once finished, provide DeepSeek the run URL or let it read GitHub's public Actions page. Compare run `head_sha` with latest `main` and check the job concluded `success`.
+Read these public endpoints in order:
 
-This runs real Python on GitHub-hosted hardware, **not inside DeepSeek**. It requires one user action; a web-only GET client cannot click or POST. Tests exercise repository code only, not arbitrary snippets supplied exclusively in the chat. Do not send credentials or tokens to DeepSeek.
+1. Current default-branch SHA: `https://api.github.com/repos/Blurry-hash/parallax-intelligence-engine/commits/main` (read `sha`).
+2. Latest push validation: `https://api.github.com/repos/Blurry-hash/parallax-intelligence-engine/actions/workflows/validate.yml/runs?branch=main&per_page=5`.
+3. Scheduled full-suite test: `https://api.github.com/repos/Blurry-hash/parallax-intelligence-engine/actions/workflows/deepseek-test-bench.yml/runs?event=schedule&branch=main&per_page=5`. GitHub's scheduler may delay, skip or disable runs.
+4. If either filtered API endpoint is unavailable, try `https://api.github.com/repos/Blurry-hash/parallax-intelligence-engine/actions/runs?per_page=3` and inspect `path`, `event`, `head_sha`, `status`, `conclusion`.
+5. Accept a test claim only when `head_sha` exactly matches current `main`, `status` is `completed` and `conclusion` is `success`. For public job steps: `https://api.github.com/repos/Blurry-hash/parallax-intelligence-engine/actions/runs/{run_id}/jobs` (replace `{run_id}` with the run ID). Raw logs may require login; run metadata does not.
+6. If no same-commit finished successful run appears, state exactly that. Never treat a green test of an older SHA, `in_progress` run or unsigned commit as a passing current test.
+
+The small [GET catalog](../bridge/v1/index.json) repeats these links and displays the source-page verification labels. Its `verified-page` label means only that someone fetched the page, not that the information was scientifically or technically validated.
+
+### Optional immediate manual test
+
+[Run workflow in GitHub](https://github.com/Blurry-hash/parallax-intelligence-engine/actions/workflows/deepseek-test-bench.yml), choose `inventory`, `full`, `image` or `source-check`. Only an authenticated person or authorized tool can launch it. DeepSeek's read-only web search cannot POST, click or submit arbitrary Python. Keep tokens out of URLs and chats.
 
 ## Step 3 — other fallbacks
 
