@@ -22,3 +22,9 @@ OpenAI Agents SDK guardrails/handoffs: https://github.com/openai/openai-agents-p
 ## Fallback and limits
 
 Tool workers cannot introspect closed-model hidden reasoning or simulate independent LLM opinions. Read-only routines are still valuable subagents for structural verification, not equivalent to AI peer review.
+
+## v11.0 — Three targeted extensions
+
+1. **Task-specific contract:** For **subagent-review-protocol**, freeze real delegated capabilities and permission boundaries; avoid loading this skill when it adds no user value.
+2. **Adversarial failure probe:** Test the strongest failure case for this skill, including incompatible requirements, unavailable tools and unverified claims; record what was not executed.
+3. **Lean evidence and fallback:** Prefer a small decisive verification or truthful alternative over unnecessary tool use. Image/video rendering is optional and never required for a nonimage request.

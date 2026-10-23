@@ -22,3 +22,9 @@ Missing history? Do not hallucinate. Note the gap and make a reversible assumpti
 No user constraints lost; reduced overhead is measured, not presumed; no unsupported persistent memory claims.
 
 **Check:** Only mark a step verified when actual evidence supports it; disclose unavailable tools and failed tests.
+
+## v11.0 — Three targeted extensions
+
+1. **Task-specific contract:** For **context-engineering**, freeze the task objective, known input constraints and actual available tools; avoid loading this skill when it adds no user value.
+2. **Adversarial failure probe:** Test the strongest failure case for this skill, including incompatible requirements, unavailable tools and unverified claims; record what was not executed.
+3. **Lean evidence and fallback:** Prefer a small decisive verification or truthful alternative over unnecessary tool use. Image/video rendering is optional and never required for a nonimage request.

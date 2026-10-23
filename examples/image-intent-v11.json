@@ -1,0 +1,21 @@
+{
+  "mode": "describe",
+  "requested_output": "Written photorealistic edit plan, no new image requested",
+  "render_required": false,
+  "references": [
+    {
+      "id": "photo",
+      "roles": [
+        "identity",
+        "composition"
+      ]
+    }
+  ],
+  "locked": [
+    "identity",
+    "proportions"
+  ],
+  "editable": [
+    "lighting"
+  ]
+}

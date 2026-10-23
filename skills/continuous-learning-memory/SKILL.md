@@ -25,3 +25,9 @@ No actual access, no consent, incomplete measurements or failed holdouts: stop o
 Use measurable artifacts, permission checks, baseline comparisons and independent review when material. Label simulation and inferred results.
 
 **Check:** Report measured, executed and unrun checks separately. Preserve privacy and higher-priority constraints.
+
+## v11.0 — Three targeted extensions
+
+1. **Task-specific contract:** For **continuous-learning-memory**, freeze the task objective, known input constraints and actual available tools; avoid loading this skill when it adds no user value.
+2. **Adversarial failure probe:** Test the strongest failure case for this skill, including incompatible requirements, unavailable tools and unverified claims; record what was not executed.
+3. **Lean evidence and fallback:** Prefer a small decisive verification or truthful alternative over unnecessary tool use. Image/video rendering is optional and never required for a nonimage request.

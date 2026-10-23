@@ -1191,6 +1191,78 @@
       "trust": "official",
       "status": "verified-page",
       "notes": "Public source page inspected 2026-10-23; this does not establish execution access, safety or integration."
+    },
+    {
+      "name": "OpenAI Codex imagegen prompting",
+      "url": "https://github.com/openai/codex/blob/main/codex-rs/skills/src/assets/samples/imagegen/references/prompting.md",
+      "topic": "image",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": "Official prompt structure and edit invariants reviewed; not a model integration."
+    },
+    {
+      "name": "ComfyUI",
+      "url": "https://github.com/Comfy-Org/ComfyUI",
+      "topic": "image",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": "GPL-3.0 program; models and nodes have separate access, compute, and licensing needs."
+    },
+    {
+      "name": "SAM2",
+      "url": "https://github.com/facebookresearch/sam2",
+      "topic": "image",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": "Meta segmentation library, optional, not installed."
+    },
+    {
+      "name": "ControlNet",
+      "url": "https://github.com/lllyasviel/ControlNet",
+      "topic": "image",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": "Optional conditioning; model checkpoint and runtime not included."
+    },
+    {
+      "name": "IP-Adapter",
+      "url": "https://github.com/tencent-ailab/IP-Adapter",
+      "topic": "image",
+      "trust": "official",
+      "status": "unconfirmed",
+      "notes": "Reference-only. Not directly reviewed in this release."
+    },
+    {
+      "name": "video-use",
+      "url": "https://github.com/browser-use/video-use",
+      "topic": "video",
+      "trust": "third-party",
+      "status": "verified-page",
+      "notes": "TikTok-indexed source and current upstream repo inspected; no code imported."
+    },
+    {
+      "name": "n8n-workflows",
+      "url": "https://github.com/Zie619/n8n-workflows",
+      "topic": "automation",
+      "trust": "third-party",
+      "status": "verified-page",
+      "notes": "Source workflows are untrusted, must not auto-run."
+    },
+    {
+      "name": "context-mode",
+      "url": "https://github.com/mksglu/context-mode",
+      "topic": "context",
+      "trust": "third-party",
+      "status": "verified-page",
+      "notes": "Elastic-2.0 obligations; no claimed 98% gains without independent tests."
+    },
+    {
+      "name": "ai-marketing-skills",
+      "url": "https://github.com/ericosiu/ai-marketing-skills",
+      "topic": "marketing",
+      "trust": "third-party",
+      "status": "verified-page",
+      "notes": "Research reference only, no outgoing messages authorized."
     }
   ]
 }

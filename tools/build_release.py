@@ -28,7 +28,7 @@ def pack(root:Path,destination:Path)->dict:
     if not files or not (root/'README.md') in files or not (root/'MASTER_PROMPT.md') in files:
         raise ValueError('Incomplete repository: README and MASTER_PROMPT required')
     checksums={p.relative_to(root).as_posix():hashlib.sha256(p.read_bytes()).hexdigest() for p in files}
-    manifest={'release':'PARALLAX v10.5','file_count':len(files),'sha256':checksums,'hash_scope':'archive members excluding manifest; no authenticity signature'}
+    manifest={'release':'PARALLAX v11.0','file_count':len(files),'sha256':checksums,'hash_scope':'archive members excluding manifest; no authenticity signature'}
     manifest_bytes=(json.dumps(manifest,indent=2,sort_keys=True)+'\n').encode()
     destination.parent.mkdir(parents=True,exist_ok=True)
     with zipfile.ZipFile(destination,'w',compression=zipfile.ZIP_DEFLATED,compresslevel=9) as z:

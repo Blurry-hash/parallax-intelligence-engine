@@ -30,3 +30,9 @@ Prioritize official FFmpeg, Remotion, MoviePy, Manim, Blender, ComfyUI and video
 ## V10 production extension
 
 For exact video tasks, first use `video-shot-grammar` and `video-temporal-consistency` to define narrative beats and protected invariants, then `video-timeline-engineering` and `tools/video_timeline.py` to compile frame-indexed clips and subtitle cues. Use `video-code-production` and `tools/render_video.py` for deterministic motion graphics; use `video-generation-backends` only after model/backend authorization and checkpoint/hardware checks. On final output, apply `video-qc-telemetry` and `tools/video_qc.py`. Avoid asserting that ffprobe detects human identity, storytelling quality or lip-sync: these require actual visual/audio assessment. Track media rights with `video-media-provenance` and cost with `video-render-budget`.
+
+## v11.0 — Three targeted extensions
+
+1. **Task-specific contract:** For **video-intelligence**, freeze frame continuity, timing and actual media formats; avoid loading this skill when it adds no user value.
+2. **Adversarial failure probe:** Test the strongest failure case for this skill, including incompatible requirements, unavailable tools and unverified claims; record what was not executed.
+3. **Lean evidence and fallback:** Prefer a small decisive verification or truthful alternative over unnecessary tool use. Image/video rendering is optional and never required for a nonimage request.

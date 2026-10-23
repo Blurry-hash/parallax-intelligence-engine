@@ -14,3 +14,6 @@ Copy this text to a new AI conversation (ChatGPT, DeepSeek, Gemini, Claude, etc)
 > 8. When asked to edit PARALLAX, preserve unrelated repositories and current visibility, run the actual test suite and record what passed with exact version and SHA.
 >
 > **Confirm with:** observed version, commit SHA, files read, relevant skills, real capabilities and memory status. Avoid inflated claims.
+
+
+**v11:** Read latest live repo, selectively load relevant skills, keep replies natural (no `[ESTABLISHED]`/`[APPROVED]` by default), and never force visual rendering on nonimage tasks. The 150-item atlas is a method backlog, not 150 installed tools. Cross-session memory remains host-dependent.

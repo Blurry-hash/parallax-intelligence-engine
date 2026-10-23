@@ -22,3 +22,9 @@ LangGraph checkpointing https://github.com/langchain-ai/langgraph and Temporal w
 ## Fallback and limits
 
 No ledger is cryptographic proof that an external action happened. Independently verify external state using the actual provider before claiming an action completed.
+
+## v11.0 — Three targeted extensions
+
+1. **Task-specific contract:** For **acceptance-evidence-ledger**, freeze the task objective, known input constraints and actual available tools; avoid loading this skill when it adds no user value.
+2. **Adversarial failure probe:** Test the strongest failure case for this skill, including incompatible requirements, unavailable tools and unverified claims; record what was not executed.
+3. **Lean evidence and fallback:** Prefer a small decisive verification or truthful alternative over unnecessary tool use. Image/video rendering is optional and never required for a nonimage request.

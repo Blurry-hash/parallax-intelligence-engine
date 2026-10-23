@@ -21,3 +21,9 @@ Official reference design: https://developers.google.com/optimization/scheduling
 ## Fallback and limits
 
 No model-weight updates, background execution, paid inference or external API calls occur merely by loading this skill.
+
+## v11.0 — Three targeted extensions
+
+1. **Task-specific contract:** For **skill-context-compiler**, freeze the task objective, known input constraints and actual available tools; avoid loading this skill when it adds no user value.
+2. **Adversarial failure probe:** Test the strongest failure case for this skill, including incompatible requirements, unavailable tools and unverified claims; record what was not executed.
+3. **Lean evidence and fallback:** Prefer a small decisive verification or truthful alternative over unnecessary tool use. Image/video rendering is optional and never required for a nonimage request.

@@ -47,3 +47,13 @@ Read only the most relevant current section and linked `SKILL.md` files. Verify 
 - Refreshed README visual identity and universal activation prompt. Third-party skills are references, never installed automatically.
 - Changes made to code/methods do not grant host execution capabilities or update ChatGPT account Memory. The repo remains publicly visible by owner choice.
 - Baseline: v10.4 156/156 offline tests; record final v10.5 results and remote Actions after actual execution.
+
+
+## 2026-10-23 — v11.0 capabilities, visual integrity, natural output
+- Baseline: public v10.5, commit `4196b3b2cddece486b5022ebe08f41f9866fccb7`.
+- Added 150 scoped capability acceptance contracts (documented methods, not running model backends).
+- Augmented each of 130 original skill files with 3 safeguards, plus 12 new source-aware specialist skills.
+- Advanced image methodology separates output intent, locked identity, optical reasoning, compositing and optional quality reviews; no default render.
+- Traced five useful skill methods to indexed TikTok posts and canonical GitHub repositories; only captions/indexes verified, not full video footage; no vendor code bundled.
+- Defaults to natural responses without internal bracketed status tags. Never claim automatic ChatGPT Memory updates.
+- The current GitHub commit and CI outcome remain the source of truth after actual publication.

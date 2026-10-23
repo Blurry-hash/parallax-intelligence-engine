@@ -1,0 +1,40 @@
+{
+  "provenance": "Indexed TikTok captions and canonical GitHub repos, not full source video playback",
+  "entries": [
+    {
+      "name": "video-use",
+      "post_url": "https://www.tiktok.com/@vibewithkevin/video/7653121552866675998",
+      "repo": "https://github.com/browser-use/video-use",
+      "local_skill": "video-use-transcript-editing",
+      "installed": false
+    },
+    {
+      "name": "ComfyUI",
+      "post_url": "https://www.tiktok.com/@baynumtechworks/video/7652458039164931341",
+      "repo": "https://github.com/Comfy-Org/ComfyUI",
+      "local_skill": "comfyui-graph-integrity",
+      "installed": false
+    },
+    {
+      "name": "n8n-workflows",
+      "post_url": "https://www.tiktok.com/@theaiimpact/video/7515216407689284871",
+      "repo": "https://github.com/Zie619/n8n-workflows",
+      "local_skill": "n8n-workflow-import-audit",
+      "installed": false
+    },
+    {
+      "name": "context-mode",
+      "post_url": "https://www.tiktok.com/@marvomatic/video/7692457176685661473",
+      "repo": "https://github.com/mksglu/context-mode",
+      "local_skill": "context-mode-offloading",
+      "installed": false
+    },
+    {
+      "name": "AI Marketing Skills",
+      "post_url": "https://www.tiktok.com/@promptwarrior/video/7626822289706863904",
+      "repo": "https://github.com/ericosiu/ai-marketing-skills",
+      "local_skill": "marketing-experiment-ops",
+      "installed": false
+    }
+  ]
+}

@@ -25,3 +25,9 @@ On blocked tools or stale sources, select a documented fallback; record whether 
 Produce concrete evidence and check falsifying cases; never infer success from plans, links or tool suggestions.
 
 **Check:** Only state actions and measurements actually performed. No secrets, unapproved writes or background-execution claims.
+
+## v11.0 — Three targeted extensions
+
+1. **Task-specific contract:** For **deepseek-web-only-lab**, freeze the task objective, known input constraints and actual available tools; avoid loading this skill when it adds no user value.
+2. **Adversarial failure probe:** Test the strongest failure case for this skill, including incompatible requirements, unavailable tools and unverified claims; record what was not executed.
+3. **Lean evidence and fallback:** Prefer a small decisive verification or truthful alternative over unnecessary tool use. Image/video rendering is optional and never required for a nonimage request.

@@ -24,3 +24,9 @@ Temporal Python workflows: https://github.com/temporalio/sdk-python — optional
 ## Fallback and limits
 
 A local script executes only allowlisted repository checks specified in a plan. It is **not** a free-running AI researcher, model improvement service, timer-based magic multiplier, or guaranteed 50-minute cognitive session. Persistent cloud execution requires a separately available supported orchestration runtime and explicit permissions.
+
+## v11.0 — Three targeted extensions
+
+1. **Task-specific contract:** For **deliberate-work-sessions**, freeze the task objective, known input constraints and actual available tools; avoid loading this skill when it adds no user value.
+2. **Adversarial failure probe:** Test the strongest failure case for this skill, including incompatible requirements, unavailable tools and unverified claims; record what was not executed.
+3. **Lean evidence and fallback:** Prefer a small decisive verification or truthful alternative over unnecessary tool use. Image/video rendering is optional and never required for a nonimage request.

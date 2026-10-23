@@ -1,4 +1,4 @@
-name: Validate PARALLAX v10.5 skills
+name: Validate PARALLAX v11 skills
 on: [push, pull_request]
 permissions:
   contents: read
@@ -49,6 +49,12 @@ jobs:
           python tools/deepseek_get_probe.py '7*6'
           python tools/design_contract.py examples/design-contract-v10.5.json
           python -m unittest tests.test_v10_5 -v
+      - name: V11 image, automation and source-integrity smoke checks
+        run: |
+          python tools/image_contract.py examples/image-intent-v11.json
+          python tools/workflow_risk_audit.py examples/automation-audit-v11.json
+          python tools/capability_catalog.py "image reference" --limit 2
+          python -m unittest tests.test_v11 -v
       - name: Compile scripts
         run: python -m compileall -q tools tests
       - name: Unit tests

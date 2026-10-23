@@ -22,3 +22,9 @@ Official inspirations: https://github.com/microsoft/agent-framework and https://
 ## Fallback and limits
 
 This skill cannot grant persistent runtime, additional reasoning tokens, cloud tools, model access or an exact duration. For a time request, apply `deliberate-work-sessions` and document actual elapsed and evidence.
+
+## v11.0 — Three targeted extensions
+
+1. **Task-specific contract:** For **planning-orchestration**, freeze the task objective, known input constraints and actual available tools; avoid loading this skill when it adds no user value.
+2. **Adversarial failure probe:** Test the strongest failure case for this skill, including incompatible requirements, unavailable tools and unverified claims; record what was not executed.
+3. **Lean evidence and fallback:** Prefer a small decisive verification or truthful alternative over unnecessary tool use. Image/video rendering is optional and never required for a nonimage request.

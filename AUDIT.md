@@ -1,4 +1,4 @@
-# PARALLAX v10 / Validation ledger
+# PARALLAX v11.0 / Validation ledger
 
 ## Invariants
 
@@ -56,3 +56,7 @@ Added actual offline WAV integrity/normalization, backend qualification, and mat
 A) Fresh checkout: source/skill structural validation, Python suite, safety negative cases, README links and secrets check.
 B) Independent extraction: extract deterministic ZIP to new directory, rerun entire suite and check manifest.
 C) GitHub: inspect exact pushed commit SHA and Actions job conclusions. Do not mark remote CI passed until reported. GET math evaluator access is documented by vendor but is NOT equivalent to a general-purpose sandbox.
+
+
+## v11 release facts
+150 cataloged methods are implementation contracts, not 150 deployed providers. Five third-party GitHub resources were traced through indexed TikTok snippets; source videos were not watched in full. New practical methods require actual runtime access. All 130 existing skill files were given three explicit refinements and 12 new source-aware skills were added. The GitHub CI run for the resulting commit must be checked independently after publication.

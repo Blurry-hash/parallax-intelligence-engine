@@ -30,3 +30,9 @@ Refer to official FFmpeg, Remotion, MoviePy, Manim and Blender documentation ind
 ## V10 runnable interoperability
 
 A declarative `examples/v10-timeline.json` becomes an EDL, SRT and renderer-ready storyboard using `tools/video_timeline.py`; encode with `tools/render_video.py`, then verify file technical metadata with `tools/video_qc.py` against `examples/v10-video-contract.json`. Scene duration is integral frames at the source FPS; codec/sample timing is verified after encoding. Do not use the deterministic renderer for neural character animation claims.
+
+## v11.0 — Three targeted extensions
+
+1. **Task-specific contract:** For **video-code-production**, freeze frame continuity, timing and actual media formats; avoid loading this skill when it adds no user value.
+2. **Adversarial failure probe:** Test the strongest failure case for this skill, including incompatible requirements, unavailable tools and unverified claims; record what was not executed.
+3. **Lean evidence and fallback:** Prefer a small decisive verification or truthful alternative over unnecessary tool use. Image/video rendering is optional and never required for a nonimage request.
