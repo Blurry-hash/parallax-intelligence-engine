@@ -35,6 +35,10 @@ Image Intelligence now treats references, protected identity and compositing as 
 
 Tests run automatically on repo pushes, with an extra best-effort daily GitHub Actions suite. DeepSeek can read public results and verify the tested commit without tokens, but cannot submit new code or start a job through GET alone.
 
+### Run the DeepSeek GET Python Lab
+
+The fixed-case [Python Worker source](apps/deepseek-get-python-lab/README.md) is available in the repository. You can [open the Cloudflare deploy flow](https://deploy.workers.cloudflare.com/?url=https://github.com/Blurry-hash/parallax-intelligence-engine/tree/main/apps/deepseek-get-python-lab) using your own Cloudflare account. **No live Worker URL has been confirmed.** Deployment is owner-account gated; do not invent a \u0060lab_url\u0060 until a real endpoint passes HTTP checks.
+
 ### Use it in another AI
 
 [**Universal activation prompt →**](docs/UNIVERSAL-ACTIVATION.md) — works as a starting instruction for ChatGPT, DeepSeek, Claude, Gemini and other assistants. It asks the model to inspect the live repository, use relevant skills and *request* persistent memory only if supported.
