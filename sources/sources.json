@@ -879,6 +879,86 @@
       "trust": "third-party",
       "status": "unconfirmed",
       "notes": "Verify latest repository location and license before setup."
+    },
+    {
+      "name": "Maintained Coqui TTS fork",
+      "url": "https://github.com/idiap/coqui-ai-TTS",
+      "topic": "audio",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": "Maintained fork; separately verify weights license and runtime."
+    },
+    {
+      "name": "F5-TTS flow matching",
+      "url": "https://github.com/SWivid/F5-TTS",
+      "topic": "audio",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": "MIT code but released model weights CC-BY-NC, no default commercial use."
+    },
+    {
+      "name": "Microsoft VibeVoice",
+      "url": "https://github.com/microsoft/VibeVoice",
+      "topic": "audio",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": "Original TTS code removed; check available ASR/realtime only."
+    },
+    {
+      "name": "Stable Audio Tools",
+      "url": "https://github.com/Stability-AI/stable-audio-tools",
+      "topic": "audio",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": "Generative audio research; separate weights and licenses."
+    },
+    {
+      "name": "AudioCraft",
+      "url": "https://github.com/facebookresearch/audiocraft",
+      "topic": "audio",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": "AudioGen/MusicGen research; installed weights not included."
+    },
+    {
+      "name": "pyannote.audio",
+      "url": "https://github.com/pyannote/pyannote-audio",
+      "topic": "audio",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": "Diarization, not speech synthesis."
+    },
+    {
+      "name": "LAION CLAP",
+      "url": "https://github.com/LAION-AI/CLAP",
+      "topic": "audio",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": "Similarity proxy, not a realism metric."
+    },
+    {
+      "name": "pyloudnorm",
+      "url": "https://github.com/csteinmetz1/pyloudnorm",
+      "topic": "audio",
+      "trust": "third-party",
+      "status": "unconfirmed",
+      "notes": "Relevant loudness metering package; repository page not independently verified in this change."
+    },
+    {
+      "name": "GEPA optimizing framework",
+      "url": "https://github.com/gepa-ai/gepa",
+      "topic": "self-evolution",
+      "trust": "official",
+      "status": "verified-page",
+      "notes": "Research on reflective candidate selection and feedback."
+    },
+    {
+      "name": "DeepEval",
+      "url": "https://github.com/confident-ai/deepeval",
+      "topic": "self-evolution",
+      "trust": "third-party",
+      "status": "verified-page",
+      "notes": "Evaluation framework, avoid holdout leakage."
     }
   ]
 }

@@ -1,4 +1,4 @@
-name: Validate PARALLAX v10 skills
+name: Validate PARALLAX v10.1 skills
 on: [push, pull_request]
 permissions:
   contents: read
@@ -21,6 +21,10 @@ jobs:
           python tools/source_audit.py
           python tools/route_task.py "Design an accessible app with API and video"
           python tools/bench_compare.py examples/paired-evaluation.json
+      - name: Audio and evolution offline smoke tests
+        run: |
+          python tools/voice_route.py examples/voice-task.json examples/voice-backends.json
+          python tools/evolve_gate.py examples/evolution-fixture.json
       - name: Compile scripts
         run: python -m compileall -q tools tests
       - name: Unit tests

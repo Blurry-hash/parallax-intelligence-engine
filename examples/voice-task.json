@@ -1,0 +1,8 @@
+{
+  "task": "tts",
+  "language": "sv-SE",
+  "consent": "original_synthetic",
+  "use_case": "voiceover",
+  "commercial": false,
+  "streaming": false
+}

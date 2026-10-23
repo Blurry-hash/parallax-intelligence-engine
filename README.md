@@ -1,14 +1,14 @@
 # PARALLAX / Intelligence Engine
 
-**Version 10.0** · Modular AI engineering · Code-first media · Measured reasoning
+**Version 10.1** · Modular AI engineering · Code-first media · Measured reasoning
 
 > **Multiple perspectives. One verifiable result.**
 
 PARALLAX is an **open-method toolkit**, not a new language model. It helps an AI assistant choose relevant specialist instructions, respect real tool limits, produce working artifacts, and independently verify the outcome. It cannot unlock hidden model weights, give an agent browser controls it lacks, or guarantee an intelligence/speed multiplier.
 
-**Status:** PARALLAX v10.0. This repository is intentionally **public** at the owner’s request; publication never changes repository visibility. Offline tools and examples require no API keys. CI validates the pushed revision independently.
+**Status:** PARALLAX v10.1. This repository is intentionally **public** at the owner’s request; publication never changes repository visibility. Offline tools and examples require no API keys. CI validates the pushed revision independently.
 
-`77 skills` · `109 linked references` · `offline validation` · `no automatic paid execution` · `privacy-first`
+`84 skills` · `119 linked references` · `offline validation` · `no automatic paid execution` · `privacy-first`
 
 ## Architecture
 
@@ -31,7 +31,7 @@ flowchart TD
     J --> L[Verified outcome and limitations]
 ```
 
-PARALLAX uses **progressive disclosure**: do not paste all 77 skills into the model context. Load the top 1–3 appropriate `SKILL.md` files, verify what the agent can actually do, and only expand when the problem warrants it.
+PARALLAX uses **progressive disclosure**: do not paste all 84 skills into the model context. Load the top 1–3 appropriate `SKILL.md` files, verify what the agent can actually do, and only expand when the problem warrants it.
 
 ## Key capabilities
 
@@ -47,6 +47,28 @@ PARALLAX uses **progressive disclosure**: do not paste all 77 skills into the mo
 | Multimodal | Frame/audio/text alignment with provenance | `skills/multimodal-evidence-alignment/SKILL.md` |
 | Frontier models | Capabilities, permissions and matched benchmark evidence | `skills/model-routing-benchmarks/SKILL.md` |
 | No sandbox | Truthful browser/WASM or approved runner fallback | `skills/browser-compute-bridge/SKILL.md` |
+
+## Audio Intelligence + Self-Evolution v10.1
+
+**Seven additional specialist skills** cover consent-aware natural voice architecture, soundscape production, speech QC, real-provider selection, bounded evolution, evaluation governance and project continuity.
+
+| Module | Verified operational capability |
+|---|---|
+| [Audio laboratory](tools/audio_lab.py) | Dependency-free 16-bit PCM WAV integrity metrics, peak normalization, fades. **Not** TTS, LUFS or true-peak measurement |
+| [Voice router](tools/voice_route.py) | Choose from *actually connected* compatible models; no backend → NOT_EXECUTED |
+| [Evolution gate](tools/evolve_gate.py) | Matched holdout comparisons with critical-safety, per-task quality, p95 latency and cost checks; **no automatic deployment** |
+| [Audio reference architecture](docs/audio-intelligence-v10.1.md) | Voice prosody, pronunciation, mixing, quality evaluation, consent and model licensing |
+| [Evolution protocol](docs/self-evolution-v10.1.md) | Observe → challenge → compare → human review → versioned improvement |
+| [Project checkpoint](docs/CONTINUITY.md) | Saved repository state, **not automatic ChatGPT Memory or model-weight updates** |
+
+```bash
+python tools/voice_route.py examples/voice-task.json examples/voice-backends.json
+python tools/evolve_gate.py examples/evolution-fixture.json
+python tools/audio_lab.py recording.wav
+python -m unittest discover -s tests -v
+```
+
+Speech naturalness still requires a real TTS engine or consented recordings plus actual listener evaluation; model weights, API subscriptions and neural self-training are **not** bundled. [Maintained Coqui TTS](https://github.com/idiap/coqui-ai-TTS), [F5-TTS](https://github.com/SWivid/F5-TTS), [VibeVoice](https://github.com/microsoft/VibeVoice) and [GEPA](https://github.com/gepa-ai/gepa) are research inputs subject to current licenses and access.
 
 ## Video Intelligence v10
 
@@ -86,7 +108,7 @@ sources and competing hypotheses when necessary, and minimize repetitive tool
 calls. For coding, inspect before editing, preserve contracts and run relevant
 tests. For creative tasks, generate genuinely distinct mechanisms, compare
 prior art, prototype and falsify weak ideas. For images, preserve identity
-and reference invariants. For videos, plan frame-accurate shots, render a
+and reference invariants. For audio check actual TTS access, voice rights and waveform quality. Use bounded self-evolution with frozen holdouts, real metrics and reviewed promotion. For videos, plan frame-accurate shots, render a
 real media file when an actual backend exists, verify it with ffprobe and
 check temporal continuity and audio separately.
 
@@ -137,7 +159,17 @@ python tools/bench_compare.py examples/paired-evaluation.json
 - [`video-temporal-consistency`](skills/video-temporal-consistency/SKILL.md)
 - [`video-timeline-engineering`](skills/video-timeline-engineering/SKILL.md)
 
-## Full skill index — 77 modules
+## Full skill index — 84 modules
+
+- [`voice-synthesis-architecture`](skills/voice-synthesis-architecture/SKILL.md)
+- [`expressive-audio-production`](skills/expressive-audio-production/SKILL.md)
+- [`speech-quality-laboratory`](skills/speech-quality-laboratory/SKILL.md)
+- [`audio-provider-routing`](skills/audio-provider-routing/SKILL.md)
+- [`self-evolution-engine`](skills/self-evolution-engine/SKILL.md)
+- [`evolution-governance`](skills/evolution-governance/SKILL.md)
+- [`continuous-learning-memory`](skills/continuous-learning-memory/SKILL.md)
+
+
 
 - [`accessibility-assurance`](skills/accessibility-assurance/SKILL.md)
 - [`action-audit-trail`](skills/action-audit-trail/SKILL.md)

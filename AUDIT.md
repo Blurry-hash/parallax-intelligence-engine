@@ -18,3 +18,6 @@
 ## Remote status
 
 The owner has explicitly authorized PARALLAX to remain **public for now**. v10 publishing must preserve that status, avoid altering other repositories, and verify the final commit and CI status.
+
+## v10.1 Audio and evolution validation
+Adds reproducible WAV metrics and normalization, fail-closed provider routing, and bounded champion/challenger quality gating. Neural natural-voice model access is not bundled. Synthetic evaluation fixtures do not establish improved model performance. Release checkpoint: `docs/CONTINUITY.md`.

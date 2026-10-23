@@ -1,0 +1,144 @@
+{
+  "baseline_revision": "synthetic-base",
+  "candidate_revision": "synthetic-next",
+  "holdout_was_used_to_tune": false,
+  "data_label": "synthetic example, not a measured model gain",
+  "cases": [
+    {
+      "id": "case-0",
+      "split": "development",
+      "domain": "writing",
+      "baseline": {
+        "quality": 0.6,
+        "latency_ms": 1000,
+        "cost_usd": 0.01,
+        "critical_failure": false
+      },
+      "candidate": {
+        "quality": 0.65,
+        "latency_ms": 1010,
+        "cost_usd": 0.01,
+        "critical_failure": false
+      }
+    },
+    {
+      "id": "case-1",
+      "split": "holdout",
+      "domain": "coding",
+      "baseline": {
+        "quality": 0.6,
+        "latency_ms": 1000,
+        "cost_usd": 0.01,
+        "critical_failure": false
+      },
+      "candidate": {
+        "quality": 0.65,
+        "latency_ms": 1010,
+        "cost_usd": 0.01,
+        "critical_failure": false
+      }
+    },
+    {
+      "id": "case-2",
+      "split": "holdout",
+      "domain": "writing",
+      "baseline": {
+        "quality": 0.6,
+        "latency_ms": 1000,
+        "cost_usd": 0.01,
+        "critical_failure": false
+      },
+      "candidate": {
+        "quality": 0.65,
+        "latency_ms": 1010,
+        "cost_usd": 0.01,
+        "critical_failure": false
+      }
+    },
+    {
+      "id": "case-3",
+      "split": "holdout",
+      "domain": "coding",
+      "baseline": {
+        "quality": 0.6,
+        "latency_ms": 1000,
+        "cost_usd": 0.01,
+        "critical_failure": false
+      },
+      "candidate": {
+        "quality": 0.65,
+        "latency_ms": 1010,
+        "cost_usd": 0.01,
+        "critical_failure": false
+      }
+    },
+    {
+      "id": "case-4",
+      "split": "holdout",
+      "domain": "writing",
+      "baseline": {
+        "quality": 0.6,
+        "latency_ms": 1000,
+        "cost_usd": 0.01,
+        "critical_failure": false
+      },
+      "candidate": {
+        "quality": 0.65,
+        "latency_ms": 1010,
+        "cost_usd": 0.01,
+        "critical_failure": false
+      }
+    },
+    {
+      "id": "case-5",
+      "split": "holdout",
+      "domain": "coding",
+      "baseline": {
+        "quality": 0.6,
+        "latency_ms": 1000,
+        "cost_usd": 0.01,
+        "critical_failure": false
+      },
+      "candidate": {
+        "quality": 0.65,
+        "latency_ms": 1010,
+        "cost_usd": 0.01,
+        "critical_failure": false
+      }
+    },
+    {
+      "id": "case-6",
+      "split": "holdout",
+      "domain": "writing",
+      "baseline": {
+        "quality": 0.6,
+        "latency_ms": 1000,
+        "cost_usd": 0.01,
+        "critical_failure": false
+      },
+      "candidate": {
+        "quality": 0.65,
+        "latency_ms": 1010,
+        "cost_usd": 0.01,
+        "critical_failure": false
+      }
+    },
+    {
+      "id": "case-7",
+      "split": "holdout",
+      "domain": "coding",
+      "baseline": {
+        "quality": 0.6,
+        "latency_ms": 1000,
+        "cost_usd": 0.01,
+        "critical_failure": false
+      },
+      "candidate": {
+        "quality": 0.65,
+        "latency_ms": 1010,
+        "cost_usd": 0.01,
+        "critical_failure": false
+      }
+    }
+  ]
+}

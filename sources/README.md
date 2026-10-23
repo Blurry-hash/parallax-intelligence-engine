@@ -23,3 +23,6 @@ Five additional repository homepages checked: OpenHands, Microsoft Playwright, M
 ## Video source interpretation
 
 Code-based editing/rendering frameworks (FFmpeg, Remotion, MoviePy, Manim, Blender) generate actual moving media from code and supplied assets. Neural models (LTX-2, Diffusers, ComfyUI workflows) require compatible model files, memory, rights and a running environment. A repository link alone provides no installed video model or automatically granted provider subscription.
+
+### v10.1 audio/self-evolution citations
+See sources.json for page-inspected reference projects including maintained Coqui, F5-TTS, VibeVoice, AudioCraft, pyannote and GEPA. A page being accessible does not verify a model checkpoint, speed/quality claim, licensing or experimental outcome.
