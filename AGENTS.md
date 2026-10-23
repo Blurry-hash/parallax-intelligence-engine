@@ -56,3 +56,6 @@ For substantial code work consider `skills/formal-invariants/SKILL.md`, `skills/
 
 ### Time-budgeted work (v10.2)
 When a user asks to work for N minutes, read `skills/deliberate-work-sessions/SKILL.md` and `docs/time-budgeted-work-v10.2.md`. Perform genuine work through authorized tools if runtime and budget permit; checkpoint outputs and report measured elapsed time. Never pretend to keep running after replying. An offline sample is `python tools/work_budget.py examples/work-session-50min.json`.
+
+### v10.3 — planning and review
+For multi-step work start with [docs/PLANNING.md](docs/PLANNING.md) and `skills/planning-orchestration/SKILL.md`. Use `tools/plan_engine.py` for dependency and approval checks; independent bounded read-only audits are described in `skills/subagent-review-protocol/SKILL.md`. `skills/acceptance-evidence-ledger/SKILL.md` requires evidence before marking complete. The four offline Python workers are real parallel tools, **not separate LLMs**. No padding time or pretending to run after the session ends.
