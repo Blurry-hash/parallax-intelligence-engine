@@ -2,7 +2,7 @@
   "task": "tts",
   "language": "sv-SE",
   "consent": "original_synthetic",
-  "use_case": "voiceover",
-  "commercial": false,
-  "streaming": false
+  "use_case": "educational_voiceover",
+  "streaming": false,
+  "commercial": false
 }

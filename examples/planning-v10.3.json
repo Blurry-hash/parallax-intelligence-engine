@@ -5,93 +5,34 @@
   "max_workers": 4,
   "tasks": [
     {
-      "id": "inspect_baseline",
-      "title": "Inspect source tree and run baseline tests",
-      "kind": "verification",
-      "depends_on": [],
-      "estimated_minutes": 15,
-      "impact": 5,
-      "risk": "low",
-      "approval_required": false,
-      "acceptance": [
-        "Record source revision and baseline test results in a timestamped log"
-      ]
+      "id": "inspect_baseline", "title": "Inspect source tree and run baseline tests", "kind": "verification",
+      "depends_on": [], "estimated_minutes": 15, "impact": 5, "risk": "low", "approval_required": false,
+      "acceptance": ["Record source revision and baseline test results in a timestamped log"]
     },
     {
-      "id": "design_plan",
-      "title": "Specify task DAG and protected invariants",
-      "kind": "design",
-      "depends_on": [
-        "inspect_baseline"
-      ],
-      "estimated_minutes": 20,
-      "impact": 5,
-      "risk": "low",
-      "approval_required": false,
-      "acceptance": [
-        "Validate all dependencies and acceptance criteria before running tasks"
-      ]
+      "id": "design_plan", "title": "Specify task DAG and protected invariants", "kind": "design",
+      "depends_on": ["inspect_baseline"], "estimated_minutes": 20, "impact": 5, "risk": "low", "approval_required": false,
+      "acceptance": ["Validate all dependencies and acceptance criteria before running tasks"]
     },
     {
-      "id": "build_engine",
-      "title": "Implement permission-bounded planning engine",
-      "kind": "implementation",
-      "depends_on": [
-        "design_plan"
-      ],
-      "estimated_minutes": 30,
-      "impact": 5,
-      "risk": "medium",
-      "approval_required": false,
-      "acceptance": [
-        "Reject cycles, unknown dependencies, nonfinite durations and unauthorized deliveries"
-      ]
+      "id": "build_engine", "title": "Implement permission-bounded planning engine", "kind": "implementation",
+      "depends_on": ["design_plan"], "estimated_minutes": 30, "impact": 5, "risk": "medium", "approval_required": false,
+      "acceptance": ["Reject cycles, unknown dependencies, nonfinite durations and unauthorized deliveries"]
     },
     {
-      "id": "test_negative",
-      "title": "Create negative regression tests and fixtures",
-      "kind": "verification",
-      "depends_on": [
-        "design_plan"
-      ],
-      "estimated_minutes": 20,
-      "impact": 5,
-      "risk": "low",
-      "approval_required": false,
-      "acceptance": [
-        "Run edge-case tests that detect invalid schedules and false evidence"
-      ]
+      "id": "test_negative", "title": "Create negative regression tests and fixtures", "kind": "verification",
+      "depends_on": ["design_plan"], "estimated_minutes": 20, "impact": 5, "risk": "low", "approval_required": false,
+      "acceptance": ["Run edge-case tests that detect invalid schedules and false evidence"]
     },
     {
-      "id": "independent_review",
-      "title": "Run four independent specialist code audits",
-      "kind": "review",
-      "depends_on": [
-        "build_engine",
-        "test_negative"
-      ],
-      "estimated_minutes": 25,
-      "impact": 5,
-      "risk": "low",
-      "approval_required": false,
-      "acceptance": [
-        "Review four separately attributed auditor results and resolve blocking findings"
-      ]
+      "id": "independent_review", "title": "Run four independent specialist code audits", "kind": "review",
+      "depends_on": ["build_engine", "test_negative"], "estimated_minutes": 25, "impact": 5, "risk": "low", "approval_required": false,
+      "acceptance": ["Review four separately attributed auditor results and resolve blocking findings"]
     },
     {
-      "id": "publish_release",
-      "title": "Publish approved changes to the correct GitHub repo",
-      "kind": "delivery",
-      "depends_on": [
-        "independent_review"
-      ],
-      "estimated_minutes": 12,
-      "impact": 4,
-      "risk": "high",
-      "approval_required": true,
-      "acceptance": [
-        "Verify commit SHA, repository visibility and green GitHub Actions before claiming release"
-      ]
+      "id": "publish_release", "title": "Publish approved changes to the correct GitHub repo", "kind": "delivery",
+      "depends_on": ["independent_review"], "estimated_minutes": 12, "impact": 4, "risk": "high", "approval_required": true,
+      "acceptance": ["Verify commit SHA, repository visibility and green GitHub Actions before claiming release"]
     }
   ]
 }

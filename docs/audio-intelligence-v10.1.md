@@ -1,22 +1,46 @@
-# Audio Intelligence v10.1
+# Audio Intelligence v10.1 — Realism is an evaluated output, not a prompt adjective
 
-## System architecture
+## Execution architecture
 
-Script + speaker consent → actual backend/license qualification → phonetic/prosody direction → authorized synthesis or recordings → PCM master → mixing → WAV/codec quality checks → blind human listening.
+```text
+Intent + speaker rights → capability/license matrix → provider selection
+        ↓                                      ↘ no provider → actual recorded speech or runnable specification
+Script → pronunciation/SSML where supported → sentence/phrase chunks
+        ↓
+Authorized synthesis or source recordings → PCM master → acoustic QA
+        ↓
+SFX/Foley + controlled room tone → mix → loudness/true-peak meter
+        ↓
+Blind listening + transcription/diarization checks → approved delivery
+```
 
-**Bundled:** offline, dependency-free 16-bit PCM WAV audio quality analysis and normalization; consent/availability-aware model routing. **Not bundled:** neural TTS weights, ASR models, voice cloning, microphones, paid APIs or a human listening panel.
+Only actual installed synthesis checkpoints or authorized API connections may generate voices. The included Python audio tool **does not synthesize speech**. Third-party model code is not downloaded or executed automatically. The sound design pipeline can support voiceover, podcasts, spatial stories, games and video post-production.
 
-### Sound and voice realism checks
-- Pronunciation, accent consistency, breaths, rhythm, micro-pauses, semantic focus, articulation, fatigue and long-form identity continuity need actual sampled output and listening. Avoid unnatural random breaths.
-- Analyze sample peak, RMS dBFS, clip ratio, DC offset and near-silence through `tools/audio_lab.py`; these are **not** LUFS, true peak or subjective realism.
-- For final delivery use suitable BS.1770/EBU R128 meters, check true-peak, room/phase artifacts, playback devices and sample-rate conversions. Check speech ASR/diarization only if genuinely connected.
-- Do not imitate an identifiable real voice without appropriate consent; distinguish source-code licenses from pretrained weight rights, e.g. F5-TTS weights CC-BY-NC.
+## Measured vs subjective
 
-### Research shortlist
-- [Maintained Coqui TTS](https://github.com/idiap/coqui-ai-TTS) — multilingual and voice adapters; check individual weights.
-- [F5-TTS](https://github.com/SWivid/F5-TTS) — flow-matching research; released weights noncommercial.
-- [Microsoft VibeVoice](https://github.com/microsoft/VibeVoice) — ASR/realtime research; the original TTS code was withdrawn.
-- [AudioCraft](https://github.com/facebookresearch/audiocraft) and [Stable Audio Tools](https://github.com/Stability-AI/stable-audio-tools) — SFX/music, requiring actual checkpoints and licensed assets.
-- [pyannote.audio](https://github.com/pyannote/pyannote-audio) — diarization, not TTS.
+- `tools/audio_lab.py`: 16-bit mono/stereo PCM WAV duration, RMS dBFS, sample peak, clip ratio, DC offset, near-silence percentage, peak normalization and edge fades. It does **not** measure LUFS, true peak, fidelity or realism.
+- For delivery loudness use FFmpeg `loudnorm` (two-pass if needed), or BS.1770 compliant analyzers, and true-peak measurement. Verify final encode separately.
+- For intelligibility, use authorized ASR to calculate WER/CER; for turn-taking use diarization timestamps if available. Inspect accents and proper nouns manually.
+- For true realism, perform blinded multiple-listener evaluations on unseen scripts with voice naturalness, timing, prosody, emotional fit, perceived artifact count and fatigue.
 
-Quick use: `python tools/audio_lab.py input.wav` or `python tools/voice_route.py examples/voice-task.json examples/voice-backends.json`. Default providers intentionally empty.
+## Shortlist and cautions
+
+- [Maintained Coqui TTS](https://github.com/idiap/coqui-ai-TTS): useful multi-model backend; verify each weight license and updated installation compatibility.
+- [F5-TTS](https://github.com/SWivid/F5-TTS): excellent research for flow-matching expressive generation. Code MIT, released weights CC-BY-NC; do not assume commercial permission.
+- [VibeVoice](https://github.com/microsoft/VibeVoice): ASR and supported realtime paths; original TTS code was removed from the official repo in response to misuse.
+- [AudioCraft](https://github.com/facebookresearch/audiocraft), [Stable Audio Tools](https://github.com/Stability-AI/stable-audio-tools): research on generated SFX/music; weights, RAM/GPU and copyrights require inspection.
+- [pyannote.audio](https://github.com/pyannote/pyannote-audio): diarization; not speech synthesis.
+
+## Consent and authenticity
+
+Never generate or clone a recognizable real speaker's voice without appropriate permission. Original synthetic voices should not be misrepresented as a real person's recording. Voice embeddings, reference audio, transcripts and personal data must be scoped, access-controlled and removed when no longer needed.
+
+## Offline commands
+
+```bash
+python tools/audio_lab.py /path/to/recording.wav
+python tools/audio_lab.py /path/to/recording.wav --out /path/to/normalized.wav --peak-dbfs -3
+python tools/voice_route.py examples/voice-task.json examples/voice-backends.json
+```
+
+The included voice backend registry intentionally starts empty; it is not a phantom service.

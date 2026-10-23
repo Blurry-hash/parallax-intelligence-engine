@@ -1,25 +1,24 @@
 ---
 name: planning-orchestration
-description: Dependency-aware task decomposition with acceptance criteria, time estimates and authorization gates.
+description: Turn open-ended objectives into a scoped dependency graph, realistic execution budget, acceptance gates and stop conditions.
 ---
 
 # Planning orchestration
 
 ## Operational procedure
 
-1. Define the user-visible outcome, protected constraints, non-goals, available tools and authority.
-2. Break the work into independently verifiable tasks. Record dependencies, estimated minutes, impact, risk and falsifiable acceptance criteria.
-3. Validate the task DAG before acting. Reject missing dependencies, cycles, unapproved high-risk actions and vague success conditions.
-4. Assign tasks to at most four *actually available* agents/workers when parallelism has genuine value. Avoid conflicting edits and duplicate research.
-5. Run implementation, independent review and acceptance checks. Compare against baseline. Do not fill unused wall time with pointless reruns.
-6. Stop when evidence satisfies requirements, permission is missing or additional work cannot improve the decision.
+1. Inspect the actual repo / task constraints, current tools and permissions. Write a one-sentence **outcome** and explicit non-goals. Do not assume time spent is equivalent to quality.
+2. Decompose into independent deliverables with unique IDs, task kind, dependencies, impact (1–5), risk, estimated minutes and *verifiable acceptance criteria*. Require explicit approval before high-risk actions or delivery/publication. If a task has no falsifiable criterion, refine it.
+3. Compile the DAG with `python tools/plan_engine.py examples/planning-v10.3.json`. The result is an **advisory** wave schedule and estimated critical path, not real execution, an actual time guarantee or permission to use external providers.
+4. Assign genuinely separable work to up to four independent, authorized workers. Avoid concurrent edits to the same files or external state. Run a review wave after synthesis, not only before implementation.
+5. Stop when evidence and tests satisfy acceptance, high risk needs approval, or further work has low expected decision value. Record what ran and measured elapsed time separately from the requested budget.
 
-**Check:** The offline planning tool reports ordered waves, a critical-path estimate and approval gates. Negative cases fail. A plan is not proof that work was executed.
+**Check:** Test missing IDs, cycles, duplicate dependencies, invalid estimates, unapproved delivery tasks and false claims of completion. Never hide these failures by inventing a successful plan.
 
 ## Source access
 
-https://github.com/microsoft/agent-framework and https://github.com/langchain-ai/langgraph — optional references, not installed services.
+Official inspirations: https://github.com/microsoft/agent-framework and https://github.com/langchain-ai/langgraph . Read actual current docs before using integrations. Their presence here installs no runtime.
 
 ## Fallback and limits
 
-If execution cannot continue beyond this turn, report actual measured work, save an authorized checkpoint and never claim an unobserved two-hour session.
+This skill cannot grant persistent runtime, additional reasoning tokens, cloud tools, model access or an exact duration. For a time request, apply `deliberate-work-sessions` and document actual elapsed and evidence.

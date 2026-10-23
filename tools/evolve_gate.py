@@ -1,59 +1,80 @@
 #!/usr/bin/env python3
-"""Conservative offline champion/challenger gate: no prompt mutation or auto-deployment."""
-import argparse,json,math
+"""Offline champion/challenger promotion gate. Never edits prompts or deploys changes.
+
+Pairs scores by task, requires distinct dev/holdout sets and representative domains;
+conservative deterministic quality, latency, cost and critical-safety gates.
+"""
+from __future__ import annotations
+import argparse
+import json
+import math
 from pathlib import Path
 
-def finite(value):
-    if isinstance(value,bool) or not isinstance(value,(float,int)) or not math.isfinite(value):
-        raise ValueError("finite metric required")
-    return float(value)
-def p95(values):
-    return sorted(values)[math.ceil(.95*len(values))-1]
-def evaluate(evidence):
-    cases=evidence.get("cases") if isinstance(evidence,dict) else None
-    if not isinstance(cases,list) or not 5<=len(cases)<=10000:
-        raise ValueError("5..10000 matched cases required")
-    if not evidence.get("baseline_revision") or not evidence.get("candidate_revision") or evidence["baseline_revision"]==evidence["candidate_revision"]:
-        raise ValueError("distinct revisions required")
-    if evidence.get("holdout_was_used_to_tune") is not False:
-        raise ValueError("holdout contamination cannot be ruled out")
-    ids=set();holdout=[];dev=[];domains=set()
+
+def _finite(x, field):
+    if not isinstance(x, (int, float)) or isinstance(x, bool) or not math.isfinite(x):
+        raise ValueError(f'{field}: finite number required')
+    return float(x)
+
+
+def _p95(values):
+    s = sorted(values)
+    return s[math.ceil(.95 * len(s)) - 1]
+
+
+def evaluate(data: dict) -> dict:
+    if not isinstance(data, dict) or not isinstance(data.get('cases'), list):
+        raise ValueError('Expected object with cases list')
+    cases = data['cases']
+    if not 5 <= len(cases) <= 10000:
+        raise ValueError('Need 5–10000 matched benchmark cases')
+    seen = set(); holdouts = []; development = []; domains = set()
     for c in cases:
-        if not isinstance(c,dict) or not isinstance(c.get("id"),str) or not c["id"] or c["id"] in ids:
-            raise ValueError("duplicate or invalid case ID")
-        ids.add(c["id"])
-        if c.get("split") not in ("development","holdout") or not c.get("domain"):
-            raise ValueError("split/domain required")
-        (holdout if c["split"]=="holdout" else dev).append(c)
-        if c["split"]=="holdout":domains.add(c["domain"])
-        for side in ("baseline","candidate"):
-            row=c.get(side)
-            if not isinstance(row,dict):raise ValueError("missing metrics")
-            for name in ("quality","latency_ms","cost_usd"):
-                val=finite(row.get(name))
-                if (name=="quality" and not 0<=val<=1) or (name!="quality" and val<0):
-                    raise ValueError("out of range metric")
-            if not isinstance(row.get("critical_failure"),bool):
-                raise ValueError("critical_failure must be a bool")
-    if len(holdout)<5 or len(domains)<2 or not dev:
-        raise ValueError("need development and >=5 holdouts across >=2 domains")
-    mean=lambda side,key:sum(c[side][key] for c in holdout)/len(holdout)
-    bq,cq=mean("baseline","quality"),mean("candidate","quality")
-    bl,cl=p95([c["baseline"]["latency_ms"] for c in holdout]),p95([c["candidate"]["latency_ms"] for c in holdout])
-    bc,cc=mean("baseline","cost_usd"),mean("candidate","cost_usd")
-    fails=[]
-    if any(c["candidate"]["critical_failure"] for c in holdout):fails.append("critical failure")
-    if any(c["baseline"]["quality"]-c["candidate"]["quality"]>.05 for c in holdout):fails.append("case quality regression")
-    if cq-bq<.02:fails.append("quality improvement below 0.02")
-    if cl>bl*1.15:fails.append("p95 latency regression")
-    if cc>bc*1.2 and cc>bc+.0001:fails.append("cost regression")
-    return {"decision":"eligible_for_human_review" if not fails else "reject",
-            "safe_to_auto_deploy":False,"failures":fails,"holdout_cases":len(holdout),
-            "holdout_domains":len(domains),"quality_gain":round(cq-bq,6),
-            "p95_ms":{"baseline":bl,"candidate":cl},
-            "note":"Input measurements have not been independently authenticated."}
-if __name__=="__main__":
-    p=argparse.ArgumentParser(description=__doc__)
-    p.add_argument("evidence",type=Path)
-    args=p.parse_args()
-    print(json.dumps(evaluate(json.loads(args.evidence.read_text())),indent=2))
+        if not isinstance(c, dict) or not isinstance(c.get('id'), str) or not c['id'].strip() or c['id'] in seen:
+            raise ValueError('Missing/duplicate task ID')
+        seen.add(c['id'])
+        if c.get('split') not in ('development', 'holdout'):
+            raise ValueError('Every case must specify development or holdout split')
+        if not isinstance(c.get('domain'), str) or not c['domain'].strip():
+            raise ValueError('Each case needs a domain')
+        if c['split'] == 'holdout':
+            holdouts.append(c); domains.add(c['domain'])
+        else: development.append(c)
+        for label in ('baseline','candidate'):
+            x = c.get(label)
+            if not isinstance(x, dict): raise ValueError(f'Missing {label} metrics')
+            for key in ('quality','latency_ms','cost_usd'):
+                val = _finite(x.get(key), key)
+                if (key=='quality' and not 0 <= val <= 1) or (key != 'quality' and val < 0):
+                    raise ValueError(f'Out-of-range {key}')
+            if not isinstance(x.get('critical_failure'), bool):
+                raise ValueError('critical_failure must be boolean')
+    if len(holdouts) < 5 or len(domains) < 2 or not development:
+        raise ValueError('Require >=5 unseen holdout cases across >=2 domains and >=1 development case')
+    if not data.get('baseline_revision') or not data.get('candidate_revision') or data['baseline_revision']==data['candidate_revision']:
+        raise ValueError('Distinct baseline and candidate revisions required')
+    if data.get('holdout_was_used_to_tune') is not False:
+        raise ValueError('Holdout contamination cannot be ruled out')
+    avg = lambda label,key:sum(float(x[label][key]) for x in holdouts)/len(holdouts)
+    bq,cq=avg('baseline','quality'),avg('candidate','quality')
+    bl,cl=_p95([x['baseline']['latency_ms'] for x in holdouts]), _p95([x['candidate']['latency_ms'] for x in holdouts])
+    bc,cc=avg('baseline','cost_usd'),avg('candidate','cost_usd')
+    score_delta=cq-bq
+    failures=[]
+    if any(x['candidate']['critical_failure'] for x in holdouts): failures.append('candidate critical failure')
+    if any(x['candidate']['quality'] < x['baseline']['quality'] - .05 for x in holdouts):
+        failures.append('protected per-task quality regression >0.05')
+    if score_delta < .02: failures.append('holdout quality gain below +0.02')
+    if cl > bl * 1.15: failures.append('p95 latency regression >15%')
+    if cc > bc * 1.20 and cc > bc + .0001: failures.append('average cost regression >20%')
+    return {'decision':'eligible_for_human_review' if not failures else 'reject',
+            'safe_to_auto_deploy':False, 'holdout_cases':len(holdouts), 'holdout_domains':len(domains),
+            'quality_gain':round(score_delta,6), 'baseline_quality':round(bq,6), 'candidate_quality':round(cq,6),
+            'p95_latency_ms':{'baseline':bl,'candidate':cl},
+            'mean_cost_usd':{'baseline':round(bc,6),'candidate':round(cc,6)},
+            'failures':failures,
+            'note':'This gate tests provided measurements; cannot certify metrics were collected honestly.'}
+
+if __name__=='__main__':
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('evidence',type=Path)
+    a=p.parse_args();print(json.dumps(evaluate(json.loads(a.evidence.read_text(encoding='utf-8'))),indent=2))
