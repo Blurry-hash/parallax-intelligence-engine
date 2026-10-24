@@ -30,6 +30,8 @@ jobs:
           python tools/complexity_guard.py tools/critical_path.py --max-score 50
           python tools/critical_path.py examples/workflow-dag.json
           python tools/perf_gate.py examples/perf-pairs.json
+      - name: Full unittest diagnostic output
+        run: python -m unittest discover -s tests -v
       - name: Check time-budgeted work ledger
         run: |
           python tools/work_budget.py examples/work-session-50min.json --output /tmp/parallax-work-ledger.json
