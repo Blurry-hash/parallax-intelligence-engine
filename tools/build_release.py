@@ -6,7 +6,7 @@ A SHA256 manifest detects accidental corruption, NOT malicious tampering by a
 party that can replace both the archive and its manifest.
 """
 from __future__ import annotations
-import argparse, hashlib, json, stat, zipfile
+import argparse, hashlib, json, re, stat, zipfile
 from pathlib import Path, PurePosixPath
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -28,7 +28,15 @@ def pack(root:Path,destination:Path)->dict:
     if not files or not (root/'README.md') in files or not (root/'MASTER_PROMPT.md') in files:
         raise ValueError('Incomplete repository: README and MASTER_PROMPT required')
     checksums={p.relative_to(root).as_posix():hashlib.sha256(p.read_bytes()).hexdigest() for p in files}
-    manifest={'release':'PARALLAX v11.1','file_count':len(files),'sha256':checksums,'hash_scope':'archive members excluding manifest; no authenticity signature'}
+    version_file=root/'VERSION'
+    if version_file.is_file():
+        version=version_file.read_text(encoding='utf-8').strip().removeprefix('v')
+    else:
+        match=re.search(r'v(\d+\.\d+(?:\.\d+)?)', (root/'README.md').read_text(encoding='utf-8'))
+        if not match:raise ValueError('Release version unavailable: add VERSION')
+        version=match.group(1)
+    if not re.fullmatch(r'\d+\.\d+(?:\.\d+)?',version):raise ValueError('Invalid release version')
+    manifest={'release':'PARALLAX v'+version,'file_count':len(files),'sha256':checksums,'hash_scope':'archive members excluding manifest; no authenticity signature'}
     manifest_bytes=(json.dumps(manifest,indent=2,sort_keys=True)+'\n').encode()
     destination.parent.mkdir(parents=True,exist_ok=True)
     with zipfile.ZipFile(destination,'w',compression=zipfile.ZIP_DEFLATED,compresslevel=9) as z:

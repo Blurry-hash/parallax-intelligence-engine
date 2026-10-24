@@ -7,6 +7,10 @@ Rates indicate task-level correctness, not general intelligence.
 from __future__ import annotations
 import argparse, json, math, statistics
 from pathlib import Path
+try:
+    from paired_stats import paired_summary
+except ModuleNotFoundError:
+    from tools.paired_stats import paired_summary
 
 def percentile(samples:list[float],q:float)->float:
     v=sorted(samples)
@@ -35,6 +39,8 @@ def compare(records:list[dict])->dict:
     c_correct=sum(r['candidate_correct'] for r in clean)
     return {
         'n_paired':n,
+        'accuracy_inference':paired_summary([float(r['baseline_correct']) for r in clean],[float(r['candidate_correct']) for r in clean]),
+        'latency_inference':paired_summary(baseline,candidate,higher_is_better=False),
         'baseline_accuracy':round(b_correct/n,5),
         'candidate_accuracy':round(c_correct/n,5),
         'accuracy_delta_pp':round(100*(c_correct-b_correct)/n,3),
@@ -45,7 +51,7 @@ def compare(records:list[dict])->dict:
         'mean_latency_ratio_candidate_to_baseline':round(statistics.mean(candidate)/statistics.mean(baseline),4),
         'candidate_only_correct':sum(r['candidate_correct'] and not r['baseline_correct'] for r in clean),
         'baseline_only_correct':sum(r['baseline_correct'] and not r['candidate_correct'] for r in clean),
-        'caution':'No uncertainty intervals or causality established; use repeated randomized, blinded holdouts before broad claims.'
+        'caution':'Intervals and sign tests are exploratory; use randomized, blinded independent holdouts before broad claims. Latency delta below zero favors candidate.'
     }
 
 if __name__=='__main__':

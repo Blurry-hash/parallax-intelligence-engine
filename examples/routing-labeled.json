@@ -1,0 +1,14 @@
+[
+ {"query":"Define API endpoint schemas and pagination compatibility", "relevant":["api-contract-engineering"]},
+ {"query":"Prevent stale cache reads and cache stampedes", "relevant":["cache-invalidation-design"]},
+ {"query":"Test screen reader accessibility and WCAG keyboard navigation", "relevant":["accessibility-assurance"]},
+ {"query":"Estimate a dependency graph critical path", "relevant":["planning-orchestration","resource-aware-scheduling"]},
+ {"query":"Preserve face identity when editing a photograph", "relevant":["image-generation"]},
+ {"query":"Check video frame rate duration and resolution", "relevant":["video-qc-telemetry"]},
+ {"query":"Investigate confounding and causal inference", "relevant":["causal-inference"]},
+ {"query":"Validate structured JSON output schema", "relevant":["structured-output-reliability"]},
+ {"query":"Measure retrieval quality in RAG search", "relevant":["retrieval-quality"]},
+ {"query":"Rollback a failed database migration transaction", "relevant":["database-reliability"]},
+ {"query":"Protect personal data with privacy by design", "relevant":["privacy-by-design"]},
+ {"query":"Find the root cause of a reproducible software crash", "relevant":["root-cause-debugging","coding-engineering"]}
+]

@@ -78,7 +78,8 @@ class EvolutionTests(unittest.TestCase):
 
     def test_eligible_not_autodeployed(self):
         result=evolve.evaluate(self.data)
-        self.assertEqual(result['decision'],'eligible_for_human_review')
+        self.assertEqual(result['decision'],'reject')
+        self.assertFalse(result['quality_inference']['sample_sufficient'])
         self.assertFalse(result['safe_to_auto_deploy'])
 
     def test_quality_regression_rejected(self):

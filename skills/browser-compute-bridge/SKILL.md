@@ -27,9 +27,3 @@ Execution claims require observed results in an actual runtime; documentation li
 [JupyterLite](https://github.com/jupyterlite/jupyterlite) · [Pyodide](https://github.com/pyodide/pyodide) · [ffmpeg.wasm](https://github.com/ffmpegwasm/ffmpeg.wasm) · [E2B](https://github.com/e2b-dev/e2b)
 
 **Check:** Only mark a step verified when actual evidence supports it; disclose unavailable tools and failed tests.
-
-## v11.0 — Three targeted extensions
-
-1. **Task-specific contract:** For **browser-compute-bridge**, freeze the task objective, known input constraints and actual available tools; avoid loading this skill when it adds no user value.
-2. **Adversarial failure probe:** Test the strongest failure case for this skill, including incompatible requirements, unavailable tools and unverified claims; record what was not executed.
-3. **Lean evidence and fallback:** Prefer a small decisive verification or truthful alternative over unnecessary tool use. Image/video rendering is optional and never required for a nonimage request.

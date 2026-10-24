@@ -70,7 +70,7 @@ class Integrity(unittest.TestCase):
         with self.assertRaises(ValueError):artifact_proof.verify(self.root,m)
 
 class Quality(unittest.TestCase):
-    def test_real_candidate_passes(self):self.assertEqual(quality_gate.assess(metric())['decision'],'PROMOTE_CANDIDATE')
+    def test_tiny_observed_sample_cannot_promote(self):self.assertEqual(quality_gate.assess(metric())['decision'],'REJECT_CANDIDATE')
     def test_fixture_not_real(self):
         m=metric();m['provenance']='fixture'
         self.assertEqual(quality_gate.assess(m)['decision'],'FIXTURE_ONLY')

@@ -25,9 +25,3 @@ Show which real model/runtime executed, recorded outcome and an objective matche
 [OpenAI Agents](https://github.com/openai/openai-agents-python) · [LangGraph](https://github.com/langchain-ai/langgraph) · [PydanticAI](https://github.com/pydantic/pydantic-ai) · [Open R1](https://github.com/huggingface/open-r1)
 
 **Check:** Only mark a step verified when actual evidence supports it; disclose unavailable tools and failed tests.
-
-## v11.0 — Three targeted extensions
-
-1. **Task-specific contract:** For **frontier-model-routing**, freeze the task objective, known input constraints and actual available tools; avoid loading this skill when it adds no user value.
-2. **Adversarial failure probe:** Test the strongest failure case for this skill, including incompatible requirements, unavailable tools and unverified claims; record what was not executed.
-3. **Lean evidence and fallback:** Prefer a small decisive verification or truthful alternative over unnecessary tool use. Image/video rendering is optional and never required for a nonimage request.

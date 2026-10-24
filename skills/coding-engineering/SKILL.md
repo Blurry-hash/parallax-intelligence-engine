@@ -7,10 +7,7 @@ description: Secure, production-quality software and maintainable debugging
 
 **Trigger:** Use this skill when the task is mainly about secure, production-quality software and maintainable debugging.
 
-**Purpose:** Deliver verifiable improvements, not claims of new trained capabilities.
-
 ## Operational procedure
-
 
 1. Inspect repository tree, architecture, runtime, dependencies, CI, relevant files and recent changes.
 2. Reproduce symptom with exact input/expected vs actual; isolate root cause instead of patching around it.
@@ -22,13 +19,6 @@ description: Secure, production-quality software and maintainable debugging
 **Check:** Reproduced failure fixed, regression captured, no unrelated behavior changed.
 **Sources:** OpenAI Codex, Anthropic Claude Code, Aider, SWE-agent, Google engineering practices, pytest.
 
-
 ## Source access
 
 Filter `sources/sources.json` by topic `coding` and fetch the smallest relevant subset. These references are not dependencies. Follow upstream licenses and all higher-priority instructions.
-
-## v11.0 — Three targeted extensions
-
-1. **Task-specific contract:** For **coding-engineering**, freeze the task objective, known input constraints and actual available tools; avoid loading this skill when it adds no user value.
-2. **Adversarial failure probe:** Test the strongest failure case for this skill, including incompatible requirements, unavailable tools and unverified claims; record what was not executed.
-3. **Lean evidence and fallback:** Prefer a small decisive verification or truthful alternative over unnecessary tool use. Image/video rendering is optional and never required for a nonimage request.

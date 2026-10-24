@@ -9,6 +9,10 @@ PATTERNS={
  'private_key_header': re.compile(r'-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----'),
  'github_classic_token':re.compile(r'\bghp_[A-Za-z0-9]{36}\b'),
  'github_fine_grained_token':re.compile(r'\bgithub_pat_[A-Za-z0-9_]{20,}\b'),
+ 'anthropic_token': re.compile(r'\bsk-ant-[A-Za-z0-9_-]{20,}\b'),
+ 'openai_project_token': re.compile(r'\bsk-(?:proj-|svcacct-)?[A-Za-z0-9_-]{32,}\b'),
+ 'slack_token': re.compile(r'\bxox[baprs]-[A-Za-z0-9-]{20,}\b'),
+ 'stripe_secret': re.compile(r'\b(?:sk|rk)_(?:live|test)_[A-Za-z0-9]{16,}\b'),
  'aws_access_key':re.compile(r'\b(?:AKIA|ASIA)[A-Z0-9]{16}\b'),
 }
 EXCLUDE={'.git','node_modules','.venv','__pycache__'}
@@ -18,7 +22,7 @@ def inspect(root:Path)->dict:
     issues=[];checked=0
     for p in sorted(root.rglob('*')):
         if not p.is_file() or set(p.relative_to(root).parts)&EXCLUDE or p.is_symlink() or p.stat().st_size>2_000_000:continue
-        if p.suffix.lower() not in {'.py','.md','.txt','.json','.yaml','.yml','.toml','.env','.ps1','.js','.ts'}:continue
+        if not p.name.startswith('.env') and p.suffix.lower() not in {'.py','.md','.txt','.json','.yaml','.yml','.toml','.env','.ps1','.js','.ts'}:continue
         checked+=1
         try:s=p.read_text(encoding='utf-8')
         except UnicodeError:continue

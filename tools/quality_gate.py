@@ -6,6 +6,10 @@ Rejects improvements based only on an aggregate average or absent holdouts.
 from __future__ import annotations
 import argparse, json, math
 from pathlib import Path
+try:
+    from paired_stats import paired_summary
+except ModuleNotFoundError:
+    from tools.paired_stats import paired_summary
 
 
 def assess(data:dict)->dict:
@@ -34,10 +38,12 @@ def assess(data:dict)->dict:
     change=round((totals[1]-totals[0])/len(cases),8)
     holdout_changes=[r['candidate']-r['baseline'] for r in cases if r['split']=='holdout']
     if min(holdout_changes)<-1e-9:bad += [r['name'] for r in cases if r['split']=='holdout' and r['candidate']<r['baseline']-1e-9]
-    safe=not bad and change>=threshold
+    holdouts=[r for r in cases if r['split']=='holdout']
+    inference=paired_summary([r['baseline'] for r in holdouts],[r['candidate'] for r in holdouts])
+    safe=not bad and change>=threshold and inference['improvement_supported'] and inference['mean_delta_bootstrap_ci'][0]>=threshold
     return {'decision':'PROMOTE_CANDIDATE' if safe and data['provenance']=='observed' else ('FIXTURE_ONLY' if data['provenance']=='fixture' else 'REJECT_CANDIDATE'),
             'candidate_passes_numeric_gates':safe,'regressed_cases':sorted(set(bad)),
-            'mean_gain':change,'holdout_count':holdout,
+            'mean_gain':change,'holdout_count':holdout,'holdout_inference':inference,
             'note':'Numeric checks do not establish data independence, experimental validity, statistical significance or authorization to deploy.'}
 
 def main():

@@ -55,7 +55,9 @@ class LogicToolsTests(unittest.TestCase):
 
     def test_perf_fixture(self):
         out=self.perf.compare(json.loads((ROOT/'examples/perf-pairs.json').read_text()))
-        self.assertTrue(out['accepted'])
+        self.assertFalse(out['accepted'])
+        self.assertTrue(out['numeric_gates_pass'])
+        self.assertFalse(out['latency_inference']['sample_sufficient'])
         self.assertEqual(out['sample_count'],5)
 
     def test_correctness_regression_reject(self):

@@ -24,9 +24,3 @@ description: Reference-grounded image reasoning, generation, editing and composi
 ## Source access
 
 Official OpenAI ImageGen references: https://github.com/openai/codex/blob/main/codex-rs/skills/src/assets/samples/imagegen/references/prompting.md. Other optional references: https://github.com/Comfy-Org/ComfyUI, https://github.com/lllyasviel/ControlNet, https://github.com/facebookresearch/sam2, https://github.com/tencent-ailab/IP-Adapter. Use only checked, compatible code and honor source license.
-
-## v11.0 — Three targeted extensions
-
-1. **Task-specific contract:** Freeze intended output type, reference roles and original locked subject properties; image rendering is not an automatic prerequisite.
-2. **Adversarial failure probe:** Inspect reference drift, optical/material inconsistency and added objects; never claim pixel-exact restoration from an uncontrolled generative edit.
-3. **Lean evidence and fallback:** If an actual output exists, inspect it. Otherwise provide the minimal verifiable plan, supported backend options and unperformed-check limitations.

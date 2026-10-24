@@ -4,6 +4,10 @@ import argparse
 import json
 import math
 from pathlib import Path
+try:
+    from dag import valid_id, topological_layers
+except ModuleNotFoundError:
+    from tools.dag import valid_id, topological_layers
 
 
 def schedule(data: dict) -> dict:
@@ -12,7 +16,7 @@ def schedule(data: dict) -> dict:
         raise ValueError('tasks must be a nonempty list')
     nodes: dict[str, dict] = {}
     for t in tasks:
-        if not isinstance(t, dict) or not isinstance(t.get('id'), str) or not t['id'].strip():
+        if not isinstance(t, dict) or not valid_id(t.get('id')):
             raise ValueError('each task needs a unique nonempty string id')
         tid = t['id']
         d, deps = t.get('duration'), t.get('depends_on', [])
@@ -28,22 +32,10 @@ def schedule(data: dict) -> dict:
         for dep in v['deps']:
             if dep not in nodes: raise ValueError(f'{tid}: unknown dependency {dep}')
     successors = {key: [] for key in nodes}
-    incoming = {key: len(v['deps']) for key, v in nodes.items()}
     for tid, v in nodes.items():
         for dep in v['deps']: successors[dep].append(tid)
-    frontier = sorted([tid for tid, n in incoming.items() if n == 0])
-    layers, order = [], []
-    while frontier:
-        layers.append(frontier)
-        order.extend(frontier)
-        following = []
-        for dep in frontier:
-            for tid in successors[dep]:
-                incoming[tid] -= 1
-                if incoming[tid] == 0: following.append(tid)
-        frontier = sorted(following)
-    if len(order) != len(nodes):
-        raise ValueError('dependency cycle detected')
+    layers=topological_layers({i:v['deps'] for i,v in nodes.items()})
+    order=[i for layer in layers for i in layer]
     early_start, early_finish = {}, {}
     for tid in order:
         early_start[tid] = max((early_finish[d] for d in nodes[tid]['deps']), default=0.0)

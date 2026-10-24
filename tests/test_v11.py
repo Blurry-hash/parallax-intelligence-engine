@@ -11,11 +11,13 @@ class V11Tests(unittest.TestCase):
         rows=json.loads((ROOT/'catalog/150-capability-contracts.json').read_text(encoding='utf-8'))['capabilities']
         self.assertEqual(len(rows),150);self.assertEqual(len(set(x['slug'] for x in rows)),150)
         self.assertTrue(all((ROOT/x['integration_target']).exists() and x['status']=='documented-protocol' for x in rows))
-    def test_130_skill_extensions(self):
-        paths=list((ROOT/'skills').glob('*/SKILL.md'));self.assertEqual(len(paths),147)
-        applied=[p for p in paths if '## v11.0 — Three targeted extensions' in p.read_text(encoding='utf-8')]
-        self.assertEqual(len(applied),130)
-        self.assertTrue(all('3. **Lean evidence and fallback:**' in p.read_text(encoding='utf-8') for p in applied))
+    def test_skills_have_domain_procedures_without_extension_padding(self):
+        paths=list((ROOT/'skills').glob('*/SKILL.md'))
+        self.assertGreaterEqual(len(paths),147)
+        for path in paths:
+            text=path.read_text(encoding='utf-8')
+            self.assertNotIn('## v11.0 — Three targeted extensions',text)
+            self.assertIn('## Operational procedure',text)
     def test_no_render_for_text(self):
         obj=json.loads((ROOT/'examples/image-intent-v11.json').read_text(encoding='utf-8'));self.assertFalse(image.validate(obj)['render_required'])
         obj['render_required']=True

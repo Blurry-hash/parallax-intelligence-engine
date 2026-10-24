@@ -34,4 +34,4 @@ def check_contract(c:dict)->list[str]:
     return errors
 
 if __name__=='__main__':
- p=argparse.ArgumentParser();p.add_argument('contract',type=Path);a=p.parse_args();errors=check_contract(json.loads(a.contract.read_text()));print(json.dumps({'ok':not errors,'errors':errors},indent=2));raise SystemExit(1 if errors else 0)
+ p=argparse.ArgumentParser();p.add_argument('contract',type=Path);a=p.parse_args();errors=check_contract(json.loads(a.contract.read_text(encoding='utf-8')));print(json.dumps({'ok':not errors,'errors':errors},indent=2));raise SystemExit(1 if errors else 0)

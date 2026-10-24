@@ -18,6 +18,11 @@ import subprocess
 import tempfile
 from pathlib import Path
 
+try:
+    from video_qc import assess, probe_file
+except ModuleNotFoundError:  # importlib-based repository tests
+    from tools.video_qc import assess, probe_file
+
 HEX_COLOR = re.compile(r"^#[0-9A-Fa-f]{6}$")
 
 
@@ -120,18 +125,20 @@ def render(input_path: Path, output: Path, font: Path | None = None) -> dict:
     with tempfile.TemporaryDirectory(prefix="parallax_video_") as tmp:
         cmd = ffmpeg_command(data, Path(tmp), output, font)
         subprocess.run(cmd, check=True, capture_output=True, text=True)
-    probe = subprocess.run([
-        require_program("ffprobe"), "-v", "error", "-show_entries",
-        "format=duration:stream=codec_name,codec_type,width,height,r_frame_rate,nb_frames",
-        "-of", "json", str(output)
-    ], check=True, capture_output=True, text=True)
-    metadata = json.loads(probe.stdout)
-    video = next((stream for stream in metadata.get("streams", []) if stream.get("codec_type") == "video"), None)
-    if video is None or video.get("width") != data["width"] or video.get("height") != data["height"]:
-        raise RuntimeError("Output video metadata did not match storyboard")
+    metadata = probe_file(output)
+    expected_duration = sum(round(float(scene['seconds']) * data['fps']) for scene in data['scenes']) / data['fps']
+    qc = assess(metadata, {'width': data['width'], 'height': data['height'],
+                          'fps': data['fps'], 'duration_seconds': expected_duration,
+                          'duration_tolerance': 1 / data['fps'], 'codec_name': 'h264', 'has_audio': False})
+    if qc['status'] != 'pass':
+        raise RuntimeError('Output video failed QC: ' + '; '.join(qc['failures']))
     if output.stat().st_size < 1024:
         raise RuntimeError("Output video unexpectedly empty")
-    return {"file": str(output), "bytes": output.stat().st_size, "duration": metadata.get("format", {}).get("duration"), "video": video}
+    video = next(stream for stream in metadata['streams'] if stream.get('codec_type') == 'video')
+    return {"file": str(output), "bytes": output.stat().st_size,
+            "duration": qc['observed']['duration_seconds'], "fps": qc['observed']['fps'],
+            "video": video, "qc": qc}
+
 
 
 def main() -> None:

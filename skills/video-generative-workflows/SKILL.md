@@ -29,9 +29,3 @@ Consult ComfyUI, LTX-2, Diffusers and verified first-party model repositories fr
 ## V10 model and continuity route
 
 Favor live official model guidance for Lightricks/LTX-2 and current vendor-backed video backends, not copied legacy commands. Qualify license, GPU VRAM, checkpoint, version and real execution permissions, then prototype a short conditioned scene. Validate editability, cross-shot continuity and cost separately from `tools/video_qc.py` output; ffprobe cannot establish physically plausible motion or visual fidelity. If no backend is accessible, provide the executable code-first pipeline as a distinct, lower-fidelity alternative.
-
-## v11.0 — Three targeted extensions
-
-1. **Task-specific contract:** For **video-generative-workflows**, freeze frame continuity, timing and actual media formats; avoid loading this skill when it adds no user value.
-2. **Adversarial failure probe:** Test the strongest failure case for this skill, including incompatible requirements, unavailable tools and unverified claims; record what was not executed.
-3. **Lean evidence and fallback:** Prefer a small decisive verification or truthful alternative over unnecessary tool use. Image/video rendering is optional and never required for a nonimage request.

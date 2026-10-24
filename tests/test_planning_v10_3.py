@@ -1,6 +1,7 @@
 """Adversarial and positive tests for bounded planning, evidence and workers."""
 from __future__ import annotations
 import copy
+import hashlib
 import json
 import sys
 import unittest
@@ -23,7 +24,7 @@ def modify(fn):
 
 def valid_ledger(data=BASE):
     digest = plan_engine.compile_plan(data)['plan_sha256']
-    return {'plan_sha256':digest,'tasks':[{'id':t['id'],'state':'verified','evidence':['Test result file passed 2026-10-23'],'approved':t['approval_required']} for t in data['tasks']]}
+    return {'plan_sha256':digest,'tasks':[{'id':t['id'],'state':'verified','evidence':[{'path':str(Path(__file__)), 'sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(), 'kind':'test_report', 'outcome':'pass'}],'approved':t['approval_required']} for t in data['tasks']]}
 
 
 class PlanningTests(unittest.TestCase):

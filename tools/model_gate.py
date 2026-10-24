@@ -37,6 +37,6 @@ def choose(registry:dict,request:dict)->dict:
 
 def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('registry',type=Path);p.add_argument('request',type=Path);a=p.parse_args()
-    try: print(json.dumps(choose(json.loads(a.registry.read_text()),json.loads(a.request.read_text())),indent=2))
+    try: print(json.dumps(choose(json.loads(a.registry.read_text(encoding='utf-8')),json.loads(a.request.read_text(encoding='utf-8'))),indent=2))
     except (ValueError,OSError) as e:p.error(str(e))
 if __name__=='__main__':main()

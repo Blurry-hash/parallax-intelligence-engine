@@ -29,10 +29,23 @@ def audit_ledger(plan, ledger):
         if not isinstance(item['state'], str) or item['state'] not in STATES or type(item['approved']) is not bool:
             raise ValueError('invalid ledger state or approval')
         evidence = item['evidence']
-        if not isinstance(evidence, list) or any(not isinstance(e, str) or len(e.strip()) < 12 or len(e) > 500 for e in evidence):
-            raise ValueError('invalid evidence entry')
+        if not isinstance(evidence, list):
+            raise ValueError('invalid evidence list')
         if item['state'] == 'verified' and not evidence:
             raise ValueError('cannot verify without evidence')
+        for entry in evidence:
+            if not isinstance(entry, dict) or set(entry) != {'path', 'sha256', 'kind', 'outcome'}:
+                raise ValueError('evidence requires path, sha256, kind, outcome')
+            if entry['kind'] not in {'test_report', 'artifact', 'review_report'} or entry['outcome'] != 'pass':
+                raise ValueError('evidence must identify a passing report or artifact')
+            if not isinstance(entry['path'], str) or not entry['path']:
+                raise ValueError('invalid evidence path')
+            path = Path(entry['path'])
+            if path.is_symlink() or not path.is_file():
+                raise ValueError('evidence file unavailable or symlink')
+            digest = hashlib.sha256(path.read_bytes()).hexdigest()
+            if entry['sha256'] != digest:
+                raise ValueError('evidence content hash mismatch')
         found[ident] = item
     task_map = {item['id']: item for item in plan['tasks']}
     for ident, record in found.items():
@@ -46,7 +59,7 @@ def audit_ledger(plan, ledger):
         'verified': sorted(i for i, v in found.items() if v['state'] == 'verified'),
         'blocked': sorted(i for i, v in found.items() if v['state'] == 'blocked'),
         'complete': all(item['state'] == 'verified' for item in found.values()),
-        'note': 'Self-reported evidence is a trace, not independently authenticated proof. Review evidence before deployment.'
+        'note': 'Artifact bytes and hashes checked; report truth, authorship and semantic acceptance still require independent review.'
     }
 
 

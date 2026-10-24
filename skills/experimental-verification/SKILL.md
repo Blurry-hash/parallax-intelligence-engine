@@ -22,9 +22,3 @@ No runner: route via browser-compute-bridge, otherwise report test blocked. Conf
 Reproducible procedures and recorded measurements exist for each claimed improvement; no imagined outputs.
 
 **Check:** Only mark a step verified when actual evidence supports it; disclose unavailable tools and failed tests.
-
-## v11.0 — Three targeted extensions
-
-1. **Task-specific contract:** For **experimental-verification**, freeze the task objective, known input constraints and actual available tools; avoid loading this skill when it adds no user value.
-2. **Adversarial failure probe:** Test the strongest failure case for this skill, including incompatible requirements, unavailable tools and unverified claims; record what was not executed.
-3. **Lean evidence and fallback:** Prefer a small decisive verification or truthful alternative over unnecessary tool use. Image/video rendering is optional and never required for a nonimage request.

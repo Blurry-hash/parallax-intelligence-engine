@@ -77,3 +77,15 @@ Read only the most relevant current section and linked `SKILL.md` files. Verify 
 - Source inspiration: Self-Refine, Reflexion, GEPA and the TACL critical review of self-correction; these are linked references, not installed model backends.
 - All scoring fixtures are synthetic and cannot demonstrate actual AI accuracy improvement. Controllers only grade user-supplied evidence; no automatic deployment, background prompting, model calls or permanent memory.
 - Protected: public repository visibility preserved; Professor Omnis off by default; no changes to Discord-bot or other repositories. Verify remote CI on the published SHA independently.
+
+## 2026-10-25 — Generation 2
+
+Baseline: `63c44d806e6447f0646b198306de665949f765cb` (historical v11.3). `VERSION` now names 2.0.0; this numbering reset preserves the Git lineage. README describes use rather than a request-by-request changelog.
+
+The corpus contains 153 skills. Debate, timestamped video understanding, editorial style, search discoverability, personal-footprint privacy and real adaptive agent orchestration have explicit domain procedures and negative cases. Uploaded video ideas are attributed to sampled visual/subtitle review, not falsely described as complete audiovisual ingestion. No user media is committed.
+
+Local changes share BM25 retrieval, paired inference and DAG validation. Evidence receipts bind real artifact bytes; their semantic truth still needs review. Media preparation extracts real frames/audio but does not transcribe, hear or semantically assess them. The minimal MCP stdio adapter is tested at protocol level, not certified in every host. All-skill golden specs are evaluation specifications requiring domain review; no external model A/B or ablation results are fabricated.
+
+Validation before publication: 239 local tests passed, FFmpeg render/QC passed (640×360, 24 fps, 4.25 seconds), and a real uploaded 25.8-second clip yielded three sampled frames and PCM audio. Local secret-pattern scan found no candidates. Remote CI/Gitleaks status must be verified against the published commit separately.
+
+Current visibility was public at inspection. No visibility change performed. Private-source distribution guidance uses reviewed uploads/authenticated clients; public mirrors cannot provide confidentiality. External provider spend and outgoing messages remain unauthorized.

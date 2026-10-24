@@ -82,7 +82,7 @@ class SkillTests(unittest.TestCase):
     def test_all_new_skills_are_self_contained(self):
         for key in ('capability-contract','interface-design','database-reliability','skill-supply-chain'):
             body=(ROOT/'skills'/key/'SKILL.md').read_text()
-            self.assertIn('## Activation',body)
+            self.assertIn('description:',body)  # Trigger comes from unique frontmatter, not generic padding.
             self.assertIn('## Operational procedure',body)
             self.assertIn('## Failure handling',body)
             self.assertIn('**Check:**',body)

@@ -37,4 +37,4 @@ def route(task: dict, installed: list[dict]) -> dict:
 
 if __name__=='__main__':
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('task',type=Path);p.add_argument('backends',type=Path)
-    a=p.parse_args();print(json.dumps(route(json.loads(a.task.read_text()),json.loads(a.backends.read_text())),indent=2))
+    a=p.parse_args();print(json.dumps(route(json.loads(a.task.read_text(encoding='utf-8')),json.loads(a.backends.read_text(encoding='utf-8'))),indent=2))

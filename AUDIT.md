@@ -66,3 +66,14 @@ C) GitHub: inspect exact pushed commit SHA and Actions job conclusions. Do not m
 - Registry count: 157 source records. Read-only JSON pages contain all names and source metadata; 118 visible HTML directory rows were only a partial response.
 - User-triggered GitHub Actions runner has a closed list of suites, no credential persistence, no arbitrary GET execution and read-only repository permissions.
 - Recheck CI at the published SHA. No independent GitHub commit signature or repository LICENSE asserted.
+
+## Generation 2 verification notes
+
+- Structured evidence replaces arbitrary long strings; hash/file checks establish byte binding, not correctness/authorship.
+- Shared statistical policy: 20 independent pairs minimum, paired bootstrap interval and exact sign test. This floor is not a power calculation; multiple-comparison adjustment and independent measurements remain necessary.
+- Shared dependency/ID checks cover all four planning paths. DAG advice remains estimated scheduling rather than measured runtime.
+- Every installed skill is eligible for BM25 retrieval. The 12-query routing fixture is development data, not evidence of broad model benefit; after the expanded corpus it reports recall@3 0.9583 and precision@3 0.3611.
+- Exact duplicated/empty procedures fail validation; repeated/low-uniqueness text is exposed for editorial review. A lexical content score cannot certify domain expertise.
+- Removed common boilerplate rather than merely changing wording. Domain source corrections are reference pointers; not every added URL was independently fetched during this revision.
+- Unit/integration results: 239 passing local tests, real FFmpeg render/QC and local frame/audio preparation. No full audio transcription of the user clips, paid LLM evaluation, hosted MCP deployment or all-skill model ablation was performed.
+- Gitleaks is configured for remote CI with redacted history scanning; do not describe its remote outcome as passed until the workflow completes on the exact commit.

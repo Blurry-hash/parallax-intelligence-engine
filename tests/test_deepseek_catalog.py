@@ -15,7 +15,7 @@ class DeepSeekCatalogTest(unittest.TestCase):
     def test_live_catalog_exact(self):
         saved=c.run(ROOT,check=True)
         ix=json.loads(saved['index.json'])
-        self.assertEqual(ix['counts'],{'skills':147,'sources':157})
+        self.assertEqual(ix['counts'],{'skills':len(list((ROOT/'skills').glob('*/SKILL.md'))),'sources':157})
         self.assertEqual(len(ix['pages']['skills']),13)
         self.assertEqual(len(ix['pages']['sources']),20)
         self.assertTrue(all(len(v)<5500 for v in saved.values()))

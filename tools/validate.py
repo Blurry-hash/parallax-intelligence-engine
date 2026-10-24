@@ -18,6 +18,36 @@ URL_HOSTS = {"github.com", "huggingface.co", "projects.blender.org", "ffmpeg.org
 LINK_PATTERN = re.compile(r"(?<!!)\[[^\]]+\]\(([^)]+)\)")
 
 
+def skill_content_audit(root: Path, min_unique_lines: int = 4) -> dict:
+    """Detect shared padding and exact duplicate procedures without judging truth.
+
+    Uniqueness is measured across the installed corpus after headings, frontmatter
+    and short lines are removed. Warnings invite editorial review, not deletion:
+    safety rules may legitimately repeat. Exact duplicated procedures are errors.
+    """
+    from collections import Counter, defaultdict
+    files=sorted((root/'skills').glob('*/SKILL.md')); rows={}; procedures=defaultdict(list); empty=[]
+    for path in files:
+        body=path.read_text(encoding='utf-8')
+        content=body.split('---',2)[-1] if body.startswith('---') else body
+        lines=[re.sub(r'^\s*(?:\d+[.)]|[-*])\s*','',line.strip()).casefold() for line in content.splitlines() if len(line.strip())>=40 and not line.lstrip().startswith('#')]
+        rows[path.parent.name]=lines
+        match=re.search(r'## Operational procedure\s*(.*?)(?=\n## |\Z)',content,re.S)
+        procedure=re.sub(r'\s+',' ',match.group(1)).strip() if match else ''
+        if procedure: procedures[procedure].append(path.parent.name)
+        else: empty.append(path.parent.name)
+    frequency=Counter(line for lines in rows.values() for line in set(lines))
+    total=sum(map(len,rows.values()));shared=sum(frequency[line]>=5 for lines in rows.values() for line in lines)
+    warnings=[]
+    for name,lines in rows.items():
+        unique=sum(frequency[line]==1 for line in set(lines))
+        if unique<min_unique_lines: warnings.append(f'{name}: {unique} unique substantial lines; editorial review recommended (target {min_unique_lines})')
+    duplicates=[names for names in procedures.values() if len(names)>1]
+    return {'skill_count':len(files),'substantial_lines':total,'shared_in_5_or_more':shared,
+            'shared_fraction':round(shared/total,4) if total else 0,'warnings':warnings,
+            'duplicate_procedures':duplicates,'empty_procedures':empty,'limitations':'Content diversity does not establish correctness or usefulness.'}
+
+
 def validate(root: Path | None = None) -> tuple[list[str], int, int]:
     root = Path(root) if root is not None else ROOT
     errors: list[str] = []
@@ -90,13 +120,26 @@ def validate(root: Path | None = None) -> tuple[list[str], int, int]:
         text = readme.read_text(encoding="utf-8")
         if f"{len(entries)} linked references" not in text:
             errors.append("README source count does not match registry")
+        catalog=root/'docs'/'SKILL-CATALOG.md'
+        catalog_text=catalog.read_text(encoding='utf-8') if catalog.is_file() else ''
         for path in skill_files:
-            if f"`{path.parent.name}`" not in text:
+            if f"`{path.parent.name}`" not in text+catalog_text:
                 errors.append(f"README missing skill {path.parent.name}")
+    audit=skill_content_audit(root)
+    for name in audit['empty_procedures']:
+        errors.append('Empty operational procedure: '+name)
+    for names in audit['duplicate_procedures']:
+        errors.append('Duplicate operational procedures: '+', '.join(names))
     return errors, len(entries), len(skill_files)
 
 
 if __name__ == "__main__":
+    import argparse
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--content-report',action='store_true',help='Emit duplicate/padding diagnostics as JSON')
+    args=parser.parse_args()
+    if args.content_report:
+        print(json.dumps(skill_content_audit(ROOT),indent=2));raise SystemExit(0)
     errors, n_sources, n_skills = validate()
     if errors:
         for error in errors:

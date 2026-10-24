@@ -9,12 +9,14 @@ import argparse
 import hashlib
 import json
 import math
-import re
 from pathlib import Path
+try:
+    from dag import ID_RE, topological_layers
+except ModuleNotFoundError:
+    from tools.dag import ID_RE, topological_layers
 
 KINDS = frozenset({'research', 'design', 'implementation', 'verification', 'review', 'delivery'})
 RISKS = frozenset({'low', 'medium', 'high'})
-ID_RE = re.compile(r'^[a-z][a-z0-9_-]{0,47}$')
 MAX_TASKS = 80
 
 
@@ -84,6 +86,11 @@ def validate_plan(data: dict):
                 raise PlanError(f'{ident}: unknown dependency {dep}')
             if dep == ident:
                 raise PlanError(f'{ident}: self dependency')
+
+    try:
+        topological_layers({i:t['depends_on'] for i,t in by_id.items()})
+    except ValueError as exc:
+        raise PlanError(str(exc)) from exc
 
     # Deterministic topological sorting with explicit bounded worker waves.
     remaining = set(by_id)

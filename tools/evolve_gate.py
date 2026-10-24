@@ -9,6 +9,10 @@ import argparse
 import json
 import math
 from pathlib import Path
+try:
+    from paired_stats import paired_summary
+except ModuleNotFoundError:
+    from tools.paired_stats import paired_summary
 
 
 def _finite(x, field):
@@ -60,7 +64,10 @@ def evaluate(data: dict) -> dict:
     bl,cl=_p95([x['baseline']['latency_ms'] for x in holdouts]), _p95([x['candidate']['latency_ms'] for x in holdouts])
     bc,cc=avg('baseline','cost_usd'),avg('candidate','cost_usd')
     score_delta=cq-bq
+    inference=paired_summary([x['baseline']['quality'] for x in holdouts],[x['candidate']['quality'] for x in holdouts])
     failures=[]
+    if not inference['improvement_supported'] or inference['mean_delta_bootstrap_ci'][0]<.02:
+        failures.append('insufficient paired holdout evidence for +0.02 quality improvement')
     if any(x['candidate']['critical_failure'] for x in holdouts): failures.append('candidate critical failure')
     if any(x['candidate']['quality'] < x['baseline']['quality'] - .05 for x in holdouts):
         failures.append('protected per-task quality regression >0.05')
@@ -69,7 +76,7 @@ def evaluate(data: dict) -> dict:
     if cc > bc * 1.20 and cc > bc + .0001: failures.append('average cost regression >20%')
     return {'decision':'eligible_for_human_review' if not failures else 'reject',
             'safe_to_auto_deploy':False, 'holdout_cases':len(holdouts), 'holdout_domains':len(domains),
-            'quality_gain':round(score_delta,6), 'baseline_quality':round(bq,6), 'candidate_quality':round(cq,6),
+            'quality_inference':inference, 'quality_gain':round(score_delta,6), 'baseline_quality':round(bq,6), 'candidate_quality':round(cq,6),
             'p95_latency_ms':{'baseline':bl,'candidate':cl},
             'mean_cost_usd':{'baseline':round(bc,6),'candidate':round(cc,6)},
             'failures':failures,

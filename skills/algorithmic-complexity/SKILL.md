@@ -7,28 +7,14 @@ description: Algorithm selection and complexity bounds; use for choosing scalabl
 
 **Trigger:** Choosing scalable data structures and algorithms.
 
-**Goal:** Make a concrete, reviewable improvement without inventing new model capabilities.
-
 ## Operational procedure
 
-1. Establish the workload, correctness contract, resource budget, accessible tooling and protected requirements.
-2. Measure input cardinality/distribution and choose a complexity target; compare worst-case and amortized bounds.
-3. Prototype a baseline and a candidate on adversarial, skewed and representative inputs; include memory, not just runtime.
-4. Reject attractive asymptotics if constants, I/O patterns or correctness violate real workloads.
-5. Record measured results, counterexamples and rollback steps; compare with baseline and avoid introducing unnecessary dependencies.
+1. Measure input cardinality/distribution and choose a complexity target; compare worst-case and amortized bounds.
+2. Prototype a baseline and a candidate on adversarial, skewed and representative inputs; include memory, not just runtime.
+3. Reject attractive asymptotics if constants, I/O patterns or correctness violate real workloads.
 
 **Check:** Proof sketch + measured scaling with a workload record and counterexample.
 
 ## Source access
 
 Relevant upstream reference: https://github.com/TheAlgorithms/Python. Consult current documentation and its license before adopting code. A repository link is a pointer, not installed software or proof of a performance claim. Do not run untrusted scripts automatically.
-
-## Fallback and limits
-
-If no executor is available, provide an executable test plan or patch and label it NOT EXECUTED. Never pretend to have measured speed, quality, security or correctness without running the relevant checks.
-
-## v11.0 — Three targeted extensions
-
-1. **Task-specific contract:** For **algorithmic-complexity**, freeze the task objective, known input constraints and actual available tools; avoid loading this skill when it adds no user value.
-2. **Adversarial failure probe:** Test the strongest failure case for this skill, including incompatible requirements, unavailable tools and unverified claims; record what was not executed.
-3. **Lean evidence and fallback:** Prefer a small decisive verification or truthful alternative over unnecessary tool use. Image/video rendering is optional and never required for a nonimage request.
