@@ -62,7 +62,7 @@ jobs:
           from pathlib import Path
           p=Path('bridge/v1')
           ix=json.loads((p/'index.json').read_text())
-          assert ix['counts']=={'skills':142,'sources':157}
+          assert ix['counts']=={'skills':147,'sources':157}
           for kind, ground in [('skills', sorted(x.parent.name for x in Path('skills').glob('*/SKILL.md'))),('sources', json.loads(Path('sources/sources.json').read_text())['sources'])]:
               rows=[];offset=0
               for n in ix['pages'][kind]:
@@ -72,7 +72,7 @@ jobs:
               assert len(rows)==ix['counts'][kind]
               if kind=='skills':assert rows==ground and len(set(rows))==len(rows)
               else:assert [(r['name'],r['url']) for r in rows]==[(r['name'],r['url']) for r in ground]
-          print('PASS: all 142 skills and 157 sources present in small GET pages')
+          print('PASS: all 147 skills and 157 sources present in small GET pages')
           PY
       - name: Check deterministic DeepSeek catalog
         run: |

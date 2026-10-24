@@ -12,7 +12,7 @@ class V11Tests(unittest.TestCase):
         self.assertEqual(len(rows),150);self.assertEqual(len(set(x['slug'] for x in rows)),150)
         self.assertTrue(all((ROOT/x['integration_target']).exists() and x['status']=='documented-protocol' for x in rows))
     def test_130_skill_extensions(self):
-        paths=list((ROOT/'skills').glob('*/SKILL.md'));self.assertEqual(len(paths),142)
+        paths=list((ROOT/'skills').glob('*/SKILL.md'));self.assertEqual(len(paths),147)
         applied=[p for p in paths if '## v11.0 — Three targeted extensions' in p.read_text(encoding='utf-8')]
         self.assertEqual(len(applied),130)
         self.assertTrue(all('3. **Lean evidence and fallback:**' in p.read_text(encoding='utf-8') for p in applied))

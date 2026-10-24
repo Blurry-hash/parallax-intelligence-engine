@@ -1,6 +1,6 @@
 # DeepSeek Free — complete skill inventory and real code tests
 
-**The missing 24 skills were a listing error.** Public GitHub's recursive tree API returned 142 actual `skills/*/SKILL.md` files, with `truncated: false`. The source registry contained 157 references. No skills require reinstalling.
+**The missing 24 skills were a listing error.** Public GitHub's recursive tree API returned 147 actual `skills/*/SKILL.md` files, with `truncated: false`. The source registry contained 157 references. No skills require reinstalling.
 
 ## Step 1 — GET-only complete catalog
 
@@ -8,11 +8,11 @@ Start with this small JSON file:
 
 https://raw.githubusercontent.com/Blurry-hash/parallax-intelligence-engine/main/bridge/v1/index.json
 
-The pages are maintained by `python tools/deepseek_catalog.py` and checked in GitHub CI whenever the repository changes. Its `read_base` URL and `pages` arrays enumerate **12 short skills pages** and **20 short source pages**. Retrieve every page; if any GET fails, retry that page or report the list as PARTIAL. Count `entries` across all pages; don't confuse lazy-loaded GitHub HTML rows with missing skills.
+The pages are maintained by `python tools/deepseek_catalog.py` and checked in GitHub CI whenever the repository changes. Its `read_base` URL and `pages` arrays enumerate **13 short skills pages** and **20 short source pages**. Retrieve every page; if any GET fails, retry that page or report the list as PARTIAL. Count `entries` across all pages; don't confuse lazy-loaded GitHub HTML rows with missing skills.
 
 **Fallback 1:** use GitHub's JSON tree: https://api.github.com/repos/Blurry-hash/parallax-intelligence-engine/git/trees/main?recursive=1 . Require `truncated:false`, and count paths matching `skills/<name>/SKILL.md`.
 
-**Fallback 2:** use a specific GitHub file page, for example https://github.com/Blurry-hash/parallax-intelligence-engine/blob/main/bridge/v1/skills-12.json . Raw file URLs are preferred when supported. These catalogs contain paths, not the full 142 instruction files.
+**Fallback 2:** use a specific GitHub file page, for example https://github.com/Blurry-hash/parallax-intelligence-engine/blob/main/bridge/v1/skills-12.json . Raw file URLs are preferred when supported. These catalogs contain paths, not the full 147 instruction files.
 
 ## Step 2 — actual CI proof with **GET only**
 

@@ -1,0 +1,50 @@
+{
+  "mode": "prompt_opt",
+  "config": {
+    "max_iterations": 3,
+    "patience": 2,
+    "min_gain": 0.02
+  },
+  "baseline": {
+    "id": "baseline",
+    "score": 0.5,
+    "evidence": {
+      "kind": "external",
+      "id": "baseline-test",
+      "passed": true
+    },
+    "critical_failure": false,
+    "regressions": {
+      "unit-1": true,
+      "unit-2": true
+    }
+  },
+  "candidates": [
+    {
+      "id": "prompt-v1",
+      "iteration": 1,
+      "parent": "baseline",
+      "score": 0.72,
+      "evidence": {
+        "kind": "external",
+        "id": "test-prompt-v1",
+        "passed": true
+      },
+      "critical_failure": false,
+      "tokens": 400,
+      "cost_usd": 0.01,
+      "holdout_used_to_tune": false
+    }
+  ],
+  "holdout_audit": {
+    "candidate": "prompt-v1",
+    "used_to_tune": false,
+    "baseline_score": 0.52,
+    "candidate_score": 0.63,
+    "evidence": {
+      "kind": "external",
+      "id": "unseen-holdout-1",
+      "passed": true
+    }
+  }
+}

@@ -22,7 +22,7 @@ class DeepSeekCIEvidenceTests(unittest.TestCase):
 
     def test_readonly_catalog_exposes_public_evidence_and_provenance(self):
         index=json.loads((ROOT/'bridge/v1/index.json').read_text(encoding='utf-8'))
-        self.assertEqual(index['counts'],{'skills':142,'sources':157})
+        self.assertEqual(index['counts'],{'skills':147,'sources':157})
         self.assertEqual(index['source_status_counts'],{'unconfirmed':46,'verified-page':111})
         ci=index['ci_get_only']
         self.assertTrue(ci['latest_commit'].startswith('https://api.github.com/repos/'))

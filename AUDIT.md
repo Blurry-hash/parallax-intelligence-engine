@@ -1,4 +1,4 @@
-# PARALLAX v11.1 / Validation ledger
+# PARALLAX v11.3 / Validation ledger
 
 ## Invariants
 
@@ -62,7 +62,7 @@ C) GitHub: inspect exact pushed commit SHA and Actions job conclusions. Do not m
 150 cataloged methods are implementation contracts, not 150 deployed providers. Five third-party GitHub resources were traced through indexed TikTok snippets; source videos were not watched in full. New practical methods require actual runtime access. All 130 existing skill files were given three explicit refinements and 12 new source-aware skills were added. The GitHub CI run for the resulting commit must be checked independently after publication.
 
 ## v11.1 DeepSeek compatibility acceptance
-- GitHub public recursive tree baseline SHA `80c44a0a1d27590b730d960e973645a0fc2253f9`: 142 SKILL.md files; `truncated: false`.
+- GitHub public recursive tree baseline SHA `80c44a0a1d27590b730d960e973645a0fc2253f9`: 147 SKILL.md files; `truncated: false`.
 - Registry count: 157 source records. Read-only JSON pages contain all names and source metadata; 118 visible HTML directory rows were only a partial response.
 - User-triggered GitHub Actions runner has a closed list of suites, no credential persistence, no arbitrary GET execution and read-only repository permissions.
 - Recheck CI at the published SHA. No independent GitHub commit signature or repository LICENSE asserted.

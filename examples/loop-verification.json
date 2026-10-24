@@ -1,0 +1,38 @@
+{
+  "mode": "verification",
+  "config": {
+    "max_iterations": 3,
+    "patience": 2,
+    "min_gain": 0.02
+  },
+  "baseline": {
+    "id": "baseline",
+    "score": 0.5,
+    "evidence": {
+      "kind": "external",
+      "id": "baseline-test",
+      "passed": true
+    },
+    "critical_failure": false,
+    "regressions": {
+      "unit-1": true,
+      "unit-2": true
+    }
+  },
+  "candidates": [
+    {
+      "id": "candidate-v1",
+      "iteration": 1,
+      "parent": "baseline",
+      "score": 0.65,
+      "evidence": {
+        "kind": "external",
+        "id": "test-candidate-v1",
+        "passed": true
+      },
+      "critical_failure": false,
+      "tokens": 400,
+      "cost_usd": 0.01
+    }
+  ]
+}

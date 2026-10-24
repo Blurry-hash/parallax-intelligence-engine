@@ -1,0 +1,54 @@
+{
+  "mode": "multipath",
+  "config": {
+    "max_iterations": 4,
+    "patience": 2,
+    "min_gain": 0.02
+  },
+  "baseline": {
+    "id": "baseline",
+    "score": 0.5,
+    "evidence": {
+      "kind": "external",
+      "id": "baseline-test",
+      "passed": true
+    },
+    "critical_failure": false,
+    "regressions": {
+      "unit-1": true,
+      "unit-2": true
+    }
+  },
+  "candidates": [
+    {
+      "id": "candidate-a",
+      "iteration": 1,
+      "parent": "baseline",
+      "score": 0.63,
+      "evidence": {
+        "kind": "external",
+        "id": "test-candidate-a",
+        "passed": true
+      },
+      "critical_failure": false,
+      "tokens": 400,
+      "cost_usd": 0.01,
+      "strategy": "symbolic"
+    },
+    {
+      "id": "candidate-b",
+      "iteration": 2,
+      "parent": "baseline",
+      "score": 0.72,
+      "evidence": {
+        "kind": "external",
+        "id": "test-candidate-b",
+        "passed": true
+      },
+      "critical_failure": false,
+      "tokens": 400,
+      "cost_usd": 0.01,
+      "strategy": "numerical"
+    }
+  ]
+}
